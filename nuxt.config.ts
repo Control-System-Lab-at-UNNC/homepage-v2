@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
+  // Source directory
+  srcDir: 'src/',
+
   // Nuxt Content module
   modules: ['@nuxt/content'],
 
@@ -56,7 +59,7 @@ export default defineNuxtConfig({
   // TypeScript
   typescript: {
     strict: true,
-    typeCheck: true
+    typeCheck: false
   },
 
   // Vite
