@@ -66,6 +66,7 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       include: ['@nuxt/content']
-    }
+    },
+    assetsInclude: ['**/*.png']
   }
 })

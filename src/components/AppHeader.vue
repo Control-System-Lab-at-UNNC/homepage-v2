@@ -3,7 +3,7 @@
     <div class="container header__inner">
       <!-- Logo -->
       <NuxtLink to="/" class="header__logo">
-        <img :src="logoImage" alt="University of Nottingham" class="header__logo-img">
+        <img :src="logoSrc" alt="University of Nottingham" class="header__logo-img">
         <div class="header__logo-text">
           <span class="header__logo-main">Control System Lab</span>
           <span class="header__logo-sub">University of Nottingham Ningbo China</span>
@@ -57,9 +57,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import logoImage from '~/assets/images/uon-logo.png'
 
 const route = useRoute()
+const logoSrc = ref('/images/uon-logo.png')
 
 const navigation = [
   { to: '/', label: 'Home' },
