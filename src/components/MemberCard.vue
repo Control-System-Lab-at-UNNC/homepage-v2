@@ -2,7 +2,8 @@
   <article class="member-card">
     <div class="member-card__image-wrapper">
       <img
-        :src="member.image || '/images/people/default.webp'"
+        v-if="imageUrl"
+        :src="imageUrl"
         :alt="member.name"
         class="member-card__image"
         loading="lazy"
@@ -43,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface Member {
   name: string
   role?: string
@@ -58,6 +61,23 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
+const config = useRuntimeConfig()
+
+const imageUrl = computed(() => {
+  if (!props.member.image) return ''
+
+  // Get base URL from runtime config (empty string '/' in dev mode)
+  const basePath = config.app.baseURL || ''
+
+  // Ensure path starts with / for proper concatenation
+  const base = basePath.startsWith('/') ? basePath : '/' + basePath
+
+  if (!base || base === '/') {
+    return props.member.image
+  }
+  return base.endsWith('/') ? base : base + '/' + props.member.image
+})
 
 const formattedInterests = computed(() => {
   if (!props.member.interests) return ''

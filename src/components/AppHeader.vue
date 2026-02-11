@@ -56,10 +56,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 const route = useRoute()
-const logoSrc = ref('/images/uon-logo.png')
+const config = useRuntimeConfig()
+
+const logoSrc = computed(() => {
+  const basePath = config.app.baseURL || '/'
+  // Ensure basePath ends with / for proper concatenation
+  const base = basePath.endsWith('/') ? basePath : basePath + '/'
+  return base + 'images/uon-logo.png'
+})
 
 const navigation = [
   { to: '/', label: 'Home' },
