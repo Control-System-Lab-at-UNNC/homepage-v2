@@ -30,7 +30,8 @@ export default defineNuxtConfig({
       ],
       script: []
     },
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'out-in' },
+    baseURL: process.env.NUXT_PUBLIC_BASE_URL || '/'
   },
 
   // CSS
@@ -49,12 +50,14 @@ export default defineNuxtConfig({
     }
   },
 
-  // GitHub Pages configuration
-  // Set base URL to match your repository name
-  // Uncomment and modify when deploying to GitHub Pages
-  // nitro: {
-  //   baseURL: '/homepage-v2/'
-  // },
+  // Nitro configuration for GitHub Pages
+  // Default to root deployment. Set NUXT_PUBLIC_BASE_URL env var to override.
+  // Examples:
+  // - Root deployment (organization pages): NUXT_PUBLIC_BASE_URL=/
+  // - Project deployment: NUXT_PUBLIC_BASE_URL=/homepage-v2/
+  nitro: {
+    baseURL: process.env.NUXT_PUBLIC_BASE_URL || '/'
+  },
 
   // TypeScript
   typescript: {
@@ -66,7 +69,6 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       include: ['@nuxt/content']
-    },
-    assetsInclude: ['**/*.png']
+    }
   }
 })

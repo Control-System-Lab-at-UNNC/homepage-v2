@@ -40,9 +40,7 @@ jobs:
       - name: Generate static site
         run: pnpm run generate
         env:
-          # Set base URL if deploying to a repository with a custom name
-          # Uncomment and modify if needed: NUXT_PUBLIC_BASE_URL: /homepage-v2
-          NUXT_PUBLIC_SITE_URL: https://control-system-lab-at-unnc.github.io/homepage-v2
+          NUXT_PUBLIC_BASE_URL: /homepage-v2/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
