@@ -36,7 +36,6 @@
 <script setup lang="ts">
 interface Member {
   name: string
-  slug: string
   role?: string
   title?: string
   email?: string
@@ -46,6 +45,7 @@ interface Member {
   category?: string
   order?: number
   _path?: string
+  slug: string
 }
 
 // Fetch all members
@@ -54,12 +54,16 @@ const { data: allMembers } = await useAsyncData('members', () =>
 )
 
 const processedMembers = computed(() => {
-  return (allMembers.value || []).map(member => ({
-    ...member,
-    slug: member._path?.split('/').pop() || member.slug,
-    name: member.name || member.title || 'Unknown', // Ensure 'name' exists
-    category: member.category ?? undefined // Ensure 'category' exists
-  }))
+  const members = (allMembers.value || []).map(member => {
+    const processed = {
+      ...member,
+      name: member.name || member.title || 'Unknown', // Ensure 'name' exists
+      category: member.category ?? undefined, // Ensure 'category' exists
+      slug: member._id || member._path || '' // Ensure 'slug' exists
+    }
+    return processed
+  })
+  return members
 })
 
 // Category definitions

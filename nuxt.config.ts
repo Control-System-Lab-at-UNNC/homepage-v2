@@ -62,7 +62,7 @@ export default defineNuxtConfig({
   // TypeScript
   typescript: {
     strict: true,
-    typeCheck: false
+    typeCheck: true
   },
 
   // Vite

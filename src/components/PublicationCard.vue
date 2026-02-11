@@ -5,7 +5,7 @@
       <span v-if="publication.venue" class="badge badge-accent">{{ publication.venue }}</span>
     </div>
     <h3 class="publication-card__title">
-      <a :href="publication.doi" target="_blank" rel="noopener" v-if="publication.doi">
+      <a :href="publication.doi" target="_blank" rel="noopener" v-if="publication.doi" class="publication-card__link">
         {{ publication.title }}
       </a>
       <span v-else>{{ publication.title }}</span>
@@ -31,17 +31,16 @@
         class="publication-card__link"
         aria-label="View publication"
       >
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M14 16C14 13.7909 12.2091 12 10 12C7.79086 12 6 13.7909 6 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M10 17C10 17 15.5 17 15.5 10C15.5 3 10 3 10 3C10 3 4.5 3 4.5 10C4.5 17 10 17 10 17Z" stroke="currentColor" stroke-width="1.5"/>
-        </svg>
+        <Icon name="external-link" :size="16" />
       </a>
     </div>
   </article>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import Icon from './Icon.vue'
+
 interface Publication {
   title: string
   authors: string[]
@@ -59,7 +58,6 @@ interface Props {
 const props = defineProps<Props>()
 
 const formattedAuthors = computed(() => {
-  // Format: Author1, Author2, Author3, and Author4
   const authors = props.publication.authors
   if (authors.length <= 2) return authors.join(' and ')
   return authors.slice(0, authors.length - 1).join(', ') + ', and ' + authors[authors.length - 1]
@@ -79,7 +77,7 @@ const displayedKeywords = computed(() => {
 const moreKeywords = computed(() => {
   if (!props.publication.keywords) return 0
   const remaining = props.publication.keywords.length - 3
-  return remaining > 0 ? remaining : 0
+  return remaining > 0 ? `+${remaining} more...` : ''
 })
 </script>
 
@@ -87,87 +85,115 @@ const moreKeywords = computed(() => {
 .publication-card {
   background: var(--color-bg-alt);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl);
   border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
 }
 
 .publication-card:hover {
-  border-color: var(--color-secondary);
   box-shadow: var(--shadow-lg);
+  border-color: var(--color-secondary);
 }
 
 .publication-card__meta {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .publication-card__year {
   font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+}
+
+.badge-accent {
+  background: var(--color-accent);
+  color: white;
 }
 
 .publication-card__title {
   font-family: var(--font-display);
   font-size: 1.125rem;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.3;
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
 }
 
 .publication-card__title a {
-  color: inherit;
+  color: var(--color-secondary);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .publication-card__title a:hover {
-  color: var(--color-secondary);
+  color: var(--color-accent);
 }
 
 .publication-card__authors {
   font-size: 0.9375rem;
   color: var(--color-text-muted);
+  line-height: 1.5;
   margin-bottom: var(--spacing-md);
 }
 
 .publication-card__abstract {
+  font-family: var(--font-body);
   font-size: 0.9375rem;
-  line-height: 1.6;
   color: var(--color-text);
-  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
 }
 
 .publication-card__footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-md);
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
 }
 
 .publication-card__keywords {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
 }
 
 .publication-card__keyword {
-  font-size: 0.75rem;
-  padding: 2px 8px;
+  display: inline-flex;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
   background: var(--color-bg);
-  color: var(--color-text-muted);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.publication-card__keyword:hover {
+  background: var(--color-secondary);
+  color: white;
 }
 
 .publication-card__keyword-more {
-  font-size: 0.75rem;
-  color: var(--color-secondary);
-  font-weight: 500;
+  background: var(--color-accent);
+  color: white;
 }
 
 .publication-card__link {
@@ -176,10 +202,9 @@ const moreKeywords = computed(() => {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: var(--color-bg);
+  background: var(--color-bg-alt);
   border-radius: var(--radius-full);
   color: var(--color-primary);
-  flex-shrink: 0;
   transition: all var(--transition-fast);
 }
 
@@ -187,5 +212,15 @@ const moreKeywords = computed(() => {
   background: var(--color-secondary);
   color: white;
   transform: scale(1.1);
+}
+
+.publication-card__title a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.publication-card__title a:hover {
+  color: var(--color-accent);
 }
 </style>

@@ -1,5 +1,5 @@
 ---
-title: Sensors and Sensor Fusion Methodologies for Indoor Odometry: A Review
+title: "Sensors and Sensor Fusion Methodologies for Indoor Odometry: A Review"
 authors:
   - Yang, Mengshen
   - Sun, Xu

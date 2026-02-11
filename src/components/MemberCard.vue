@@ -1,5 +1,5 @@
 <template>
-  <article class="member-card">
+  <NuxtLink :to="memberLink" class="member-card">
     <div class="member-card__image-wrapper">
       <img
         v-if="imageUrl"
@@ -14,10 +14,9 @@
           :href="`mailto:${member.email}`"
           class="member-card__action"
           aria-label="Send email"
+          @click.stop
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.5 5L10 10L17.5 5M2.5 5C2.5 4.33696 2.76339 3.70107 3.23223 3.23223C3.70107 2.76339 4.33696 2.5 5 2.5H15C15.663 2.5 16.2989 2.76339 16.7678 3.23223C17.2366 3.70107 17.5 4.33696 17.5 5M2.5 5V15C2.5 15.663 2.76339 16.2989 3.23223 16.7678C3.70107 17.2366 4.33696 17.5 5 17.5H15C15.663 17.5 16.2989 17.2366 16.7678 16.7678C17.2366 16.2989 17.5 15.663 17.5 15V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <Icon name="email" :size="20" />
         </a>
         <a
           v-if="member.scholar"
@@ -26,10 +25,9 @@
           rel="noopener"
           class="member-card__action"
           aria-label="Google Scholar"
+          @click.stop
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 2C8.5 2 7.2 2.4 6.1 3.2L10 8.5V2ZM10 2C11.5 2 12.8 2.4 13.9 3.2L10 8.5V2ZM10 10L5.5 4.7C4.3 5.8 3.5 7.3 3.5 9C3.5 11.8 5.6 14.2 8.3 14.8V18H11.7V14.8C14.4 14.2 16.5 11.8 16.5 9C16.5 7.3 15.7 5.8 14.5 4.7L10 10Z"/>
-          </svg>
+          <Icon name="scholar" :size="20" />
         </a>
       </div>
     </div>
@@ -40,11 +38,12 @@
         {{ formattedInterests }}
       </p>
     </div>
-  </article>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import Icon from './Icon.vue'
 
 interface Member {
   name: string
@@ -54,6 +53,7 @@ interface Member {
   scholar?: string
   image?: string
   interests?: string[]
+  _path?: string  // Nuxt Content file path (e.g., "/members/staff/salman-ijaz")
 }
 
 interface Props {
@@ -69,18 +69,27 @@ const imageUrl = computed(() => {
 
   const basePath = config.app.baseURL || ''
 
-  // If basePath is empty (dev mode), use image as-is
   if (!basePath || basePath === '/') {
     return props.member.image
   }
 
-  // If basePath ends with '/', use it directly (already has /)
   return basePath + props.member.image
 })
 
 const formattedInterests = computed(() => {
   if (!props.member.interests) return ''
   return props.member.interests.slice(0, 3).join(' · ')
+})
+
+// Generate link to member detail page
+const memberLink = computed(() => {
+  if (props.member._path) {
+    // _path is like "/members/staff/salman-ijaz"
+    // Use it directly as route
+    return props.member._path
+  }
+  // Fallback: generate from name with /members/ prefix
+  return `/members/${props.member.name?.toLowerCase().replace(/\s+/g, '-') || ''}`
 })
 </script>
 
@@ -92,6 +101,8 @@ const formattedInterests = computed(() => {
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
   transition: all var(--transition-base);
+  text-decoration: none;
+  display: block;
 }
 
 .member-card:hover {
