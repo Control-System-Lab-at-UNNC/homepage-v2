@@ -1,6 +1,6 @@
 # Control System Lab Homepage
 
-The official website for the Control System Lab at the University of Nottingham Ningbo China.
+The official website for Control System Lab at the University of Nottingham Ningbo China.
 
 ## Tech Stack
 
@@ -14,20 +14,20 @@ The official website for the Control System Lab at the University of Nottingham 
 ### Prerequisites
 
 - Node.js 20+
-- npm or yarn
+- pnpm (recommended) or npm
 
 ### Installation
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 ```
 
 ### Development Server
 
 ```bash
 # Start development server
-npm run dev
+pnpm run dev
 ```
 
 Visit `http://localhost:3000` to see the site.
@@ -36,7 +36,7 @@ Visit `http://localhost:3000` to see the site.
 
 ```bash
 # Generate static site
-npm run generate
+pnpm run generate
 ```
 
 The static files will be output to `.output/public/`.
@@ -44,26 +44,31 @@ The static files will be output to `.output/public/`.
 ### Preview Production Build
 
 ```bash
-# Preview the generated site
-npm run preview
+# Preview locally
+npx serve .output/public
 ```
 
 ## Project Structure
 
-```
+```bash
 ├── .github/workflows/     # GitHub Actions deployment
-├── content/               # Markdown content
-│   ├── members/          # Member profiles
-│   ├── publications/      # Research publications
-│   ├── projects/         # Project information
-│   ├── positions/        # Open positions
-│   └── news/            # News and blog posts
-├── components/           # Vue components
-├── layouts/             # Nuxt layouts
-├── pages/              # Route pages
-├── public/             # Static assets
-├── assets/css/          # Global styles
-└── nuxt.config.ts      # Nuxt configuration
+├── src/                        # Source directory
+│   ├── assets/               # Global styles
+│   ├── components/            # Vue components
+│   ├── composables/           # Vue composables
+│   ├── content/              # Markdown content
+│   │   ├── members/         # Member profiles
+│   │   ├── publications/     # Research publications
+│   │   ├── projects/        # Project information
+│   │   ├── positions/       # Open positions
+│   │   └── news/           # News and blog posts
+│   ├── layouts/              # Nuxt layouts
+│   ├── pages/               # Route pages
+│   ├── public/              # Static assets
+│   └── nuxt.config.ts      # Nuxt configuration
+├── .github/
+├── package.json
+└── tsconfig.json
 ```
 
 ## Content Management
@@ -130,15 +135,23 @@ description: Brief description
 News content here...
 ```
 
+## Image Path Handling
+
+The project uses dynamic base URL handling to support both root and subdirectory deployments:
+
+- **Root deployment** (e.g., `https://control-system-lab-at-unnc.github.io/`):
+  - Images resolve to `/images/uon-logo.png`, `/images/people/salman-ijaz.webp`
+
+- **Subdirectory deployment** (e.g., `https://control-system-lab-at-unnc.github.io/homepage-v2/`):
+  - Images resolve to `/homepage-v2/images/uon-logo.png`, `/homepage-v2/images/people/salman-ijaz.webp`
+
+This is handled automatically via `useRuntimeConfig()` in components that reads `config.app.baseURL`.
+
 ## Deployment
 
 The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
 
-To configure deployment:
-
-1. Go to repository **Settings** → **Pages**
-2. Set source to **GitHub Actions**
-3. The workflow in `.github/workflows/deploy.yml` will handle the rest
+To configure subdirectory deployment, set `NUXT_PUBLIC_BASE_URL` in the GitHub Actions workflow (`.github/workflows/deploy.yml`).
 
 ## License
 
