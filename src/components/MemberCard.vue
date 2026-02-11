@@ -64,15 +64,19 @@ const props = defineProps<Props>()
 
 const config = useRuntimeConfig()
 
+const logoSrc = computed(() => {
+  const basePath = config.app.baseURL || ''
+  const base = basePath.endsWith('/') ? basePath : basePath + '/'
+  if (!base || base === '/') {
+    return '/images/uon-logo.png'
+  }
+  return base.endsWith('/') ? base : base + '/' + 'images/uon-logo.png'
+})
+
 const imageUrl = computed(() => {
   if (!props.member.image) return ''
-
-  // Get base URL from runtime config (empty string '/' in dev mode)
   const basePath = config.app.baseURL || ''
-
-  // Ensure path starts with / for proper concatenation
-  const base = basePath.startsWith('/') ? basePath : '/' + basePath
-
+  const base = basePath.endsWith('/') ? basePath : basePath + '/'
   if (!base || base === '/') {
     return props.member.image
   }
