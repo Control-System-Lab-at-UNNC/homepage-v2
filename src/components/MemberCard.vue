@@ -64,23 +64,18 @@ const props = defineProps<Props>()
 
 const config = useRuntimeConfig()
 
-const logoSrc = computed(() => {
-  const basePath = config.app.baseURL || ''
-  const base = basePath.endsWith('/') ? basePath : basePath + '/'
-  if (!base || base === '/') {
-    return '/images/uon-logo.png'
-  }
-  return base.endsWith('/') ? base : base + '/' + 'images/uon-logo.png'
-})
-
 const imageUrl = computed(() => {
   if (!props.member.image) return ''
+
   const basePath = config.app.baseURL || ''
-  const base = basePath.endsWith('/') ? basePath : basePath + '/'
-  if (!base || base === '/') {
+
+  // If basePath is empty (dev mode), use image as-is
+  if (!basePath || basePath === '/') {
     return props.member.image
   }
-  return base.endsWith('/') ? base : base + '/' + props.member.image
+
+  // If basePath ends with '/', use it directly (already has /)
+  return basePath + props.member.image
 })
 
 const formattedInterests = computed(() => {
