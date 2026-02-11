@@ -1,6 +1,7 @@
 <template>
   <section class="hero">
-    <div class="hero__grid">
+    <div class="container">
+      <div class="hero__grid">
       <div class="hero__content">
         <span class="hero__badge">{{ badge }}</span>
         <h1 class="hero__title">{{ title }}</h1>
@@ -22,6 +23,7 @@
           <span class="hero__shape hero__shape--3"></span>
         </div>
       </div>
+    </div>
     </div>
   </section>
 </template>

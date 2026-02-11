@@ -53,6 +53,7 @@ const { data: publications } = await useAsyncData('publications', () =>
 const processedPublications = computed(() => {
   return (publications.value || []).map(pub => ({
     ...pub,
+    title: pub.title ?? 'Untitled',
     authors: pub.authors || [],
     year: pub.year || new Date().getFullYear(),
     keywords: pub.keywords || [],

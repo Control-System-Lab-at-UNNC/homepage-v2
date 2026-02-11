@@ -8,9 +8,9 @@
           description="Stay informed about our latest research breakthroughs, events, and announcements."
         />
 
-        <div class="news-list" v-if="newsItems.length > 0">
+        <div class="news-list" v-if="safeNewsItems.length > 0">
           <NewsCard
-            v-for="item in newsItems"
+            v-for="item in safeNewsItems"
             :key="item._path"
             :news="item"
           />
@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script setup lang="ts>
+<script setup lang="ts">
 interface NewsItem {
   title: string
   date: string
@@ -40,6 +40,10 @@ const { data: newsItems } = await useAsyncData('news', () =>
   queryContent('/news')
     .sort({ date: -1 })
     .find()
+)
+
+const safeNewsItems = computed(() =>
+  (newsItems.value ?? []).filter((item: any) => typeof item.date === 'string') as unknown as NewsItem[]
 )
 
 useHead({

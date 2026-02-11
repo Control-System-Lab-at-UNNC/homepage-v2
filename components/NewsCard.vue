@@ -18,12 +18,14 @@
 </template>
 
 <script setup lang="ts">
+// Accept any Nuxt content properties
 interface NewsItem {
-  title: string
-  date: string
+  title?: string
+  date?: string
   description?: string
   tags?: string[]
-  _path: string
+  _path?: string
+  key?: string
 }
 
 interface Props {
@@ -33,7 +35,7 @@ interface Props {
 const props = defineProps<Props>()
 
 const formattedDate = computed(() => {
-  const date = new Date(props.news.date)
+  const date = props.news.date ? new Date(props.news.date) : new Date()
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -93,6 +95,7 @@ const formattedDate = computed(() => {
   color: var(--color-text-muted);
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

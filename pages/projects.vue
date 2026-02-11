@@ -8,7 +8,7 @@
           description="Explore our ongoing and completed research projects in control systems and robotics."
         />
 
-        <div class="projects-content" v-if="projects.length > 0">
+        <div class="projects-content" v-if="projects && projects.length > 0">
           <div class="project-card" v-for="project in projects" :key="project._path">
             <h3 class="project-card__title">{{ project.title }}</h3>
             <p class="project-card__description" v-if="project.description">
@@ -32,7 +32,7 @@
   </div>
 </template>
 
-<script setup lang="ts>
+<script setup lang="ts">
 interface Project {
   title: string
   description?: string

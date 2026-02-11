@@ -46,13 +46,7 @@
 </template>
 
 <script setup lang="ts">
-interface NewsItem {
-  title: string
-  date: string
-  description?: string
-  tags?: string[]
-  _path: string
-}
+
 
 const route = useRoute()
 

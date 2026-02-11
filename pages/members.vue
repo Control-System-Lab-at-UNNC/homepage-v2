@@ -56,7 +56,9 @@ const { data: allMembers } = await useAsyncData('members', () =>
 const processedMembers = computed(() => {
   return (allMembers.value || []).map(member => ({
     ...member,
-    slug: member._path?.split('/').pop() || member.slug
+    slug: member._path?.split('/').pop() || member.slug,
+    name: member.name || member.title || 'Unknown', // Ensure 'name' exists
+    category: member.category ?? undefined // Ensure 'category' exists
   }))
 })
 

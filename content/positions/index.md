@@ -5,7 +5,7 @@ categories:
   - title: Final Year Projects (FYP)
     description: Final year undergraduate projects available for motivated students.
     positions: []
-  - title: Foong Undergraduate Research Prize (FURP)
+  - title: Faculty Undergraduate Research Practice (FURP)
     description: Research opportunities for undergraduate students.
     positions: []
   - title: Research Assistant Positions

@@ -87,7 +87,7 @@ const positionCategories = ref<PositionCategory[]>([
     positions: [] // Add positions as content files
   },
   {
-    title: 'Foong Undergraduate Research Prize (FURP)',
+    title: 'Faculty Undergraduate Research Practice (FURP)',
     description: 'Research opportunities for undergraduate students.',
     positions: [] // Add positions as content files
   },

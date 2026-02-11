@@ -3,8 +3,11 @@
     <div class="container header__inner">
       <!-- Logo -->
       <NuxtLink to="/" class="header__logo">
-        <span class="header__logo-text">CSL</span>
-        <span class="header__logo-sub">UNNC</span>
+        <img src="/images/uon-logo.png" alt="University of Nottingham" class="header__logo-img">
+        <div class="header__logo-text">
+          <span class="header__logo-main">Control System Lab</span>
+          <span class="header__logo-sub">University of Nottingham Ningbo China</span>
+        </div>
       </NuxtLink>
 
       <!-- Desktop Navigation -->
@@ -14,7 +17,7 @@
           :key="item.to"
           :to="item.to"
           class="header__link"
-          :class="{ 'header__link--active:active': isActive(item.to) }"
+          :class="{ 'header__link--active': isActive(item.to) }"
         >
           {{ item.label }}
         </NuxtLink>
@@ -101,14 +104,15 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: all 0.3s ease;
 }
 
 .header--scrolled {
-  box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   border-bottom-color: var(--color-border);
 }
 
@@ -116,41 +120,70 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 80px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
 }
 
 /* Logo */
 .header__logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
   text-decoration: none;
-  font-family: var(--font-display);
+  transition: opacity 0.2s ease;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+.header__logo-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  color: var(--color-secondary);
+}
+
+.header__logo-img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .header__logo-text {
-  font-size: 1.5rem;
-  font-weight: 800;
-  line-height: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header__logo-main {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.1;
   color: var(--color-primary);
 }
 
 .header__logo-sub {
   font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight: 500;
   color: var(--color-secondary);
-  margin-top: 2px;
+  letter-spacing: 0.02em;
 }
 
 /* Desktop Navigation */
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .header__link {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.875rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-text);
@@ -162,6 +195,7 @@ onUnmounted(() => {
 
 .header__link:hover {
   color: var(--color-secondary);
+  background: rgba(0, 155, 193, 0.08);
 }
 
 .header__link--active {
@@ -187,8 +221,8 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   background: none;
   border: none;
@@ -229,11 +263,12 @@ onUnmounted(() => {
   padding: var(--spacing-lg);
   background: white;
   border-top: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .header__mobile-link {
   padding: var(--spacing-md);
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--color-text);
   text-decoration: none;
@@ -260,7 +295,15 @@ onUnmounted(() => {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .header__logo-main {
+    font-size: 1rem;
+  }
+
+  .header__logo-sub {
+    font-size: 0.5625rem;
+  }
+
   .header__nav {
     display: none;
   }
@@ -271,6 +314,21 @@ onUnmounted(() => {
 
   .header__mobile-nav {
     display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .header__inner {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  .header__logo-main {
+    font-size: 0.875rem;
+  }
+
+  .header__logo-sub {
+    display: none;
   }
 }
 </style>
