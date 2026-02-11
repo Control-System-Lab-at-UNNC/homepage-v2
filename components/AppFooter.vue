@@ -1,0 +1,214 @@
+<template>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <span class="footer__logo-text">Control System Lab</span>
+          <span class="footer__logo-sub">University of Nottingham Ningbo China</span>
+        </div>
+        <p class="footer__tagline">
+          Advancing research in control systems, robotics, and aerospace engineering.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer__links">
+        <h4 class="footer__heading">Quick Links</h4>
+        <nav class="footer__nav">
+          <NuxtLink to="/members" class="footer__link">Members</NuxtLink>
+          <NuxtLink to="/publications" class="footer__link">Publications</NuxtLink>
+          <NuxtLink to="/projects" class="footer__link">Projects</NuxtLink>
+          <NuxtLink to="/positions" class="footer__link">Positions</NuxtLink>
+          <NuxtLink to="/news" class="footer__link">News</NuxtLink>
+        </nav>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer__contact">
+        <h4 class="footer__heading">Contact</h4>
+        <address class="footer__address">
+          <p>
+            <strong>Dr Salman Ijaz</strong><br>
+            Director of Control System Lab<br>
+            Department of Mechanical, Materials and Manufacturing Engineering
+          </p>
+          <p>
+            <a href="mailto:salman.ijaz@nottingham.edu.cn" class="footer__email">
+              salman.ijaz@nottingham.edu.cn
+            </a>
+          </p>
+        </address>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copyright">
+          &copy; {{ currentYear }} Control System Lab, UNNC. All rights reserved.
+        </p>
+        <div class="footer__external">
+          <a href="https://www.nottingham.edu.cn" target="_blank" rel="noopener" class="footer__external-link">
+            University of Nottingham Ningbo China
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 11L11 1M11 1H2M11 1V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script setup lang="ts">
+const currentYear = new Date().getFullYear()
+</script>
+
+<style scoped>
+.footer {
+  background: var(--color-primary);
+  color: white;
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-lg);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-2xl);
+}
+
+/* Brand */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.footer__logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.footer__logo-sub {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.footer__tagline {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  opacity: 0.7;
+  max-width: 300px;
+  margin: 0;
+}
+
+/* Links */
+.footer__heading {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer__link {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+  color: var(--color-accent);
+}
+
+/* Contact */
+.footer__address {
+  font-style: normal;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.footer__address p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer__email {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.footer__email:hover {
+  text-decoration: underline;
+}
+
+/* Bottom Bar */
+.footer__bottom {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-size: 0.875rem;
+  opacity: 0.6;
+  margin: 0;
+}
+
+.footer__external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__external-link:hover {
+  color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer {
+    padding-top: var(--spacing-2xl);
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .footer__bottom-inner {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+}
+</style>

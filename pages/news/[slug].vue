@@ -1,0 +1,213 @@
+<template>
+  <div class="news-post-page">
+    <!-- Back Button -->
+    <div class="container">
+      <NuxtLink to="/news" class="back-link">
+        ← Back to News
+      </NuxtLink>
+    </div>
+
+    <article class="news-post" v-if="news">
+      <header class="news-post__header">
+        <div class="container">
+          <time class="news-post__date" :datetime="news.date">
+            {{ formattedDate }}
+          </time>
+          <h1 class="news-post__title">{{ news.title }}</h1>
+          <div class="news-post__tags" v-if="news.tags && news.tags.length">
+            <span v-for="tag in news.tags" :key="tag" class="badge">
+              {{ tag }}
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <div class="news-post__content">
+        <div class="container">
+          <ContentRenderer :value="news" />
+        </div>
+      </div>
+    </article>
+
+    <!-- Related News -->
+    <div class="section" v-if="relatedNews.length > 0">
+      <div class="container">
+        <h3 class="related-news__title">Related News</h3>
+        <div class="related-news__grid">
+          <NewsCard
+            v-for="item in relatedNews"
+            :key="item._path"
+            :news="item"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+interface NewsItem {
+  title: string
+  date: string
+  description?: string
+  tags?: string[]
+  _path: string
+}
+
+const route = useRoute()
+
+// Fetch current news post
+const { data: news } = await useAsyncData(`news-${route.params.slug}`, () =>
+  queryContent(`/news/${route.params.slug}`).findOne()
+)
+
+// Fetch related news (exclude current)
+const { data: allNews } = await useAsyncData('news-related', () =>
+  queryContent('/news')
+    .sort({ date: -1 })
+    .limit(4)
+    .find()
+)
+
+const relatedNews = computed(() => {
+  if (!allNews.value) return []
+  return allNews.value
+    .filter(item => item._path !== route.path)
+    .slice(0, 3)
+})
+
+const formattedDate = computed(() => {
+  if (!news.value?.date) return ''
+  const date = new Date(news.value.date)
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+})
+
+// SEO
+useHead({
+  title: news.value?.title || 'News Post',
+  meta: [
+    { name: 'description', content: news.value?.description || 'News post from Control System Lab UNNC.' }
+  ]
+})
+</script>
+
+<style scoped>
+.news-post-page {
+  min-height: 100vh;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.back-link:hover {
+  color: var(--color-secondary);
+}
+
+/* News Post */
+.news-post {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.news-post__header {
+  padding: var(--spacing-3xl) 0 var(--spacing-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.news-post__date {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+}
+
+.news-post__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.2;
+}
+
+.news-post__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.news-post__content {
+  padding: var(--spacing-2xl) 0;
+}
+
+.news-post__content :deep(p) {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+.news-post__content :deep(h2) {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.news-post__content :deep(h3) {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.news-post__content :deep(ul),
+.news-post__content :deep(ol) {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-xl);
+}
+
+.news-post__content :deep(li) {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.6;
+}
+
+/* Related News */
+.related-news__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.related-news__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+@media (max-width: 640px) {
+  .related-news__grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
