@@ -12,10 +12,10 @@ authors:
 year: 2024
 doi: https://doi.org/10.1109/IROS58592.2024.10801991
 keywords:
-  - Safety in HRI
-  - Robot Safety
-  - Aerial Systems
-  - Aerial Systems: Mechanics and Control
+  - "Safety in HRI"
+  - "Robot Safety"
+  - "Aerial Systems"
+  - "Aerial Systems: Mechanics and Control"
 venue: IROS 2024
 ---
 
