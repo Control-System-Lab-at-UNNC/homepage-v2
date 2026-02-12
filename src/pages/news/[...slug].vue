@@ -30,7 +30,7 @@
     </article>
 
     <!-- Related News -->
-    <div class="section" v-if="relatedNews.length > 0">
+    <div class="section" v-if="news && relatedNews.length > 0">
       <div class="container">
         <h3 class="related-news__title">Related News</h3>
         <div class="related-news__grid">
@@ -42,31 +42,56 @@
         </div>
       </div>
     </div>
+
+    <!-- Not Found -->
+    <div v-if="!news" class="not-found-page">
+      <div class="container">
+        <div class="not-found">
+          <Help class="icon-inline" theme="outline" :size="80" fill="var(--color-accent)" :stroke-width="3" />
+          <h1>News Post Not Found</h1>
+          <p>We couldn't find the news post you're looking for.</p>
+          <NuxtLink to="/news" class="btn btn-primary">Browse All News</NuxtLink>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
+import Help from '@icon-park/vue-next/lib/icons/Help'
 
 const route = useRoute()
 
-// Fetch current news post
-const { data: news } = await useAsyncData(`news-${route.params.slug}`, () =>
-  queryContent(`/news/${route.params.slug}`).findOne()
-)
+// Compute slug to support catch-all route [...slug] (array or string)
+const slug = computed(() => {
+  const slugParam = route.params.slug
+  return Array.isArray(slugParam) ? slugParam.join('/') : slugParam
+})
+
+// Fetch current news post (watch slug for navigation)
+const { data: news } = await useAsyncData(() => `news-${slug.value}`, async () => {
+  try {
+    const fullPath = `/news/${slug.value}`
+    return await queryContent(fullPath).findOne()
+  } catch (e) {
+    console.error('Error fetching news:', e)
+    return null
+  }
+}, { watch: [slug] })
 
 // Fetch related news (exclude current)
 const { data: allNews } = await useAsyncData('news-related', () =>
   queryContent('/news')
     .sort({ date: -1 })
-    .limit(4)
+    .limit(6)
     .find()
 )
 
 const relatedNews = computed(() => {
-  if (!allNews.value) return []
+  if (!allNews.value || !news.value) return []
+  const currentPath = news.value._path
   return allNews.value
-    .filter(item => item._path !== route.path)
+    .filter(item => item._path !== currentPath)
     .slice(0, 3)
 })
 
@@ -82,10 +107,10 @@ const formattedDate = computed(() => {
 
 // SEO
 useHead({
-  title: news.value?.title || 'News Post',
-  meta: [
+  title: computed(() => news.value ? news.value.title : 'News Post Not Found'),
+  meta: computed(() => [
     { name: 'description', content: news.value?.description || 'News post from Control System Lab UNNC.' }
-  ]
+  ])
 })
 </script>
 
@@ -203,5 +228,48 @@ useHead({
   .related-news__grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Not Found */
+.not-found-page {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.not-found {
+  text-align: center;
+  padding: var(--spacing-4xl) 0;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.not-found__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+  border-radius: var(--radius-xl);
+}
+
+.not-found h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.not-found p {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-xl);
 }
 </style>

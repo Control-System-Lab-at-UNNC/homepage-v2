@@ -12,7 +12,7 @@
     <div class="container profile-page__container">
       <!-- Back button -->
       <NuxtLink to="/members" class="member-profile__back">
-        <Icon name="arrow-left" :size="16" />
+        <ArrowLeft class="icon-inline" theme="outline" :size="16" fill="currentColor" :stroke-width="2" />
         Back to Members
       </NuxtLink>
 
@@ -28,10 +28,10 @@
             />
             <div class="profile-header__actions">
               <a v-if="member.email" :href="`mailto:${member.email}`" class="profile-header__action" aria-label="Email">
-                <Icon name="email" :size="18" />
+                <Mail class="icon-inline" theme="outline" :size="18" fill="currentColor" :stroke-width="3" />
               </a>
               <a v-if="member.scholar" :href="member.scholar" target="_blank" rel="noopener" class="profile-header__action" aria-label="Google Scholar">
-                <Icon name="scholar" :size="18" />
+                <Google class="icon-inline" theme="outline" :size="18" fill="currentColor" :stroke-width="2.5" />
               </a>
             </div>
           </div>
@@ -49,7 +49,7 @@
         <!-- Research Interests -->
         <div v-if="member.interests && member.interests.length" class="profile-section animate-fade-in-up delay-200">
           <div class="profile-section__header">
-            <Icon name="research" :size="22" />
+            <Search class="icon-inline" theme="outline" :size="22" fill="currentColor" :stroke-width="2.5" />
             <h3>Research Focus</h3>
           </div>
           <div class="profile-section__body">
@@ -64,7 +64,7 @@
         <!-- About/Bio with Markdown Content -->
         <div v-if="member.body || (member.content && member.content.length > 0)" class="profile-section animate-fade-in-up delay-300">
           <div class="profile-section__header">
-            <Icon name="about" :size="22" />
+            <FileStaff class="icon-inline" theme="outline" :size="22" fill="currentColor" :stroke-width="2.5" />
             <h3>About</h3>
           </div>
           <div class="profile-section__body profile-section__body--content">
@@ -79,7 +79,7 @@
   <div v-else class="not-found-page">
     <div class="container">
       <div class="not-found">
-        <Icon name="question-mark" :size="80" color="var(--color-accent)" />
+        <Help class="icon-inline" theme="outline" :size="80" fill="var(--color-accent)" :stroke-width="3" />
         <h1>Member Not Found</h1>
         <p>We couldn't find the member you're looking for.</p>
         <NuxtLink to="/members" class="btn btn-primary">Browse All Members</NuxtLink>
@@ -89,6 +89,13 @@
 </template>
 
 <script setup lang="ts">
+import ArrowLeft from '@icon-park/vue-next/lib/icons/ArrowLeft'
+import Mail from '@icon-park/vue-next/lib/icons/Mail'
+import Google from '@icon-park/vue-next/lib/icons/Google'
+import Search from '@icon-park/vue-next/lib/icons/Search'
+import FileStaff from '@icon-park/vue-next/lib/icons/FileStaff'
+import Help from '@icon-park/vue-next/lib/icons/Help'
+
 const route = useRoute()
 const config = useRuntimeConfig()
 

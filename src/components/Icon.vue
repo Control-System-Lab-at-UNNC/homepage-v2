@@ -42,17 +42,17 @@ const IconComp = computed(() => iconMap[props.name] || null)
 // Email icon gets bolder stroke for better visibility
 const strokeWidth = computed(() => {
   const isEmail = props.name === 'email'
-  if (typeof props.size === 'string') return isEmail ? 3 : 1.5
+  if (typeof props.size === 'string') return isEmail ? 3 : 2
   if (isEmail) {
     // Email icon is always bolder
     if (props.size <= 14) return 4
     if (props.size <= 18) return 3.5
     return 3
   }
-  // Standard stroke width for other icons
-  if (props.size <= 14) return 2.5
-  if (props.size <= 18) return 2
-  return 1.5
+  // Standard stroke width for other icons (increased for stronger weight)
+  if (props.size <= 14) return 3
+  if (props.size <= 18) return 2.5
+  return 2
 })
 
 // Handle both numeric (px) and string (CSS) sizes
@@ -89,13 +89,13 @@ const numericSize = computed(() => typeof props.size === 'number' ? props.size :
     </span>
 
     <!-- Fallback to Iconify CDN if icon name not recognised -->
-    <img
+    <!-- <img
       v-else
       :src="`https://api.iconify.design/ep-icon-park-outline/${props.name}.svg`"
       :alt="`${props.name} icon`"
       loading="lazy"
       class="icon-fallback"
-    />
+    /> -->
   </span>
 </template>
 

@@ -149,13 +149,6 @@ onUnmounted(() => {
   opacity: 0.8;
 }
 
-.header__logo-icon {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  color: var(--color-secondary);
-}
-
 .header__logo-img {
   width: 40px;
   height: 40px;

@@ -51,7 +51,7 @@
         <div class="footer__external">
           <a href="https://www.nottingham.edu.cn" target="_blank" rel="noopener" class="footer__external-link">
             University of Nottingham Ningbo China
-            <Icon name="external-link" :size="12" />
+            <LinkOut class="icon-inline" theme="outline" :size="12" fill="currentColor" :stroke-width="2" />
           </a>
         </div>
       </div>
@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import Icon from './Icon.vue'
+import LinkOut from '@icon-park/vue-next/lib/icons/LinkOut'
 
 const currentYear = new Date().getFullYear()
 </script>

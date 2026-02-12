@@ -16,7 +16,7 @@
           aria-label="Send email"
           @click.stop
         >
-          <Icon name="email" :size="20" />
+          <Mail class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="3.6" />
         </a>
         <a
           v-if="member.scholar"
@@ -27,7 +27,7 @@
           aria-label="Google Scholar"
           @click.stop
         >
-          <Icon name="scholar" :size="20" />
+          <Google class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="2.5" />
         </a>
       </div>
     </div>
@@ -43,7 +43,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import Icon from './Icon.vue'
+import Mail from '@icon-park/vue-next/lib/icons/Mail'
+import Google from '@icon-park/vue-next/lib/icons/Google'
 
 interface Member {
   name: string

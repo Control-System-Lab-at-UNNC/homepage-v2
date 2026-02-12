@@ -19,7 +19,7 @@
             <div class="publication-year__grid">
               <PublicationCard
                 v-for="pub in yearGroup.publications"
-                :key="pub.title"
+                :key="pub._path || pub.title"
                 :publication="pub"
               />
             </div>
@@ -43,6 +43,7 @@ interface Publication {
   venue?: string
   keywords?: string[]
   abstract?: string
+  _path?: string
 }
 
 // Fetch all publications
@@ -107,21 +108,18 @@ useHead({
 
 .publication-year {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--color-primary);
   padding-bottom: var(--spacing-sm);
   border-bottom: 2px solid var(--color-border);
-  position: sticky;
-  top: 80px;
-  background: var(--color-bg);
-  z-index: 10;
 }
 
 .publication-year__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
 .no-results {

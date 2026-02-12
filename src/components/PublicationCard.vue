@@ -5,10 +5,14 @@
       <span v-if="publication.venue" class="badge badge-accent">{{ publication.venue }}</span>
     </div>
     <h3 class="publication-card__title">
-      <a :href="publication.doi" target="_blank" rel="noopener" v-if="publication.doi" class="publication-card__link">
+      <!-- If there's a detail page (_path), link to it; otherwise show plain title or DOI link -->
+      <NuxtLink v-if="publication._path" :to="publication._path" class="publication-card__title-link">
+        {{ publication.title }}
+      </NuxtLink>
+      <a v-else-if="publication.doi" :href="publication.doi" target="_blank" rel="noopener" class="publication-card__title-link">
         {{ publication.title }}
       </a>
-      <span v-else>{{ publication.title }}</span>
+      <span v-else class="publication-card__title-text">{{ publication.title }}</span>
     </h3>
     <p class="publication-card__authors">{{ formattedAuthors }}</p>
     <p class="publication-card__abstract" v-if="publication.abstract">{{ truncatedAbstract }}</p>
@@ -23,15 +27,16 @@
         </span>
         <span v-if="moreKeywords" class="publication-card__keyword-more">+{{ moreKeywords }}</span>
       </div>
+      <!-- Only show DOI link if there's NO detail page -->
       <a
-        v-if="publication.doi"
+        v-if="publication.doi && !publication._path"
         :href="publication.doi"
         target="_blank"
         rel="noopener"
         class="publication-card__link"
         aria-label="View publication"
       >
-        <Icon name="external-link" :size="16" />
+        <LinkOut class="icon-inline" theme="outline" :size="16" fill="currentColor" :stroke-width="2" />
       </a>
     </div>
   </article>
@@ -39,7 +44,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import Icon from './Icon.vue'
 
 interface Publication {
   title: string
@@ -49,6 +53,7 @@ interface Publication {
   venue?: string
   keywords?: string[]
   abstract?: string
+  _path?: string
 }
 
 interface Props {
@@ -89,11 +94,14 @@ const moreKeywords = computed(() => {
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
+  display: block;
+  text-decoration: none;
 }
 
 .publication-card:hover {
   box-shadow: var(--shadow-lg);
   border-color: var(--color-secondary);
+  transform: translateY(-4px);
 }
 
 .publication-card__meta {
@@ -136,14 +144,20 @@ const moreKeywords = computed(() => {
   margin-bottom: var(--spacing-sm);
 }
 
-.publication-card__title a {
+.publication-card__title-link {
   color: var(--color-secondary);
   text-decoration: none;
   transition: color var(--transition-fast);
+  display: block;
 }
 
-.publication-card__title a:hover {
+.publication-card__title-link:hover {
   color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.publication-card__title-text {
+  color: var(--color-primary);
 }
 
 .publication-card__authors {
@@ -171,7 +185,6 @@ const moreKeywords = computed(() => {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
-  margin-top: var(--spacing-md);
 }
 
 .publication-card__keyword {
@@ -192,7 +205,20 @@ const moreKeywords = computed(() => {
 }
 
 .publication-card__keyword-more {
-  background: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.publication-card__keyword-more:hover {
+  background: var(--color-secondary);
   color: white;
 }
 
@@ -212,15 +238,5 @@ const moreKeywords = computed(() => {
   background: var(--color-secondary);
   color: white;
   transform: scale(1.1);
-}
-
-.publication-card__title a {
-  color: var(--color-secondary);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.publication-card__title a:hover {
-  color: var(--color-accent);
 }
 </style>

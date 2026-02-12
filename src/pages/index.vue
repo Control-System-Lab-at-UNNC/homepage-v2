@@ -90,7 +90,7 @@
         />
         <div class="research-areas">
           <div class="research-card" v-for="(area, index) in researchAreas" :key="index">
-            <span class="research-card__icon">{{ area.icon }}</span>
+            <span class="research-card__icon"><component class="icon-inline" :is="areaIconMap[area.icon]" theme="outline" :size="28" fill="currentColor" :stroke-width="2.8"/></span>
             <h3 class="research-card__title">{{ area.title }}</h3>
             <p class="research-card__description">{{ area.description }}</p>
           </div>
@@ -101,6 +101,12 @@
 </template>
 
 <script setup lang="ts">
+
+import Search from '@icon-park/vue-next/lib/icons/Search'
+import Robot from '@icon-park/vue-next/lib/icons/Robot'
+import Neural from '@icon-park/vue-next/lib/icons/Neural'
+import AssemblyLine from '@icon-park/vue-next/lib/icons/AssemblyLine'
+
 // Fetch latest news
 const { data: allNews } = await useAsyncData('home-news', () =>
   queryContent('/news')
@@ -131,26 +137,33 @@ const featuredMembers = computed(() => {
 // Research areas data
 const researchAreas = [
   {
-    icon: '🛩️',
+    icon: 'research',
     title: 'Aerospace Control',
     description: 'Fault tolerant control systems, unmanned aerial vehicles, and aircraft dynamics'
   },
   {
-    icon: '🤖',
+    icon: 'robotics',
     title: 'Robotics',
     description: 'Field robots, walking robots, aerial manipulation, and human-robot interaction'
   },
   {
-    icon: '🧠',
+    icon: 'intelligent',
     title: 'Intelligent Control',
     description: 'Adaptive control, sliding mode control, and robust control systems'
   },
   {
-    icon: '🏭',
+    icon: 'manufacturing',
     title: 'Advanced Manufacturing',
     description: 'Mechatronics, additive manufacturing, and intelligent machining systems'
   }
 ]
+
+const areaIconMap: Record<string, any> = {
+  research: Search,
+  robotics: Robot,
+  intelligent: Neural,
+  manufacturing: AssemblyLine
+}
 
 useHead({
   title: 'Home - Control System Lab UNNC'
@@ -220,7 +233,10 @@ useHead({
 }
 
 .stat__label {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--color-text-muted);
 }
 
@@ -266,6 +282,20 @@ useHead({
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--spacing-xl);
+  position: relative;
+}
+
+.research-areas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(10, 37, 64, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 37, 64, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .research-card {
@@ -275,6 +305,8 @@ useHead({
   text-align: center;
   border: 1px solid var(--color-border);
   transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
 }
 
 .research-card:hover {
@@ -283,10 +315,26 @@ useHead({
   border-color: var(--color-secondary);
 }
 
+.research-card:hover .research-card__icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
 .research-card__icon {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: var(--spacing-md);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-xl);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+  border-radius: var(--radius-full);
+  position: relative;
+  z-index: 1;
+}
+
+.research-card__icon :deep(.icon-container) {
+  position: relative;
+  z-index: 2;
 }
 
 .research-card__title {
@@ -319,9 +367,41 @@ useHead({
   }
 }
 
+@media (max-width: 768px) {
+  .research-areas {
+    grid-template-columns: 1fr;
+  }
+
+  .research-card {
+    padding: var(--spacing-lg);
+  }
+
+  .research-card__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .about-visual {
+    height: 250px;
+  }
+}
+
 @media (max-width: 640px) {
   .research-areas {
     grid-template-columns: 1fr;
+  }
+
+  .research-card {
+    padding: var(--spacing-lg);
+  }
+
+  .research-card__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .about-visual {
+    height: 250px;
   }
 }
 </style>
