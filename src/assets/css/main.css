@@ -37,6 +37,7 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
+  --radius-2xl: 1.5rem; /* added: used by multiple pages (positions, projects, news) */
   --radius-full: 9999px;
 
   /* Shadows */

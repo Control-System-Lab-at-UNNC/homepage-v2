@@ -35,7 +35,7 @@
         <!-- Description -->
         <div v-if="project.body || project.description" class="project-section animate-fade-in-up delay-200">
           <div class="project-section__header">
-            <FileStaff class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="2.5" />
+            <FileStaff class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
             <h3>About This Project</h3>
           </div>
           <div class="project-section__body project-section__body--content">
@@ -296,7 +296,7 @@ useHead({
 .project-section__header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   padding: var(--spacing-lg) var(--spacing-xl);
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   border-bottom: 1px solid var(--color-border);

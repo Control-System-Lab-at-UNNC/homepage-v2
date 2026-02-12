@@ -31,7 +31,7 @@
         <!-- Description -->
         <div v-if="position.body || position.description" class="position-section animate-fade-in-up delay-200">
           <div class="position-section__header">
-            <FileStaff class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="2.5" />
+            <FileStaff class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
             <h3>About This Position</h3>
           </div>
           <div class="position-section__body position-section__body--content">
@@ -42,6 +42,7 @@
         <!-- Requirements -->
         <div v-if="position.requirements" class="position-section animate-fade-in-up delay-300">
           <div class="position-section__header">
+            <CheckCorrect class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
             <h3>Requirements</h3>
           </div>
           <div class="position-section__body">
@@ -52,7 +53,7 @@
         </div>
 
         <!-- Apply Button -->
-        <div v-if="position.email" class="position-section animate-fade-in-up delay-400">
+        <div v-if="position.email" class="animate-fade-in-up delay-400">
           <a
             :href="`mailto:${position.email}`"
             class="apply-link"
@@ -81,6 +82,7 @@
 <script setup lang="ts">
 import ArrowLeft from '@icon-park/vue-next/lib/icons/ArrowLeft'
 import FileStaff from '@icon-park/vue-next/lib/icons/FileStaff'
+import CheckCorrect from '@icon-park/vue-next/lib/icons/CheckCorrect'
 import Mail from '@icon-park/vue-next/lib/icons/Mail'
 import Help from '@icon-park/vue-next/lib/icons/Help'
 
@@ -276,7 +278,7 @@ useHead({
 .position-section__header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   padding: var(--spacing-lg) var(--spacing-xl);
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   border-bottom: 1px solid var(--color-border);

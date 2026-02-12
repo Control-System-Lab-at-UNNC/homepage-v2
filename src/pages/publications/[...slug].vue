@@ -31,7 +31,7 @@
         <!-- Abstract -->
         <div v-if="publication.abstract || publication.body" class="publication-section animate-fade-in-up delay-200">
           <div class="publication-section__header">
-            <FileStaff class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="3" />
+            <FileStaff class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
             <h3>Abstract</h3>
           </div>
           <div class="publication-section__body publication-section__body--content">
@@ -42,7 +42,7 @@
         <!-- Keywords -->
         <div v-if="publication.keywords && publication.keywords.length" class="publication-section animate-fade-in-up delay-300">
           <div class="publication-section__header">
-            <Key class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="3" />
+            <Key class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
             <h3>Keywords</h3>
           </div>
           <div class="publication-section__body">
@@ -62,7 +62,7 @@
             rel="noopener"
             class="doi-link"
           >
-            <LinkOut class="icon-inline" theme="outline" :size="18" fill="currentColor" :stroke-width="2.5" />
+            <LinkOut class="icon-inline" theme="outline" :size="18" fill="currentColor" :stroke-width="2.8" />
             View on Publisher Site
           </a>
         </div>

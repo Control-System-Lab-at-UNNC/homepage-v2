@@ -49,7 +49,7 @@
         <!-- Research Interests -->
         <div v-if="member.interests && member.interests.length" class="profile-section animate-fade-in-up delay-200">
           <div class="profile-section__header">
-            <Search class="icon-inline" theme="outline" :size="22" fill="currentColor" :stroke-width="2.5" />
+            <Search class="icon-inline" theme="outline" :size="22" fill="white" :stroke-width="2.8" />
             <h3>Research Focus</h3>
           </div>
           <div class="profile-section__body">
@@ -64,7 +64,7 @@
         <!-- About/Bio with Markdown Content -->
         <div v-if="member.body || (member.content && member.content.length > 0)" class="profile-section animate-fade-in-up delay-300">
           <div class="profile-section__header">
-            <FileStaff class="icon-inline" theme="outline" :size="22" fill="currentColor" :stroke-width="2.5" />
+            <FileStaff class="icon-inline" theme="outline" :size="22" fill="white" :stroke-width="2.8" />
             <h3>About</h3>
           </div>
           <div class="profile-section__body profile-section__body--content">
@@ -270,8 +270,8 @@ useHead({
 
 .profile-header__actions {
   position: absolute;
-  bottom: var(--spacing-sm);
-  right: var(--spacing-sm);
+  bottom: 15px;
+  right: 10px;
   display: flex;
   gap: var(--spacing-xs);
 }
@@ -357,7 +357,7 @@ useHead({
 .profile-section__header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   padding: var(--spacing-lg) var(--spacing-xl);
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   border-bottom: 1px solid var(--color-border);

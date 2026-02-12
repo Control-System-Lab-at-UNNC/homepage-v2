@@ -127,7 +127,7 @@ useHead({
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
 }
 
@@ -236,6 +236,9 @@ useHead({
 .positions-contact .btn {
   background: white;
   color: var(--color-primary);
+  border-radius: var(--radius-full); /* pill */
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
 }
 
 .positions-contact .btn:hover {
