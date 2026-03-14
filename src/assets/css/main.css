@@ -50,6 +50,20 @@
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 350ms ease;
+
+  /* ============================================
+   Responsive Breakpoints
+   ============================================ */
+  --breakpoint-sm: 480px;   /* Small mobile */
+  --breakpoint-md: 768px;   /* Tablet */
+  --breakpoint-lg: 1024px;  /* Desktop */
+
+  /* ============================================
+   Layout Variables
+   ============================================ */
+  --header-height: 80px;
+  --card-min-width: 280px;
+  --touch-target-size: 44px;
 }
 
 /* ============================================
@@ -444,10 +458,17 @@ a:hover {
 }
 
 /* ============================================
-   Responsive
+   Responsive Breakpoints
+   Mobile-first approach using CSS custom properties
+
+   Usage:
+   @media (min-width: var(--breakpoint-md)) { ... }
    ============================================ */
 
-@media (max-width: 768px) {
+/* Small Mobile (below 480px) - default styles apply */
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
   .section {
     padding-top: var(--spacing-2xl);
     padding-bottom: var(--spacing-2xl);
@@ -457,5 +478,42 @@ a:hover {
   .container-narrow {
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  .section {
+    padding-top: var(--spacing-3xl);
+    padding-bottom: var(--spacing-3xl);
+  }
+}
+
+/* ============================================
+   Reduced Motion - Accessibility
+   Respects user's preference for reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Specific overrides for common animations */
+  .carousel__track,
+  .hero__shape,
+  .about-shape,
+  .floating {
+    animation: none !important;
+  }
+
+  /* Keep hover transforms for accessibility but remove transitions */
+  .btn:hover,
+  .card:hover,
+  .member-card:hover {
+    transform: none !important;
   }
 }

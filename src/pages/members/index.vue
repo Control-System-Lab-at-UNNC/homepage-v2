@@ -66,16 +66,16 @@ const processedMembers = computed(() => {
   return members
 })
 
-// Category definitions
+// Category definitions - Staff first, All Members last
 const categories = [
-  { key: 'all', name: 'All Members' },
   { key: 'staff', name: 'Staff' },
   { key: 'research-students', name: 'Research Students' },
   { key: 'research-assistants', name: 'Research Assistants' },
-  { key: 'alumni', name: 'Alumni' }
+  { key: 'alumni', name: 'Alumni' },
+  { key: 'all', name: 'All Members' }
 ]
 
-const activeCategory = ref('all')
+const activeCategory = ref('staff')
 
 const filteredMembers = computed(() => {
   if (activeCategory.value === 'all') {

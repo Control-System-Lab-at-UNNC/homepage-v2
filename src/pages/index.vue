@@ -90,7 +90,7 @@
         />
         <div class="research-areas">
           <div class="research-card" v-for="(area, index) in researchAreas" :key="index">
-            <span class="research-card__icon"><component class="icon-inline" :is="areaIconMap[area.icon]" theme="outline" :size="28" fill="currentColor" :stroke-width="2.8"/></span>
+            <span class="research-card__icon"><component class="icon-inline" :is="areaIconMap[area.icon]" theme="outline" :size="28" fill="white" :stroke-width="3"/></span>
             <h3 class="research-card__title">{{ area.title }}</h3>
             <p class="research-card__description">{{ area.description }}</p>
           </div>
@@ -368,25 +368,6 @@ useHead({
 }
 
 @media (max-width: 768px) {
-  .research-areas {
-    grid-template-columns: 1fr;
-  }
-
-  .research-card {
-    padding: var(--spacing-lg);
-  }
-
-  .research-card__icon {
-    width: 48px;
-    height: 48px;
-  }
-
-  .about-visual {
-    height: 250px;
-  }
-}
-
-@media (max-width: 640px) {
   .research-areas {
     grid-template-columns: 1fr;
   }

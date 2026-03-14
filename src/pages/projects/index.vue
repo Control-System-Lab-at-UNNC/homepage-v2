@@ -8,37 +8,67 @@
           description="Explore our ongoing and completed research projects in control systems and robotics."
         />
 
+        <!-- Status Filter -->
+        <div class="status-filter" v-if="projectList.length > 0">
+          <button
+            v-for="filter in statusFilters"
+            :key="filter.key"
+            class="status-filter__btn"
+            :class="{ 'status-filter__btn--active': activeFilter === filter.key }"
+            @click="activeFilter = filter.key"
+          >
+            <span class="status-filter__dot" :class="`status-dot--${filter.key}`"></span>
+            {{ filter.name }}
+          </button>
+        </div>
+
         <!-- Projects Grid -->
-        <div class="projects-grid" v-if="projectList.length > 0">
+        <div class="projects-grid" v-if="filteredProjects.length > 0">
           <NuxtLink
-            v-for="project in projectList"
+            v-for="project in filteredProjects"
             :key="project._path"
             :to="project._path || ''"
             class="project-card"
           >
             <div class="project-card__image-wrapper" v-if="project.image">
-              <img :src="project.image" :alt="project.title" class="project-card__image" />
+              <img :src="getProjectImage(project.image)" :alt="project.title" class="project-card__image" />
+            </div>
+            <div class="project-card__image-placeholder" v-else>
+              <component :is="getStatusIcon(project.status)" class="icon-inline" theme="outline" :size="48" fill="currentColor" :stroke-width="1.5" />
             </div>
             <div class="project-card__content">
-              <h3 class="project-card__title">{{ project.title }}</h3>
+              <div class="project-card__header">
+                <h3 class="project-card__title">{{ project.title }}</h3>
+                <span v-if="project.status" class="status-badge" :class="`status-badge--${project.status}`">
+                  <span class="status-badge__dot"></span>
+                  {{ statusLabels[project.status] || project.status }}
+                </span>
+              </div>
               <p class="project-card__description" v-if="project.description">
                 {{ project.description }}
               </p>
-              <div class="project-card__meta" v-if="project.status || project.year">
-                <span v-if="project.status" class="badge" :class="`badge-${project.status}`">
-                  {{ project.status }}
-                </span>
+              <div class="project-card__meta" v-if="project.year || project.funded">
                 <span v-if="project.year" class="project-card__year">{{ project.year }}</span>
+                <span v-if="project.funded" class="project-card__funded">
+                  <Funds class="icon-inline" theme="outline" :size="14" fill="currentColor" :stroke-width="3" />
+                  Funded
+                </span>
               </div>
             </div>
           </NuxtLink>
         </div>
 
-        <div class="projects-placeholder" v-else>
-          <div class="placeholder-icon">🔬</div>
+        <div class="projects-placeholder" v-else-if="projectList.length === 0">
+          <div class="placeholder-icon">
+            <Experiment class="icon-inline" theme="outline" :size="64" fill="var(--color-accent)" :stroke-width="2" />
+          </div>
           <h3>Projects Coming Soon</h3>
           <p>We are currently updating our project portfolio. Please check back later or explore our publications to learn about our research.</p>
           <NuxtLink to="/publications" class="btn btn-secondary">View Publications</NuxtLink>
+        </div>
+
+        <div class="no-results" v-else>
+          <p>No projects found in this category.</p>
         </div>
       </div>
     </div>
@@ -46,13 +76,54 @@
 </template>
 
 <script setup lang="ts">
+import Experiment from '@icon-park/vue-next/lib/icons/Experiment'
+import Funds from '@icon-park/vue-next/lib/icons/Funds'
+import Lightning from '@icon-park/vue-next/lib/icons/Lightning'
+import Timer from '@icon-park/vue-next/lib/icons/Timer'
+import CheckOne from '@icon-park/vue-next/lib/icons/CheckOne'
+import Setting from '@icon-park/vue-next/lib/icons/Setting'
+import Help from '@icon-park/vue-next/lib/icons/Help'
+
 interface Project {
   title: string
   description?: string
   status?: string
   year?: number
   image?: string
+  funded?: boolean
   _path?: string
+}
+
+const config = useRuntimeConfig()
+
+// Status definitions with labels and meanings
+const statusLabels: Record<string, string> = {
+  'open': 'Open',
+  'ongoing': 'Ongoing',
+  'completed': 'Completed',
+  'maintained': 'Maintained'
+}
+
+const statusFilters = [
+  { key: 'all', name: 'All Projects' },
+  { key: 'open', name: 'Open' },
+  { key: 'ongoing', name: 'Ongoing' },
+  { key: 'completed', name: 'Completed' },
+  { key: 'maintained', name: 'Maintained' }
+]
+
+const activeFilter = ref('all')
+
+// Icon mapping for status
+const statusIconMap: Record<string, any> = {
+  'open': Lightning,
+  'ongoing': Timer,
+  'completed': CheckOne,
+  'maintained': Setting
+}
+
+const getStatusIcon = (status?: string) => {
+  return statusIconMap[status || ''] || Help
 }
 
 // Fetch projects
@@ -61,6 +132,23 @@ const { data: projects } = await useAsyncData('projects', () =>
 )
 
 const projectList = computed(() => projects.value ?? [])
+
+const filteredProjects = computed(() => {
+  if (activeFilter.value === 'all') {
+    return projectList.value
+  }
+  return projectList.value.filter(p => p.status === activeFilter.value)
+})
+
+// Handle image paths with base URL
+const getProjectImage = (imagePath?: string) => {
+  if (!imagePath) return ''
+  const basePath = config.app.baseURL || ''
+  if (!basePath || basePath === '/') {
+    return imagePath
+  }
+  return basePath + imagePath
+}
 
 useHead({
   title: 'Projects - Control System Lab UNNC',
@@ -75,9 +163,62 @@ useHead({
   padding-top: var(--spacing-xl);
 }
 
+/* Status Filter */
+.status-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-sm);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+}
+
+.status-filter__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.status-filter__btn:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-text);
+}
+
+.status-filter__btn--active {
+  background: white;
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.status-filter__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot--all { background: var(--color-text-muted); }
+.status-dot--open { background: #f59e0b; }
+.status-dot--ongoing { background: var(--color-accent); }
+.status-dot--completed { background: var(--color-secondary); }
+.status-dot--maintained { background: #8b5cf6; }
+
+/* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: var(--spacing-xl);
 }
 
@@ -117,6 +258,16 @@ useHead({
   transform: scale(1.05);
 }
 
+.project-card__image-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: rgba(255, 255, 255, 0.3);
+}
+
 .project-card__content {
   padding: var(--spacing-lg);
   display: flex;
@@ -124,13 +275,21 @@ useHead({
   flex: 1;
 }
 
+.project-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
 .project-card__title {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-primary);
-  margin-bottom: var(--spacing-sm);
   line-height: 1.3;
+  flex: 1;
 }
 
 .project-card__description {
@@ -144,33 +303,94 @@ useHead({
 .project-card__meta {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   margin-top: auto;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-radius: var(--radius-sm);
-}
-
-.badge-ongoing {
-  background: var(--color-accent);
-  color: white;
-}
-
-.badge-completed {
-  background: var(--color-secondary);
-  color: white;
 }
 
 .project-card__year {
   font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.project-card__funded {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Open - recruiting, no funding */
+.status-badge--open {
+  background: #fef3c7;
+  color: #92400e;
+}
+.status-badge--open .status-badge__dot {
+  background: #f59e0b;
+}
+
+/* Ongoing - recruiting with funding */
+.status-badge--ongoing {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.status-badge--ongoing .status-badge__dot {
+  background: var(--color-accent);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Completed - not recruiting */
+.status-badge--completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+.status-badge--completed .status-badge__dot {
+  background: var(--color-secondary);
+  animation: none;
+}
+
+/* Maintained - still maintained */
+.status-badge--maintained {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+.status-badge--maintained .status-badge__dot {
+  background: #8b5cf6;
+  animation: none;
+}
+
+/* No results */
+.no-results {
+  text-align: center;
+  padding: var(--spacing-3xl);
   color: var(--color-text-muted);
 }
 
@@ -184,7 +404,6 @@ useHead({
 }
 
 .placeholder-icon {
-  font-size: 4rem;
   margin-bottom: var(--spacing-lg);
 }
 
@@ -206,6 +425,15 @@ useHead({
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .status-filter {
+    justify-content: center;
+  }
+
+  .project-card__header {
+    flex-direction: column;
+    gap: var(--spacing-xs);
   }
 }
 </style>

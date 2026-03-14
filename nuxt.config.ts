@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs'
+import { join, parse } from 'path'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
@@ -8,6 +11,50 @@ export default defineNuxtConfig({
 
   // Nuxt Content module
   modules: ['@nuxt/content'],
+
+  // Build-time hooks for carousel auto-detection
+  hooks: {
+    'build:before': () => {
+      // Auto-detect carousel images at build time
+      // public folder is inside src/ directory
+      const carouselDir = join(process.cwd(), 'src/public/images/carousel')
+      const manifestPath = join(process.cwd(), 'src/assets/carousel-manifest.json')
+
+      const images: Array<{ src: string; alt: string; caption: string }> = []
+
+      if (existsSync(carouselDir)) {
+        const files = readdirSync(carouselDir)
+        const imageExtensions = ['.webp', '.jpg', '.jpeg', '.png', '.gif', '.svg']
+
+        files.forEach(file => {
+          const ext = parse(file).ext.toLowerCase()
+          if (imageExtensions.includes(ext)) {
+            const nameWithoutExt = parse(file).name
+            // Convert filename to readable caption (e.g., "lab-1" -> "Lab 1")
+            const caption = nameWithoutExt
+              .replace(/[-_]/g, ' ')
+              .replace(/\b\w/g, c => c.toUpperCase())
+
+            images.push({
+              src: `/images/carousel/${file}`,
+              alt: caption,
+              caption: caption
+            })
+          }
+        })
+      }
+
+      // Ensure assets directory exists
+      const assetsDir = join(process.cwd(), 'src/assets')
+      if (!existsSync(assetsDir)) {
+        mkdirSync(assetsDir, { recursive: true })
+      }
+
+      // Write manifest
+      writeFileSync(manifestPath, JSON.stringify(images, null, 2))
+      console.log(`[Carousel] Found ${images.length} images in carousel directory`)
+    }
+  },
 
   // App configuration
   app: {

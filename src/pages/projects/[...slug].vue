@@ -237,22 +237,34 @@ useHead({
 .project-header__badge {
   display: inline-flex;
   align-items: center;
+  gap: var(--spacing-xs);
   padding: var(--spacing-xs) var(--spacing-sm);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: white;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   align-self: flex-start;
 }
 
 .badge-ongoing {
-  background: var(--color-accent);
+  background: #dbeafe;
+  color: #1e40af;
 }
 
 .badge-completed {
-  background: var(--color-secondary);
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-open {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-maintained {
+  background: #ede9fe;
+  color: #5b21b6;
 }
 
 .project-header__name {

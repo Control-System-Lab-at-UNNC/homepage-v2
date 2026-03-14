@@ -1,0 +1,12 @@
+[
+  {
+    "src": "/images/carousel/default-image-1.jpg",
+    "alt": "Default Image 1",
+    "caption": "Default Image 1"
+  },
+  {
+    "src": "/images/carousel/default-image-2.jpg",
+    "alt": "Default Image 2",
+    "caption": "Default Image 2"
+  }
+]
