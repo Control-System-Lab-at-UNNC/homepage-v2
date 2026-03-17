@@ -141,6 +141,47 @@ p {
   margin-bottom: var(--spacing-md);
 }
 
+/* Lists */
+ul {
+  margin-bottom: var(--spacing-md);
+  padding-left: 0;
+  list-style: none !important;
+}
+
+ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: 0;
+  list-style: none !important;
+  counter-reset: item;
+}
+
+li {
+  margin-bottom: var(--spacing-xs);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+ul > li::before {
+  content: '•' !important;
+  position: absolute !important;
+  left: 0 !important;
+  color: var(--color-secondary) !important;
+}
+
+ol > li::before {
+  content: counter(item) '.' !important;
+  counter-increment: item !important;
+  position: absolute !important;
+  left: 0 !important;
+  color: var(--color-secondary) !important;
+  font-weight: 600 !important;
+}
+
+/* Ensure ol li doesn't get ul's bullet */
+ol li::before {
+  content: counter(item) '.' !important;
+}
+
 a {
   color: var(--color-secondary);
   text-decoration: none;
