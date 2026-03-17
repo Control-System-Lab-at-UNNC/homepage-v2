@@ -1,7 +1,7 @@
 <template>
   <section class="members-section" v-if="members.length > 0">
     <div v-for="(category, index) in categorizedMembers" :key="category.name" class="members-category">
-      <h3 class="members-category__title">{{ category.name }}</h3>
+      <h3 class="members-category__title" v-if="groupBy">{{ category.name }}</h3>
       <div class="members-grid">
         <MemberCard
           v-for="member in category.members"
@@ -36,6 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
   groupBy: true
 })
 
+// Category display names
 const categoryNames: Record<string, string> = {
   staff: 'Staff',
   'research-students': 'Research Students',
@@ -43,17 +44,32 @@ const categoryNames: Record<string, string> = {
   alumni: 'Alumni'
 }
 
+// Category sort order
+const categoryOrder = ['staff', 'research-students', 'research-assistants', 'alumni']
+
+// Sort members by category order, then by order field
+const sortedMembers = computed(() => {
+  return [...props.members].sort((a, b) => {
+    const catOrderA = categoryOrder.indexOf(a.category || '')
+    const catOrderB = categoryOrder.indexOf(b.category || '')
+    if (catOrderA !== catOrderB) {
+      return catOrderA - catOrderB
+    }
+    return (a.order || 999) - (b.order || 999)
+  })
+})
+
 const categorizedMembers = computed(() => {
   if (!props.groupBy) {
     return [{
       name: 'Members',
-      members: props.members.sort((a, b) => (a.order || 0) - (b.order || 0))
+      members: sortedMembers.value
     }]
   }
 
   const categories: Record<string, Member[]> = {}
 
-  for (const member of props.members) {
+  for (const member of sortedMembers.value) {
     const cat = member.category || 'staff'
     if (!categories[cat]) {
       categories[cat] = []
@@ -61,12 +77,13 @@ const categorizedMembers = computed(() => {
     categories[cat].push(member)
   }
 
-  return Object.entries(categories)
-    .map(([key, members]) => ({
+  // Return categories in predefined order
+  return categoryOrder
+    .filter(key => categories[key] && categories[key].length > 0)
+    .map(key => ({
       name: categoryNames[key] || key,
-      members: members.sort((a, b) => (a.order || 0) - (b.order || 0))
+      members: categories[key]
     }))
-    .filter(cat => cat.members.length > 0)
 })
 </script>
 
