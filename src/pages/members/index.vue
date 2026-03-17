@@ -128,6 +128,12 @@ useHead({
   color: white;
 }
 
+.filter-btn--active:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
 .no-results {
   text-align: center;
   padding: var(--spacing-3xl);

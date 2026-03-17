@@ -19,6 +19,7 @@
           >
             <span class="status-filter__dot" :class="`status-dot--${filter.key}`"></span>
             {{ filter.name }}
+            <span class="tooltip">{{ filter.tooltip }}</span>
           </button>
         </div>
 
@@ -42,6 +43,7 @@
                 <span v-if="project.status" class="status-badge" :class="`status-badge--${project.status}`">
                   <span class="status-badge__dot"></span>
                   {{ statusLabels[project.status] || project.status }}
+                  <span class="tooltip tooltip--badge">{{ statusTooltips[project.status] }}</span>
                 </span>
               </div>
               <p class="project-card__description" v-if="project.description">
@@ -52,6 +54,7 @@
                 <span v-if="project.funded" class="project-card__funded">
                   <Funds class="icon-inline" theme="outline" :size="14" fill="currentColor" :stroke-width="3" />
                   Funded
+                  <span class="tooltip tooltip--badge">This project has external funding support</span>
                 </span>
               </div>
             </div>
@@ -104,12 +107,19 @@ const statusLabels: Record<string, string> = {
   'maintained': 'Maintained'
 }
 
+const statusTooltips: Record<string, string> = {
+  'open': 'Open for recruitment, seeking collaborators',
+  'ongoing': 'Actively running with funding support',
+  'completed': 'Project finished, results available',
+  'maintained': 'Completed but still maintained and updated'
+}
+
 const statusFilters = [
-  { key: 'all', name: 'All Projects' },
-  { key: 'open', name: 'Open' },
-  { key: 'ongoing', name: 'Ongoing' },
-  { key: 'completed', name: 'Completed' },
-  { key: 'maintained', name: 'Maintained' }
+  { key: 'all', name: 'All Projects', tooltip: 'Show all projects regardless of status' },
+  { key: 'open', name: 'Open', tooltip: 'Open for recruitment, seeking collaborators' },
+  { key: 'ongoing', name: 'Ongoing', tooltip: 'Actively running with funding support' },
+  { key: 'completed', name: 'Completed', tooltip: 'Project finished, results available' },
+  { key: 'maintained', name: 'Maintained', tooltip: 'Completed but still maintained and updated' }
 ]
 
 const activeFilter = ref('all')
@@ -189,6 +199,7 @@ useHead({
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: all var(--transition-fast);
+  position: relative;
 }
 
 .status-filter__btn:hover {
@@ -435,5 +446,48 @@ useHead({
     flex-direction: column;
     gap: var(--spacing-xs);
   }
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--color-primary);
+}
+
+.status-filter__btn:hover .tooltip,
+.status-badge:hover .tooltip,
+.project-card__funded:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Badge tooltip - positioned above */
+.tooltip--badge {
+  bottom: calc(100% + 6px);
 }
 </style>
