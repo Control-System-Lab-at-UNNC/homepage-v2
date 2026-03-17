@@ -167,7 +167,7 @@ onUnmounted(() => {
 
 <style scoped>
 .hero {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: var(--header-height);

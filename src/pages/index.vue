@@ -26,7 +26,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="section section--alt">
+    <!-- <section class="section section--alt">
       <div class="container">
         <div class="about-grid">
           <div class="about-content">
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Featured Members -->
     <section class="section" v-if="featuredMembers.length > 0">
