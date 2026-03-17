@@ -82,6 +82,7 @@ const { data: news } = await useAsyncData(() => `news-${slug.value}`, async () =
 // Fetch related news (exclude current)
 const { data: allNews } = await useAsyncData('news-related', () =>
   queryContent('/news')
+    .where({ _hidden: { $ne: true } })
     .sort({ date: -1 })
     .limit(6)
     .find()

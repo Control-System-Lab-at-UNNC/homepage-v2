@@ -48,7 +48,9 @@ interface Publication {
 
 // Fetch all publications
 const { data: publications } = await useAsyncData('publications', () =>
-  queryContent('/publications').find()
+  queryContent('/publications')
+    .where({ _hidden: { $ne: true } })
+    .find()
 )
 
 const processedPublications = computed(() => {

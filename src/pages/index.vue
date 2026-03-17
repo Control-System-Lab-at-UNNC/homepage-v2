@@ -110,6 +110,7 @@ import AssemblyLine from '@icon-park/vue-next/lib/icons/AssemblyLine'
 // Fetch latest news
 const { data: allNews } = await useAsyncData('home-news', () =>
   queryContent('/news')
+    .where({ _hidden: { $ne: true } })
     .sort({ date: -1 })
     .limit(3)
     .find()
@@ -121,7 +122,7 @@ const hasMoreNews = computed(() => latestNews.value.length >= 3)
 // Fetch featured members
 const { data: allMembers } = await useAsyncData('home-members', () =>
   queryContent('/members')
-    .where({ category: 'staff' })
+    .where({ category: 'staff', _hidden: { $ne: true } })
     .limit(4)
     .find()
 )

@@ -38,6 +38,7 @@ interface NewsItem {
 // Fetch all news
 const { data: newsItems } = await useAsyncData('news', () =>
   queryContent('/news')
+    .where({ _hidden: { $ne: true } })
     .sort({ date: -1 })
     .find()
 )

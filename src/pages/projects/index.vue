@@ -138,7 +138,9 @@ const getStatusIcon = (status?: string) => {
 
 // Fetch projects
 const { data: projects } = await useAsyncData('projects', () =>
-  queryContent('/projects').find()
+  queryContent('/projects')
+    .where({ _hidden: { $ne: true } })
+    .find()
 )
 
 const projectList = computed(() => projects.value ?? [])

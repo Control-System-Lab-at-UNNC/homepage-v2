@@ -3,6 +3,7 @@ title: Open Positions
 description: Join our team - open positions for students and researchers
 type: Everyone
 year: 2026
+_hidden: true
 requirements:
   - Candidates should have a strong background in control systems, robotics, or related fields.
   - Relevant programming skills and a passion for research are essential.

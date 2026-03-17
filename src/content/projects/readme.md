@@ -3,6 +3,10 @@
 # Project Frontmatter Configuration Guide
 # ============================================================
 
+# _hidden [Internal]: Hide this file from the project list
+# This is a template file, set to true to prevent it from appearing in the list
+_hidden: true
+
 # title [Required]: Project title
 title: Demo Project
 
@@ -28,18 +32,6 @@ image: /images/projects/default.jpg
 # funded [Optional]: Whether the project has funding support
 # When set to true, a "Funded" badge will be displayed on the project card
 funded: true
-
-# ============================================================
-# Additional Optional Fields (currently unused, for future expansion)
-# ============================================================
-# tags: [robotics, control, UAV]           # Project tags
-# team: [John Doe, Jane Smith]             # Project team members
-# link: https://github.com/...              # External project link
-# startDate: 2024-01-01                    # Project start date
-# endDate: 2025-12-31                      # Project end date
-# fundingSource: NSFC                      # Funding source
-# fundingAmount: 500000                    # Funding amount
-# ============================================================
 ---
 
 ## Project Overview

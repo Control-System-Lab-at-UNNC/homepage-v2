@@ -50,7 +50,9 @@ interface Member {
 
 // Fetch all members
 const { data: allMembers } = await useAsyncData('members', () =>
-  queryContent('/members').find()
+  queryContent('/members')
+    .where({ _hidden: { $ne: true } })
+    .find()
 )
 
 const processedMembers = computed(() => {

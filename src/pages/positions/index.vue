@@ -36,7 +36,9 @@
         </div>
 
         <div class="positions-coming-soon" v-else>
-          <div class="placeholder-icon">💼</div>
+          <div class="placeholder-icon">
+            <Briefcase class="icon-inline" theme="outline" :size="64" fill="var(--color-accent)" :stroke-width="2" />
+          </div>
           <h3>No Positions Currently Available</h3>
           <p>Check back soon for new opportunities to join our team!</p>
         </div>
@@ -57,6 +59,8 @@
 </template>
 
 <script setup lang="ts">
+import Briefcase from '@icon-park/vue-next/lib/icons/Briefcase'
+
 interface Position {
   title: string
   description?: string
@@ -66,7 +70,9 @@ interface Position {
 
 // Fetch positions
 const { data: positions } = await useAsyncData('positions', () =>
-  queryContent('/positions').find()
+  queryContent('/positions')
+    .where({ _hidden: { $ne: true } })
+    .find()
 )
 
 const positionsList = computed(() => positions.value || [])
@@ -191,8 +197,10 @@ useHead({
 }
 
 .placeholder-icon {
-  font-size: 4rem;
   margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .positions-coming-soon h3 {
