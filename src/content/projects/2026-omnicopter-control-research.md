@@ -154,7 +154,7 @@ We have built such a system in last summer SEP, this project was awarded as FIRS
   <sub>Suggested replacement: <code>assets/hardware_prototype.jpg</code></sub>
 </td>
 <td width="60%" align="center">
-  <video src="https://github.com/user-attachments/assets/a455ae47-7dc0-4252-b18c-a605029e0eb2" controls width="100%">
+  <video src="/images/projects/2026-omnicopter-control-research/bench_test_thumbnail.mp4" controls width="100%">
     Your browser does not support the video tag.
   </video>
   <br>
