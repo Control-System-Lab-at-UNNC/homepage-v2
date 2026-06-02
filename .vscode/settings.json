@@ -1,17 +1,40 @@
 {
     "cSpell.words": [
         "Aircrafts",
+        "Ardu",
+        "ardupilot",
+        "behavior",
+        "bmatrix",
+        "boldsymbol",
+        "Brescianini",
         "centering",
+        "closeup",
         "Colors",
+        "failsafe",
         "Fraunces",
         "frontmatter",
         "FURP",
+        "ICRA",
         "Ijaz",
+        "infty",
+        "mathbf",
+        "meas",
         "modeling",
+        "multirotor",
+        "multirotors",
         "Ningbo",
         "nonlinear",
         "NUAA",
         "Nuxt",
-        "scikit"
-    ]
+        "octocopter",
+        "Omnicopter",
+        "Omnicopters",
+        "pred",
+        "scikit",
+        "testbed",
+        "unmodeled"
+    ],
+    "markdownlint.config": {
+        "no-inline-html": false
+    }
 }
