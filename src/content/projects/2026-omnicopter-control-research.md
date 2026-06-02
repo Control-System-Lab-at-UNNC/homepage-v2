@@ -31,7 +31,7 @@ image: /images/projects/2026-omnicopter-control-research/omnicopter_banner.svg
 
 # funded [Optional]: Whether the project has funding support
 # When set to true, a "Funded" badge will be displayed on the project card
-funded: true
+funded: false
 ---
 
 <p align="center">

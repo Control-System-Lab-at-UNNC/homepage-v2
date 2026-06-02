@@ -82,7 +82,7 @@ export default defineNuxtConfig({
   },
 
   // CSS
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', 'katex/dist/katex.min.css'],
 
   // Content module configuration
   content: {
@@ -94,6 +94,22 @@ export default defineNuxtConfig({
     },
     navigation: {
       fields: ['icon', 'title', 'description']
+    },
+    // Markdown processing: LaTeX math via remark-math + rehype-katex.
+    // remark-math turns $...$ / $$...$$ into math nodes, rehype-katex
+    // renders them to static KaTeX HTML at build time (works with SSG).
+    markdown: {
+      remarkPlugins: {
+        'remark-math': {}
+      },
+      rehypePlugins: {
+        'rehype-katex': {
+          // Emit MathML alongside HTML for accessibility; don't throw on
+          // minor LaTeX issues so a single bad expression can't break a page.
+          output: 'htmlAndMathml',
+          strict: false
+        }
+      }
     }
   },
 
