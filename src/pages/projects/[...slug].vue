@@ -363,9 +363,15 @@ useHead({
 }
 
 .project-section__body--content :deep(li) {
-  padding-left: var(--spacing-lg);
+  padding-left: var(--spacing-md);
   margin-bottom: var(--spacing-sm);
   position: relative;
+}
+
+/* Task-list (checkbox) items use the checkbox as their marker, not the
+   bullet, so they need much less left padding than normal list items. */
+.project-section__body--content :deep(.task-list-item) {
+  padding-left: 0;
 }
 
 .project-section__body--content :deep(li::before) {

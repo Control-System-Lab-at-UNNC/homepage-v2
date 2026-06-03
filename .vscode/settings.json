@@ -8,6 +8,7 @@
         "boldsymbol",
         "Brescianini",
         "centering",
+        "checkmark",
         "closeup",
         "Colors",
         "failsafe",
@@ -32,9 +33,12 @@
         "Omnicopter",
         "Omnicopters",
         "pred",
+        "rehype",
         "scikit",
+        "Shiki",
         "testbed",
-        "unmodeled"
+        "unmodeled",
+        "vars"
     ],
     "markdownlint.config": {
         "no-inline-html": false
