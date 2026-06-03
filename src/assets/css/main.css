@@ -562,7 +562,7 @@ a:hover {
 
 /* ============================================
    Markdown Code Blocks (ProsePre override)
-   Distinct background + language label + copy button
+   Light theme: very light grey surface, subtle border
    ============================================ */
 
 /* Wrapper around a highlighted code block */
@@ -571,7 +571,7 @@ a:hover {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: #0d1117;
+  background: #f6f8fa;
   box-shadow: var(--shadow-sm);
 }
 
@@ -582,8 +582,8 @@ a:hover {
   justify-content: space-between;
   gap: var(--spacing-md);
   padding: var(--spacing-xs) var(--spacing-md);
-  background: #161b22;
-  border-bottom: 1px solid #30363d;
+  background: #eaeef2;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .code-block__lang {
@@ -592,34 +592,29 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #8b949e;
+  color: var(--color-text-muted);
 }
 
 .code-block__copy {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  padding: 0.2rem 0.6rem;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #c9d1d9;
-  background: #21262d;
-  border: 1px solid #30363d;
+  justify-content: center;
+  padding: 0.3rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .code-block__copy:hover {
-  background: #30363d;
-  color: #fff;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--color-text);
 }
 
 .code-block__copy.is-copied {
-  color: #fff;
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
+  color: #1a7f37;
 }
 
 /* The <pre> emitted inside our wrapper: reset chrome, keep scrolling */
@@ -636,7 +631,7 @@ a:hover {
 .code-block pre code {
   font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', Menlo, Consolas, monospace;
   font-size: inherit;
-  color: inherit;
+  color: var(--color-text);
   background: none;
   padding: 0;
   display: block;
@@ -646,11 +641,45 @@ a:hover {
   display: block;
 }
 
-/* Shiki dual-theme: the parser writes both the light color (as the inline
-   `color` style) and a CSS var for the dark theme. We render on a dark
-   surface, so prefer the dark-theme variable when present. */
+/* Shiki dual-theme: the parser writes both colors as CSS vars
+   (--shiki-default = github-light, --shiki-dusk = github-dark) rather than a
+   plain `color`. We render on a light surface, so use the light-theme var. */
 .code-block pre code span {
-  color: var(--shiki-dusk, inherit);
+  color: var(--shiki-default, inherit);
+}
+
+/* ============================================
+   Markdown Tables (data tables, prominent borders)
+   ============================================ */
+
+/* Markdown pipe tables always render a <thead>; raw-HTML layout tables (e.g.
+   the media-gallery image grid) do not, so :has(thead) styles only real data
+   tables and leaves layout tables borderless. */
+table:has(thead) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-lg) 0;
+  border: 2px solid var(--color-text);
+  font-size: 0.9375rem;
+}
+
+table:has(thead) th,
+table:has(thead) td {
+  border: 1px solid var(--color-text);
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  vertical-align: top;
+}
+
+table:has(thead) thead th {
+  background: var(--color-bg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+table:has(thead) tbody tr:nth-child(even) {
+  background: #f8fafc;
 }
 
 /* ============================================

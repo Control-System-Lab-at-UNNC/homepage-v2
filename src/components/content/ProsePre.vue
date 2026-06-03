@@ -11,9 +11,11 @@
         class="code-block__copy"
         :class="{ 'is-copied': copied }"
         :aria-label="copied ? 'Copied' : 'Copy code'"
+        :title="copied ? 'Copied!' : 'Copy'"
         @click="copyCode"
       >
-        {{ copied ? 'Copied' : 'Copy' }}
+        <Check v-if="copied" theme="outline" :size="16" :stroke-width="3" />
+        <Copy v-else theme="outline" :size="16" :stroke-width="3" />
       </button>
     </div>
     <pre :class="$props.class"><slot /></pre>
@@ -21,6 +23,9 @@
 </template>
 
 <script setup lang="ts">
+import Copy from '@icon-park/vue-next/lib/icons/Copy'
+import Check from '@icon-park/vue-next/lib/icons/Check'
+
 const props = defineProps({
   code: { type: String, default: '' },
   language: { type: String, default: null },
