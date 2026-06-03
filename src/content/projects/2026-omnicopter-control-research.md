@@ -486,7 +486,7 @@ This is easy to implement, but it may fail when:
 - a motor is degraded or failed;
 - we want to minimize energy, noise, heat, or current.
 
-### � Better allocation: constrained QP
+### ⚖️ Better allocation: constrained QP
 
 A more practical allocator can be written as a quadratic program:
 
@@ -532,7 +532,7 @@ where:
 
 ---
 
-## �️ 2. Robust Control
+## 🤖 2. Robust Control
 
 Robust control addresses the gap between the clean mathematical model and the real flying machine.
 
@@ -582,7 +582,7 @@ flowchart LR
 
 ---
 
-## � 3. Fault Diagnosis and Fault-Tolerant Control
+## 📈 3. Fault Diagnosis and Fault-Tolerant Control
 
 <p align="center">
   <img src="/images/projects/2026-omnicopter-control-research/fault_control.svg" alt="Fault diagnosis and fault-tolerant control" width="100%">
