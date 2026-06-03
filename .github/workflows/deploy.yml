@@ -47,7 +47,7 @@ jobs:
       - name: Generate static site
         run: pnpm run generate
         env:
-          NUXT_PUBLIC_BASE_URL: /homepage-v2/ # Adjust base URL as needed
+          NUXT_PUBLIC_BASE_URL: / # Adjust base URL as needed
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
