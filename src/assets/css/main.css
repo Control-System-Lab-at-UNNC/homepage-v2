@@ -635,10 +635,32 @@ a:hover {
   background: none;
   padding: 0;
   display: block;
+  counter-reset: line;
 }
 
 .code-block pre code .line {
   display: block;
+}
+
+/* Line-number gutter: rendered from a CSS counter so the digits are never
+   part of the copied text (manual selection skips ::before; the copy button
+   copies the raw source). Sticky so numbers stay pinned while a long line
+   scrolls horizontally, GitHub-style. */
+.code-block pre code .line::before {
+  counter-increment: line;
+  content: counter(line);
+  position: sticky;
+  left: 0;
+  display: inline-block;
+  width: 2.5ch;
+  margin-right: var(--spacing-md);
+  padding-right: var(--spacing-sm);
+  text-align: right;
+  color: var(--color-text-muted);
+  background: #f6f8fa;
+  border-right: 1px solid var(--color-border);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Shiki dual-theme: the parser writes both colors as CSS vars
