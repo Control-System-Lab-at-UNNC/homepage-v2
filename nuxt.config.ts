@@ -99,6 +99,13 @@ export default defineNuxtConfig({
     // remark-math turns $...$ / $$...$$ into math nodes, rehype-katex
     // renders them to static KaTeX HTML at build time (works with SSG).
     markdown: {
+      // Map the raw <video> tag to a prose component that prefixes the app
+      // baseURL onto root-absolute src/poster paths (like MDC's ProseImg does
+      // for <img>). Without this, /images/... videos 404 on sub-path deploys
+      // such as GitHub Pages (/homepage-v2/). Merges with the default tag map.
+      tags: {
+        video: 'ProseVideo'
+      },
       remarkPlugins: {
         'remark-math': {}
       },
