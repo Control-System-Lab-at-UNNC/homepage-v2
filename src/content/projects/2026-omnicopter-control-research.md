@@ -146,14 +146,14 @@ We have built such a system in last summer SEP, this project was awarded as FIRS
 
 <table>
 <tr>
-<td width="40%" align="center">
+<td width="42.9%" align="center">
   <img src="/images/projects/2026-omnicopter-control-research/hardware_prototype.jpg" alt="Our Omnicopter hardware prototype" width="100%">
   <br>
   <b>Hardware prototype photo</b>
   <br>
-  <sub>Suggested replacement: <code>assets/hardware_prototype.jpg</code></sub>
+  <!-- <sub>Suggested replacement: <code>assets/hardware_prototype.jpg</code></sub> -->
 </td>
-<td width="60%" align="center">
+<td width="57.1%" align="center">
   <video src="/images/projects/2026-omnicopter-control-research/bench_test_thumbnail.mp4" controls width="100%">
     Your browser does not support the video tag.
   </video>
@@ -392,7 +392,7 @@ We have already constructed a complete Omnicopter hardware platform and performe
 Example for adding our own video thumbnail:
 
 ```md
-[![Our tethered Omnicopter test](//images/projects/2026-omnicopter-control-research/tethered_test_thumbnail.jpg)](https://github.com/USER/REPO/assets/VIDEO_ID)
+[![Our tethered Omnicopter test](/images/projects/2026-omnicopter-control-research/tethered_test_thumbnail.jpg)](https://github.com/USER/REPO/assets/VIDEO_ID)
 ```
 
 ---
