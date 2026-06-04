@@ -6,7 +6,7 @@ department: Department of Electrical and Electronic Engineering
 group: Power Electronics, Machines and Control Research Group
 email: Ahmed.Abdelwahed@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?hl=zh-CN&user=9cCVF5cAAAAJ
-image: ahmed.webp
+image: assets/ahmed.webp
 category: staff
 order: 6
 ---

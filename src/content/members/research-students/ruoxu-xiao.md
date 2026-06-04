@@ -4,7 +4,7 @@ role: Master by Research Student
 title: Master by Research Student, Department of Mechanical, Materials and Manufacturing Engineering
 department: Department of Mechanical, Materials and Manufacturing Engineering
 email: ruoxu.Xiao@nottingham.edu.cn
-image: ruoxuxiao.jpg
+image: assets/ruoxuxiao.jpg
 category: research-students
 order: 7
 ---

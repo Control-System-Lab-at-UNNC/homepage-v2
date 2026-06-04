@@ -4,7 +4,7 @@ role: PhD Student
 title: PhD Student, Department of Mechanical, Materials and Manufacturing Engineering
 department: Department of Mechanical, Materials and Manufacturing Engineering
 email: junlin.xiao@nottingham.edu.cn
-image: junlin-xiao.jpg
+image: assets/junlin-xiao.jpg
 category: research-students
 order: 4
 ---

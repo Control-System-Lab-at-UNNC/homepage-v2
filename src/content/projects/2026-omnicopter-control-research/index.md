@@ -27,7 +27,7 @@ year: 2026
 # Recommended size: 800x600px or 1200x800px
 # Supported formats: WebP (recommended), JPG, PNG
 # Image location: alongside the markdown file in content/ (synced to public/_content/ at build time)
-image: omnicopter_banner.svg
+image: assets/omnicopter_banner.svg
 
 # funded [Optional]: Whether the project has funding support
 # When set to true, a "Funded" badge will be displayed on the project card
@@ -35,7 +35,7 @@ funded: false
 ---
 
 <p align="center">
-  <img src="omnicopter_banner.svg" alt="Omnicopter Control Research Banner" width="100%">
+  <img src="assets/omnicopter_banner.svg" alt="Omnicopter Control Research Banner" width="100%">
 </p>
 
 <h1 align="center">🚁 Omnicopter Control Research</h1>
@@ -90,7 +90,7 @@ An Omnicopter is not just “a drone with more propellers”. It is a **fully-ac
 | 🧪 Validation path | Bench tests → simulation → tethered flight → free flight → fault-injection experiments     |
 
 <p align="center">
-  <img src="research_roadmap.svg" alt="Project roadmap" width="100%">
+  <img src="assets/research_roadmap.svg" alt="Project roadmap" width="100%">
 </p>
 
 ---
@@ -147,14 +147,14 @@ We have built such a system in last summer SEP, this project was awarded as FIRS
 <table>
 <tr>
 <td width="42.9%" align="center">
-  <img src="hardware_prototype.jpg" alt="Our Omnicopter hardware prototype" width="100%">
+  <img src="assets/hardware_prototype.jpg" alt="Our Omnicopter hardware prototype" width="100%">
   <br>
   <b>Hardware prototype photo</b>
   <br>
   <!-- <sub>Suggested replacement: <code>assets/hardware_prototype.jpg</code></sub> -->
 </td>
 <td width="57.1%" align="center">
-  <video src="bench_test_thumbnail.mp4" controls width="100%">
+  <video src="assets/bench_test_thumbnail.mp4" controls width="100%">
     Your browser does not support the video tag.
   </video>
   <br>
@@ -258,7 +258,7 @@ An Omnicopter can be implemented in several ways. Our project focuses on two use
 ## 🔷 ETH-style Cubic Configuration
 
 <p align="center">
-  <img src="eth_cube_geometry.svg" alt="ETH-style cubic Omnicopter geometry" width="100%">
+  <img src="assets/eth_cube_geometry.svg" alt="ETH-style cubic Omnicopter geometry" width="100%">
 </p>
 
 The ETH-style Omnicopter is one of the most important reference designs for this project. It uses **eight fixed-pitch rotors** mounted around a symmetric cube-like frame. The rotors are not all pointing in the same direction. Instead, their thrust axes are arranged so that the combined actuator set can generate force and torque in all three dimensions.
@@ -310,7 +310,7 @@ This is ideal for studying **optimal allocation**, **actuator saturation**, **nu
 ## 🟣 Lynchpin-style Tangential Configuration
 
 <p align="center">
-  <img src="lynchpin_geometry.svg" alt="Lynchpin-style Omnicopter geometry" width="100%">
+  <img src="assets/lynchpin_geometry.svg" alt="Lynchpin-style Omnicopter geometry" width="100%">
 </p>
 
 The Lynchpin-style configuration is another useful reference because it approaches 6-DoF flight from a different geometric intuition. Instead of emphasizing a cube-like 8-rotor layout, it uses a **collapsed-dodecahedron-inspired modular frame** and places motors/propellers around the frame in a way that supports **tangential omnidirectional flight**.
@@ -389,11 +389,11 @@ We have already constructed a complete Omnicopter hardware platform and performe
 | Tethered flight video    | `assets/tethered_test_thumbnail.jpg`   | Link to GitHub user-attachment video         |
 | Flight log plot          | `assets/log_position_attitude.png`     | Add in the experiment section                |
 
-Example for adding our own video thumbnail:
+<!-- Example for adding our own video thumbnail:
 
 ```md
-[![Our tethered Omnicopter test](tethered_test_thumbnail.jpg)](https://github.com/USER/REPO/assets/VIDEO_ID)
-```
+[![Our tethered Omnicopter test](assets/tethered_test_thumbnail.jpg)](https://github.com/USER/REPO/assets/VIDEO_ID)
+``` -->
 
 ---
 
@@ -451,7 +451,7 @@ where $\mathbf{u}$ represents individual actuator thrust commands.
 ## 🧠 Research Focus
 
 <p align="center">
-  <img src="control_stack.svg" alt="Omnicopter control stack" width="100%">
+  <img src="assets/control_stack.svg" alt="Omnicopter control stack" width="100%">
 </p>
 
 This project lands on three major control directions:
@@ -585,7 +585,7 @@ flowchart LR
 ## 📈 3. Fault Diagnosis and Fault-Tolerant Control
 
 <p align="center">
-  <img src="fault_control.svg" alt="Fault diagnosis and fault-tolerant control" width="100%">
+  <img src="assets/fault_control.svg" alt="Fault diagnosis and fault-tolerant control" width="100%">
 </p>
 
 Fault control is the final landing point of this project. Because an Omnicopter is over-actuated or geometrically redundant, it provides an excellent platform for studying **fault diagnosis** and **fault-tolerant control allocation**.

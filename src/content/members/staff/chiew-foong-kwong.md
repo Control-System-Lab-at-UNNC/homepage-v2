@@ -6,7 +6,7 @@ department: Department of Electrical and Electronic Engineering
 group: Department of Mechanical, Materials and Manufacturing Engineering
 email: Chiew-Foong.Kwong@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=DiX0phAAAAAJ&hl=zh-CN&oi=ao
-image: cf.jpg
+image: assets/cf.jpg
 category: staff
 order: 3
 ---

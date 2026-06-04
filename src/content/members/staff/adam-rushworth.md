@@ -6,7 +6,7 @@ department: Department of Mechanical, Materials and Manufacturing Engineering
 group: Advanced Intelligent Manufacturing Research Group
 email: Adam.Rushworth@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=XvRnzQYAAAAJ&hl
-image: adam-rushworth.webp
+image: assets/adam-rushworth.webp
 category: staff
 order: 2
 ---
