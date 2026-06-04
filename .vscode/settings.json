@@ -15,6 +15,7 @@
         "Fraunces",
         "frontmatter",
         "FURP",
+        "hangxu",
         "hrefs",
         "ICRA",
         "Ijaz",
@@ -38,8 +39,12 @@
         "scikit",
         "Shiki",
         "testbed",
+        "Umea",
         "unmodeled",
-        "vars"
+        "vars",
+        "xinghou",
+        "Xiuqi",
+        "Yuhao"
     ],
     "markdownlint.config": {
         "no-inline-html": false
