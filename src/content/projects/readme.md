@@ -26,8 +26,8 @@ year: 2025
 # image [Optional]: Project cover image path
 # Recommended size: 800x600px or 1200x800px
 # Supported formats: WebP (recommended), JPG, PNG
-# Image location: /public/images/projects/
-image: /images/projects/default.jpg
+# Image location: alongside the markdown file in content/ (synced to public/_content/ at build time)
+image: default.jpg
 
 # funded [Optional]: Whether the project has funding support
 # When set to true, a "Funded" badge will be displayed on the project card

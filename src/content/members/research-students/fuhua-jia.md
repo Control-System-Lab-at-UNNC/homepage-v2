@@ -6,7 +6,7 @@ department: Department of Mechanical, Materials and Manufacturing Engineering
 group: DTP with Zhejiang University Ningbo Innovation Center
 email: Fuhua.JIA@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=Zz2ccJ4AAAAJ&hl
-image: /images/people/jiafuhua.png
+image: jiafuhua.png
 category: research-students
 order: 3
 ---

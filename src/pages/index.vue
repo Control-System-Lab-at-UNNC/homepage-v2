@@ -113,7 +113,7 @@ const { data: allNews } = await useAsyncData('home-news', () =>
     .where({ _hidden: { $ne: true } })
     .sort({ date: -1 })
     .limit(3)
-    .find()
+    .where({ _extension: 'md' }).find()
 )
 
 const latestNews = computed(() => allNews.value || [])
@@ -124,7 +124,7 @@ const { data: allMembers } = await useAsyncData('home-members', () =>
   queryContent('/members')
     .where({ category: 'staff', _hidden: { $ne: true } })
     .limit(4)
-    .find()
+    .where({ _extension: 'md' }).find()
 )
 
 const featuredMembers = computed(() => {

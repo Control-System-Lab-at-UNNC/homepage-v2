@@ -6,7 +6,7 @@ department: Department of Mechanical, Materials and Manufacturing Engineering
 group: Power Electronics, Machines and Control Research Group
 email: salman.ijaz@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=77HGe2UAAAAJ&hl
-image: /images/people/salman-ijaz.webp
+image: salman-ijaz.webp
 category: staff
 interests: 
     - Fault tolerant control of aircraft

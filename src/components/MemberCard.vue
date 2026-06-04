@@ -54,7 +54,10 @@ interface Member {
   scholar?: string
   image?: string
   interests?: string[]
-  _path?: string  // Nuxt Content file path (e.g., "/members/staff/salman-ijaz")
+  category?: string
+  order?: number
+  _path?: string   // Nuxt Content route path (e.g., "/members/staff/salman-ijaz")
+  _id?: string     // Nuxt Content internal ID (e.g., "content:members:staff:salman-ijaz.md")
 }
 
 interface Props {
@@ -66,15 +69,12 @@ const props = defineProps<Props>()
 const config = useRuntimeConfig()
 
 const imageUrl = computed(() => {
-  if (!props.member.image) return ''
+  const resolved = resolveContentImage(props.member.image, props.member._id)
+  if (!resolved) return ''
 
   const basePath = config.app.baseURL || ''
-
-  if (!basePath || basePath === '/') {
-    return props.member.image
-  }
-
-  return basePath + props.member.image
+  if (!basePath || basePath === '/') return resolved
+  return basePath + resolved
 })
 
 const formattedInterests = computed(() => {

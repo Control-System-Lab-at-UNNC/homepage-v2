@@ -50,7 +50,7 @@ interface Publication {
 const { data: publications } = await useAsyncData('publications', () =>
   queryContent('/publications')
     .where({ _hidden: { $ne: true } })
-    .find()
+    .where({ _extension: 'md' }).find()
 )
 
 const processedPublications = computed(() => {

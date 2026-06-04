@@ -4,7 +4,7 @@ role: Research Assistant
 title: Research Assistant
 department: Control System Lab
 email: xing.hou@nottingham.edu.cn
-image: /images/people/xinghou.png
+image: xinghou.png
 category: research-assistants
 order: 2
 ---

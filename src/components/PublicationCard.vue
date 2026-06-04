@@ -44,6 +44,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import LinkOut from '@icon-park/vue-next/lib/icons/LinkOut'
 
 interface Publication {
   title: string

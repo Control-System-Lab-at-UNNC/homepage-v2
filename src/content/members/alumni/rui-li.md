@@ -3,7 +3,7 @@ name: Rui Li
 role: Research Assistant (Alumni)
 title: Research Assistant from Oct.,2023 to June.,2024
 email: ""
-image: /images/people/fuhua-jia.jpg
+image: /images/default.jpg
 category: alumni
 order: 1
 ---

@@ -6,7 +6,7 @@ department: Department of Mechanical, Materials and Manufacturing Engineering
 group: Fluids and Thermal Engineering Research Group
 email: Richard-Amankwa.Adjei@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=TshunUEAAAAJ&hl=zh-CN&oi=ao
-image: /images/people/richard.webp
+image: richard.webp
 category: staff
 order: 4
 ---

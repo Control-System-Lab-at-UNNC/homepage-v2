@@ -24,8 +24,8 @@ scholar: https://scholar.google.com/citations?user=xxxxx
 # image [Optional]: Profile photo path
 # Recommended size: 400x400px (square)
 # Supported formats: WebP (recommended), JPG, PNG
-# Image location: /public/images/people/
-image: /images/people/default.webp
+# Image location: alongside the markdown file in content/ (synced to public/_content/ at build time)
+image: default.webp
 
 # category [Required]: Member category, supports four values:
 #   - staff              : Faculty and staff members

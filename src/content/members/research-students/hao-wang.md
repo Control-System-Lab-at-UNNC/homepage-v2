@@ -4,7 +4,7 @@ role: Master by Research Student
 title: Master by Research Student, Department of Mechanical, Materials and Manufacturing Engineering
 department: Department of Mechanical, Materials and Manufacturing Engineering
 email: hao.wang@nottingham.edu.cn
-image: /images/people/wanghao.png
+image: wanghao.png
 category: research-students
 order: 6
 ---

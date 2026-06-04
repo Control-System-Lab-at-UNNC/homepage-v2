@@ -121,12 +121,11 @@ const { data: memberData } = await useAsyncData(`member-${slug.value}`, async ()
 const member = computed(() => memberData.value)
 
 const memberImage = computed(() => {
-  if (!member.value?.image) return ''
+  const resolved = resolveContentImage(member.value?.image, member.value?._id)
+  if (!resolved) return ''
   const basePath = config.app.baseURL || ''
-  if (!basePath || basePath === '/') {
-    return member.value.image
-  }
-  return basePath + member.value.image
+  if (!basePath || basePath === '/') return resolved
+  return basePath + resolved
 })
 
 useHead({

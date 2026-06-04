@@ -141,3 +141,8 @@ vite.config.ts.timestamp-*
 .output
 .claude/settings.local.json
 CLAUDE.md
+
+# Content assets - auto-generated from content/ by build hook
+# Images/videos live alongside their markdown in content/ and are
+# copied here at build time. Do not add files manually.
+src/public/_content/

@@ -4,7 +4,7 @@ role: PhD Student
 title: PhD Student, Department of Mechanical, Materials and Manufacturing Engineering
 department: Department of Mechanical, Materials and Manufacturing Engineering
 email: Tianyi.Chen@nottingham.edu.cn
-image: /images/people/chentianyi.png
+image: chentianyi.png
 category: research-students
 order: 2
 ---

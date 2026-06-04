@@ -89,12 +89,11 @@ const { data: projectData } = await useAsyncData(`project-${slug.value}`, async 
 const project = computed(() => projectData.value)
 
 const projectImage = computed(() => {
-  if (!project.value?.image) return ''
+  const resolved = resolveContentImage(project.value?.image, project.value?._id)
+  if (!resolved) return ''
   const basePath = config.app.baseURL || ''
-  if (!basePath || basePath === '/') {
-    return project.value.image
-  }
-  return basePath + project.value.image
+  if (!basePath || basePath === '/') return resolved
+  return basePath + resolved
 })
 
 useHead({

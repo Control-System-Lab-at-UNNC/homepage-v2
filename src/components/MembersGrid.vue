@@ -25,6 +25,9 @@ interface Member {
   interests?: string[]
   category?: string
   order?: number
+  _path?: string
+  _id?: string
+  [key: string]: any  // Preserve all Nuxt Content fields
 }
 
 interface Props {

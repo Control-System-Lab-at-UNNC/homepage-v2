@@ -4,7 +4,7 @@ role: Research Assistant
 title: Research Assistant - B.Sc student in Computer Science
 department: Computer Science
 email: hang.xu@nottingham.edu.cn
-image: /images/people/hangxu.jpg
+image: hangxu.jpg
 category: research-assistants
 order: 1
 ---

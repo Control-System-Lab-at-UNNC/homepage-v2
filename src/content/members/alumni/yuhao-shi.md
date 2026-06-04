@@ -3,7 +3,7 @@ name: Yuhao Shi
 role: Research Assistant (Alumni)
 title: Research Assistant from Feb.,2023 to Nov.,2024
 email: ""
-image: /images/people/fuhua-jia.jpg
+image: /images/default.jpg
 category: alumni
 order: 2
 ---

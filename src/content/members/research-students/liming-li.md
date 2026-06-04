@@ -5,7 +5,7 @@ title: PhD Student, Department of Mechanical, Materials and Manufacturing Engine
 department: Department of Mechanical, Materials and Manufacturing Engineering
 group: DTP with Shenzhen University of Advanced Technology
 email: Liming.Li@nottingham.edu.cn
-image: /images/people/liming-li.jpg
+image: liming-li.jpg
 category: research-students
 order: 5
 ---

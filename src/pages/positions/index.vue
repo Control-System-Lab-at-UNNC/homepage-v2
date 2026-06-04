@@ -72,7 +72,7 @@ interface Position {
 const { data: positions } = await useAsyncData('positions', () =>
   queryContent('/positions')
     .where({ _hidden: { $ne: true } })
-    .find()
+    .where({ _extension: 'md' }).find()
 )
 
 const positionsList = computed(() => positions.value || [])

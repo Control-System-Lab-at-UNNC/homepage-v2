@@ -52,7 +52,7 @@ interface Member {
 const { data: allMembers } = await useAsyncData('members', () =>
   queryContent('/members')
     .where({ _hidden: { $ne: true } })
-    .find()
+    .where({ _extension: 'md' }).find()
 )
 
 const processedMembers = computed(() => {

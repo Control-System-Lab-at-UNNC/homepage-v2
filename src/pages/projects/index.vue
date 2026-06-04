@@ -32,7 +32,7 @@
             class="project-card"
           >
             <div class="project-card__image-wrapper" v-if="project.image">
-              <img :src="getProjectImage(project.image)" :alt="project.title" class="project-card__image" />
+              <img :src="getProjectImage(project.image, project._id)" :alt="project.title" class="project-card__image" />
             </div>
             <div class="project-card__image-placeholder" v-else>
               <component :is="getStatusIcon(project.status)" class="icon-inline" theme="outline" :size="48" fill="currentColor" :stroke-width="1.5" />
@@ -95,6 +95,7 @@ interface Project {
   image?: string
   funded?: boolean
   _path?: string
+  _id?: string
 }
 
 const config = useRuntimeConfig()
@@ -140,7 +141,7 @@ const getStatusIcon = (status?: string) => {
 const { data: projects } = await useAsyncData('projects', () =>
   queryContent('/projects')
     .where({ _hidden: { $ne: true } })
-    .find()
+    .where({ _extension: 'md' }).find()
 )
 
 const projectList = computed(() => projects.value ?? [])
@@ -152,14 +153,13 @@ const filteredProjects = computed(() => {
   return projectList.value.filter(p => p.status === activeFilter.value)
 })
 
-// Handle image paths with base URL
-const getProjectImage = (imagePath?: string) => {
-  if (!imagePath) return ''
+// Handle image paths: resolve relative content paths, then apply base URL
+const getProjectImage = (imagePath?: string, contentId?: string) => {
+  const resolved = resolveContentImage(imagePath, contentId)
+  if (!resolved) return ''
   const basePath = config.app.baseURL || ''
-  if (!basePath || basePath === '/') {
-    return imagePath
-  }
-  return basePath + imagePath
+  if (!basePath || basePath === '/') return resolved
+  return basePath + resolved
 }
 
 useHead({

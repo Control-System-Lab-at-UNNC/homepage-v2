@@ -1,6 +1,54 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs'
-import { join, parse } from 'path'
+import { readdirSync, writeFileSync, mkdirSync, existsSync, copyFileSync, rmSync } from 'fs'
+import { join, parse, extname, relative } from 'path'
+
+/**
+ * Sync non-document files (images, videos, etc.) from content/ to public/_content/.
+ * This lets authors place assets next to their markdown files in content/ while
+ * still serving them as static files at build time (Nuxt Content v2 ignores
+ * binary files in content/).
+ *
+ * Source:  src/content/members/staff/salman-ijaz.webp
+ * Target:  src/public/_content/members/staff/salman-ijaz.webp
+ * URL:     /_content/members/staff/salman-ijaz.webp
+ */
+function syncContentAssets(contentDir: string, publicDir: string) {
+  const docExtensions = new Set(['.md', '.mdx', '.yml', '.yaml', '.json', '.csv'])
+  const targetDir = join(publicDir, '_content')
+
+  // Clean previous output so stale files don't linger
+  if (existsSync(targetDir)) {
+    rmSync(targetDir, { recursive: true, force: true })
+  }
+
+  let copiedCount = 0
+
+  function walk(dir: string) {
+    if (!existsSync(dir)) return
+    const entries = readdirSync(dir, { withFileTypes: true })
+    for (const entry of entries) {
+      const fullPath = join(dir, entry.name)
+      if (entry.isDirectory()) {
+        walk(fullPath)
+      } else if (entry.isFile()) {
+        const ext = extname(entry.name).toLowerCase()
+        if (!docExtensions.has(ext)) {
+          const rel = relative(contentDir, fullPath)
+          const destPath = join(targetDir, rel)
+          const destDir = parse(destPath).dir
+          if (!existsSync(destDir)) {
+            mkdirSync(destDir, { recursive: true })
+          }
+          copyFileSync(fullPath, destPath)
+          copiedCount++
+        }
+      }
+    }
+  }
+
+  walk(contentDir)
+  console.log(`[Content Assets] Synced ${copiedCount} asset(s) from content/ → public/_content/`)
+}
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -12,9 +60,15 @@ export default defineNuxtConfig({
   // Nuxt Content module
   modules: ['@nuxt/content'],
 
-  // Build-time hooks for carousel auto-detection
+  // Build-time hooks
   hooks: {
     'build:before': () => {
+      // Sync content assets (images/videos next to markdown) to public/_content/
+      syncContentAssets(
+        join(process.cwd(), 'src/content'),
+        join(process.cwd(), 'src/public')
+      )
+
       // Auto-detect carousel images at build time
       // public folder is inside src/ directory
       const carouselDir = join(process.cwd(), 'src/public/images/carousel')
@@ -130,9 +184,13 @@ export default defineNuxtConfig({
   },
 
   // TypeScript
+  // typeCheck disabled — vite-plugin-checker has a known bug with pnpm's strict
+  // symlink layout (ENOTEMPTY / ENOENT when copying TS lib files).  IDE + CI
+  // already cover type-checking; this was only running a redundant checker
+  // inside the dev server.
   typescript: {
     strict: true,
-    typeCheck: true
+    typeCheck: false
   },
 
   // Vite

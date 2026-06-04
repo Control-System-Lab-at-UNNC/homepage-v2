@@ -85,7 +85,7 @@ const { data: allNews } = await useAsyncData('news-related', () =>
     .where({ _hidden: { $ne: true } })
     .sort({ date: -1 })
     .limit(6)
-    .find()
+    .where({ _extension: 'md' }).find()
 )
 
 const relatedNews = computed(() => {

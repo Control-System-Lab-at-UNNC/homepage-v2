@@ -5,7 +5,7 @@ title: PhD Student, Department of Mechanical, Materials and Manufacturing Engine
 department: Department of Mechanical, Materials and Manufacturing Engineering
 group: DTP with Ningbo Institute of Materials Technology and Engineering, Chinese Academy of Sciences
 email: Mengshen.Yang@nottingham.edu.cn
-image: /images/people/yangmengshen.png
+image: yangmengshen.png
 category: research-students
 order: 1
 ---
