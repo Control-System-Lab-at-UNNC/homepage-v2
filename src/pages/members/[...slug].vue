@@ -120,6 +120,9 @@ const { data: memberData } = await useAsyncData(`member-${slug.value}`, async ()
 
 const member = computed(() => memberData.value)
 
+// Provide content ID for ProseImg/ProseVideo to resolve relative asset paths
+provide('contentId', computed(() => member.value?._id || ''))
+
 const memberImage = computed(() => {
   const resolved = resolveContentImage(member.value?.image, member.value?._id)
   if (!resolved) return ''

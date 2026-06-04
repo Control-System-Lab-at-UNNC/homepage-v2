@@ -14,6 +14,8 @@
 </template>
 
 <script setup lang="ts">
+import { inject, computed, type Ref } from 'vue'
+
 const props = defineProps({
   src: { type: String, default: '' },
   poster: { type: String, default: undefined },
@@ -25,21 +27,19 @@ const props = defineProps({
   height: { type: [String, Number], default: undefined }
 })
 
-// Mirror MDC's ProseImg: prefix root-absolute paths with the app baseURL so
-// assets resolve correctly under a sub-path deploy (e.g. /homepage-v2/).
-// Raw <video> isn't a prose component by default, so without this its src
-// would resolve against the domain root and 404 on GitHub Pages.
-// (Plain string join — avoids a direct `ufo` import, which doesn't resolve
-// cleanly from src/ under pnpm's strict layout.)
-function withAppBase(src?: string): string | undefined {
-  if (!src || !src.startsWith('/') || src.startsWith('//')) return src
-  let base = useRuntimeConfig().app.baseURL || '/'
-  if (!base.startsWith('/')) base = '/' + base
-  if (!base.endsWith('/')) base = base + '/'
-  if (base === '/' || src.startsWith(base)) return src
-  return base.replace(/\/$/, '') + src
+// Injected by the page component via provide('contentId', ...)
+const contentId = inject<Ref<string>>('contentId', { value: '' } as Ref<string>)
+
+const config = useRuntimeConfig()
+
+function resolve(src?: string): string | undefined {
+  if (!src) return src
+  const resolved = resolveContentImage(src, contentId.value)
+  const basePath = config.app.baseURL || '/'
+  if (!basePath || basePath === '/' || resolved.startsWith(basePath)) return resolved
+  return basePath.replace(/\/$/, '') + resolved
 }
 
-const refinedSrc = computed(() => withAppBase(props.src))
-const refinedPoster = computed(() => withAppBase(props.poster))
+const refinedSrc = computed(() => resolve(props.src))
+const refinedPoster = computed(() => resolve(props.poster))
 </script>

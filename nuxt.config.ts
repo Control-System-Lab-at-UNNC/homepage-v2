@@ -158,6 +158,7 @@ export default defineNuxtConfig({
       // for <img>). Without this, /images/... videos 404 on sub-path deploys
       // such as GitHub Pages (/homepage-v2/). Merges with the default tag map.
       tags: {
+        img: 'ProseImg',
         video: 'ProseVideo'
       },
       remarkPlugins: {

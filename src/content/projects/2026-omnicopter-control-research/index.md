@@ -35,7 +35,7 @@ funded: false
 ---
 
 <p align="center">
-  <img src="/_content/projects/2026-omnicopter-control-research/omnicopter_banner.svg" alt="Omnicopter Control Research Banner" width="100%">
+  <img src="omnicopter_banner.svg" alt="Omnicopter Control Research Banner" width="100%">
 </p>
 
 <h1 align="center">🚁 Omnicopter Control Research</h1>
@@ -82,15 +82,15 @@ An Omnicopter is not just “a drone with more propellers”. It is a **fully-ac
 ## ✨ Project at a Glance
 
 | Item               | Description                                                                                |
-| ------------------ | ------------------------------------------------------------------------------------------ |
-| 🛩️ Vehicle type  | Omnidirectional / fully-actuated multirotor UAV                                            |
+| ------------------ | -------------------------------------------------------------------------------------------|
+| 🛩️ Vehicle type    | Omnidirectional / fully-actuated multirotor UAV                                            |
 | 🎯 Research target | Optimal allocation, robust 6-DoF tracking, actuator/sensor fault diagnosis                 |
 | 🧱 Hardware status | A complete Omnicopter hardware platform has been constructed and tested                    |
 | 🧠 Core challenge  | Convert a desired 6D wrench into safe, efficient, and fault-aware motor commands           |
-| 🧪 Validation path | Bench tests → simulation → tethered flight → free flight → fault-injection experiments |
+| 🧪 Validation path | Bench tests → simulation → tethered flight → free flight → fault-injection experiments     |
 
 <p align="center">
-  <img src="/_content/projects/2026-omnicopter-control-research/research_roadmap.svg" alt="Project roadmap" width="100%">
+  <img src="research_roadmap.svg" alt="Project roadmap" width="100%">
 </p>
 
 ---
@@ -147,14 +147,14 @@ We have built such a system in last summer SEP, this project was awarded as FIRS
 <table>
 <tr>
 <td width="42.9%" align="center">
-  <img src="/_content/projects/2026-omnicopter-control-research/hardware_prototype.jpg" alt="Our Omnicopter hardware prototype" width="100%">
+  <img src="hardware_prototype.jpg" alt="Our Omnicopter hardware prototype" width="100%">
   <br>
   <b>Hardware prototype photo</b>
   <br>
   <!-- <sub>Suggested replacement: <code>assets/hardware_prototype.jpg</code></sub> -->
 </td>
 <td width="57.1%" align="center">
-  <video src="/_content/projects/2026-omnicopter-control-research/bench_test_thumbnail.mp4" controls width="100%">
+  <video src="bench_test_thumbnail.mp4" controls width="100%">
     Your browser does not support the video tag.
   </video>
   <br>
@@ -258,7 +258,7 @@ An Omnicopter can be implemented in several ways. Our project focuses on two use
 ## 🔷 ETH-style Cubic Configuration
 
 <p align="center">
-  <img src="/_content/projects/2026-omnicopter-control-research/eth_cube_geometry.svg" alt="ETH-style cubic Omnicopter geometry" width="100%">
+  <img src="eth_cube_geometry.svg" alt="ETH-style cubic Omnicopter geometry" width="100%">
 </p>
 
 The ETH-style Omnicopter is one of the most important reference designs for this project. It uses **eight fixed-pitch rotors** mounted around a symmetric cube-like frame. The rotors are not all pointing in the same direction. Instead, their thrust axes are arranged so that the combined actuator set can generate force and torque in all three dimensions.
@@ -272,7 +272,7 @@ The ETH configuration follows several key ideas:
 | 🧊 Symmetric 3D frame                   | Makes the vehicle dynamics closer to orientation-invariant   |
 | 🌀 Tilted thrust axes                   | Allows force generation beyond the body vertical direction   |
 | 🔁 Reversible motor-propeller actuators | Allows positive and negative thrust along each rotor axis    |
-| 🎛️ Over-actuation                     | More actuators than 6D wrench dimensions creates redundancy  |
+| 🎛️ Over-actuation                       | More actuators than 6D wrench dimensions creates redundancy  |
 | 🧮 Control allocation                   | Converts desired force/torque into individual motor commands |
 
 ### ✅ Advantages
@@ -310,7 +310,7 @@ This is ideal for studying **optimal allocation**, **actuator saturation**, **nu
 ## 🟣 Lynchpin-style Tangential Configuration
 
 <p align="center">
-  <img src="/_content/projects/2026-omnicopter-control-research/lynchpin_geometry.svg" alt="Lynchpin-style Omnicopter geometry" width="100%">
+  <img src="lynchpin_geometry.svg" alt="Lynchpin-style Omnicopter geometry" width="100%">
 </p>
 
 The Lynchpin-style configuration is another useful reference because it approaches 6-DoF flight from a different geometric intuition. Instead of emphasizing a cube-like 8-rotor layout, it uses a **collapsed-dodecahedron-inspired modular frame** and places motors/propellers around the frame in a way that supports **tangential omnidirectional flight**.
@@ -326,7 +326,7 @@ The Lynchpin contest requirement can be summarized as:
 | 🧬 Modular geometry                             | Supports repeated geometric units and possible multi-drone / structure ideas    |
 | 🧭 Tangential thrust layout                     | Produces forces around a 3D shell rather than only along one body axis          |
 | 🔄 Independent position and orientation control | The pilot/controller should command position and attitude separately            |
-| 🛠️ Hobby-grade feasibility                    | Demonstrations have used common multirotor components and open autopilot stacks |
+| 🛠️ Hobby-grade feasibility                      | Demonstrations have used common multirotor components and open autopilot stacks |
 
 ### ✅ Advantages (compared to ETH-style)
 
@@ -382,17 +382,17 @@ We have already constructed a complete Omnicopter hardware platform and performe
 
 | Evidence                 | Suggested file path                    | README insertion                             |
 | ------------------------ | -------------------------------------- | -------------------------------------------- |
-| Prototype overview photo | `assets/hardware_prototype.jpg`      | Replace the placeholder in the media section |
-| Wiring / ESC close-up    | `assets/wiring_closeup.jpg`          | Add below this table                         |
-| Motor direction test     | `assets/motor_test_thumbnail.jpg`    | Link to video attachment or YouTube          |
-| Bench thrust test plot   | `assets/thrust_test_plot.png`        | Add in the modeling section                  |
-| Tethered flight video    | `assets/tethered_test_thumbnail.jpg` | Link to GitHub user-attachment video         |
-| Flight log plot          | `assets/log_position_attitude.png`   | Add in the experiment section                |
+| Prototype overview photo | `assets/hardware_prototype.jpg`        | Replace the placeholder in the media section |
+| Wiring / ESC close-up    | `assets/wiring_closeup.jpg`            | Add below this table                         |
+| Motor direction test     | `assets/motor_test_thumbnail.jpg`      | Link to video attachment or YouTube          |
+| Bench thrust test plot   | `assets/thrust_test_plot.png`          | Add in the modeling section                  |
+| Tethered flight video    | `assets/tethered_test_thumbnail.jpg`   | Link to GitHub user-attachment video         |
+| Flight log plot          | `assets/log_position_attitude.png`     | Add in the experiment section                |
 
 Example for adding our own video thumbnail:
 
 ```md
-[![Our tethered Omnicopter test](/_content/projects/2026-omnicopter-control-research/tethered_test_thumbnail.jpg)](https://github.com/USER/REPO/assets/VIDEO_ID)
+[![Our tethered Omnicopter test](tethered_test_thumbnail.jpg)](https://github.com/USER/REPO/assets/VIDEO_ID)
 ```
 
 ---
@@ -415,8 +415,8 @@ where $\mathbf{u}$ represents individual actuator thrust commands.
 
 | Model item                     | Why we need it                                |
 | ------------------------------ | --------------------------------------------- |
-| Rotor position$\mathbf{p}_i$ | Determines torque from off-center thrust      |
-| Rotor axis$\mathbf{x}_i$     | Determines the direction of generated force   |
+| Rotor position$\mathbf{p}_i$   | Determines torque from off-center thrust      |
+| Rotor axis$\mathbf{x}_i$       | Determines the direction of generated force   |
 | Thrust coefficient             | Maps command / RPM to thrust                  |
 | Drag torque coefficient        | Improves yaw and torque prediction            |
 | Motor reversal delay           | Important for bidirectional thrust allocation |
@@ -451,7 +451,7 @@ where $\mathbf{u}$ represents individual actuator thrust commands.
 ## 🧠 Research Focus
 
 <p align="center">
-  <img src="/_content/projects/2026-omnicopter-control-research/control_stack.svg" alt="Omnicopter control stack" width="100%">
+  <img src="control_stack.svg" alt="Omnicopter control stack" width="100%">
 </p>
 
 This project lands on three major control directions:
@@ -566,7 +566,7 @@ flowchart LR
 | Disturbance observer  | Estimate unmodeled force/torque disturbance               |
 | Tube MPC              | Keep trajectory tracking stable under bounded uncertainty |
 | Sliding-mode control  | Improve robustness to matched disturbances                |
-| $H_\infty$ control  | Design for worst-case disturbance attenuation             |
+| $H_\infty$ control    | Design for worst-case disturbance attenuation             |
 | Adaptive control      | Update uncertain parameters online                        |
 | Learning compensation | Learn repeatable aerodynamic coupling from logs           |
 
@@ -585,7 +585,7 @@ flowchart LR
 ## 📈 3. Fault Diagnosis and Fault-Tolerant Control
 
 <p align="center">
-  <img src="/_content/projects/2026-omnicopter-control-research/fault_control.svg" alt="Fault diagnosis and fault-tolerant control" width="100%">
+  <img src="fault_control.svg" alt="Fault diagnosis and fault-tolerant control" width="100%">
 </p>
 
 Fault control is the final landing point of this project. Because an Omnicopter is over-actuated or geometrically redundant, it provides an excellent platform for studying **fault diagnosis** and **fault-tolerant control allocation**.

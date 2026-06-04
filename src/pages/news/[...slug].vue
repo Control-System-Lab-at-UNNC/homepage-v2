@@ -79,6 +79,9 @@ const { data: news } = await useAsyncData(() => `news-${slug.value}`, async () =
   }
 }, { watch: [slug] })
 
+// Provide content ID for ProseImg/ProseVideo to resolve relative asset paths
+provide('contentId', computed(() => news.value?._id || ''))
+
 // Fetch related news (exclude current)
 const { data: allNews } = await useAsyncData('news-related', () =>
   queryContent('/news')

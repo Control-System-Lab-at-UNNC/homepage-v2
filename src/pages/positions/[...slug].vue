@@ -109,6 +109,9 @@ const { data: positionData } = await useAsyncData(`position-${slug.value}`, asyn
 
 const position = computed(() => positionData.value)
 
+// Provide content ID for ProseImg/ProseVideo to resolve relative asset paths
+provide('contentId', computed(() => position.value?._id || ''))
+
 useHead({
   title: computed(() => position.value ? `${position.value.title} - Control System Lab` : 'Position Not Found'),
   meta: computed(() => {

@@ -88,6 +88,9 @@ const { data: projectData } = await useAsyncData(`project-${slug.value}`, async 
 
 const project = computed(() => projectData.value)
 
+// Provide content ID for ProseImg/ProseVideo to resolve relative asset paths
+provide('contentId', computed(() => project.value?._id || ''))
+
 const projectImage = computed(() => {
   const resolved = resolveContentImage(project.value?.image, project.value?._id)
   if (!resolved) return ''

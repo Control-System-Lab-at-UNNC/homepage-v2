@@ -113,6 +113,9 @@ const { data: publicationData } = await useAsyncData(`publication-${slug.value}`
 
 const publication = computed(() => publicationData.value)
 
+// Provide content ID for ProseImg/ProseVideo to resolve relative asset paths
+provide('contentId', computed(() => publication.value?._id || ''))
+
 const formattedAuthors = computed(() => {
   if (!publication.value?.authors) return ''
   const authors = publication.value.authors
