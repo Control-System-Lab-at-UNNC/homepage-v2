@@ -62,6 +62,13 @@ export default defineNuxtConfig({
 
   // Build-time hooks
   hooks: {
+    // Register a custom transformer for binary assets (images, videos, etc.)
+    // so @nuxt/content does not warn about unsupported file extensions.
+    'content:context': (ctx: { transformers: string[] }) => {
+      ctx.transformers.push(
+        join(process.cwd(), 'src/content-transformers/binary-assets.ts')
+      )
+    },
     'build:before': () => {
       // Sync content assets (images/videos next to markdown) to public/_content/
       syncContentAssets(
@@ -136,7 +143,7 @@ export default defineNuxtConfig({
   },
 
   // CSS
-  css: ['~/assets/css/main.css', 'katex/dist/katex.min.css'],
+  css: ['~/assets/css/main.css'],
 
   // Content module configuration
   content: {

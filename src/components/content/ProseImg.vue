@@ -3,8 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed, type Ref } from 'vue'
-
 const props = defineProps({
   src: { type: String, default: '' },
   alt: { type: String, default: '' },
@@ -12,17 +10,20 @@ const props = defineProps({
   height: { type: [String, Number], default: undefined }
 })
 
-// Injected by the page component via provide('contentId', ...)
-const contentId = inject<Ref<string>>('contentId', { value: '' } as Ref<string>)
+const contentId = inject<Ref<string>>('contentId', ref(''))
 
 const config = useRuntimeConfig()
 
 const refinedSrc = computed(() => {
-  // Resolve relative paths using the content file's _id
-  const resolved = resolveContentImage(props.src, contentId.value)
-  if (!resolved) return ''
-  const basePath = config.app.baseURL || ''
-  if (!basePath || basePath === '/') return resolved
-  return basePath.replace(/\/$/, '') + resolved
+  try {
+    const resolved = resolveContentImage(props.src, unref(contentId))
+    if (!resolved) return ''
+    const basePath = config.app.baseURL || ''
+    if (!basePath || basePath === '/') return resolved
+    return basePath.replace(/\/$/, '') + resolved
+  } catch {
+    // Fallback: return raw src so the page doesn't break
+    return props.src || ''
+  }
 })
 </script>
