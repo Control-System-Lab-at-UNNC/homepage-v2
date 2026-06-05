@@ -9,11 +9,18 @@
 </template>
 
 <script setup lang="ts">
-const { locale } = useI18n()
+const { t, locale } = useI18n()
+
 useHead({
-  htmlAttrs: {
-    lang: locale
-  }
+  htmlAttrs: { lang: locale },
+  title: t('site.title'),
+  meta: [
+    { name: 'description', content: t('site.description') },
+    { name: 'keywords', content: t('site.keywords') },
+    { property: 'og:title', content: t('site.ogTitle') },
+    { property: 'og:description', content: t('site.ogDescription') },
+    { property: 'og:type', content: 'website' },
+  ],
 })
 </script>
 

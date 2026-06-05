@@ -11,7 +11,7 @@
       </NuxtLink>
 
       <!-- Desktop Navigation -->
-      <nav class="header__nav" v-if="!mobileMenuOpen">
+      <nav class="header__nav">
         <NuxtLink
           v-for="item in navigation"
           :key="item.to"
@@ -97,7 +97,6 @@ const handleScroll = () => {
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value
-  document.body.style.overflow = mobileMenuOpen.value ? 'hidden' : ''
 }
 
 onMounted(() => {
@@ -265,10 +264,15 @@ onUnmounted(() => {
 .header__mobile-nav {
   display: none;
   flex-direction: column;
+  align-items: center;
   padding: var(--spacing-lg);
   background: white;
   border-top: 1px solid var(--color-border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.header__mobile-nav .lang-switcher {
+  margin-top: var(--spacing-md);
 }
 
 .header__mobile-link {

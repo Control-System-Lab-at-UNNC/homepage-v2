@@ -68,11 +68,7 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'en',
     strategy: 'no_prefix',
-    lazy: true,
     langDir: '../src/content/i18n',
-    bundle: {
-      optimizeTranslationDirective: false
-    },
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_locale',
@@ -144,15 +140,9 @@ export default defineNuxtConfig({
   // App configuration
   app: {
     head: {
-      title: 'Control System Lab - University of Nottingham Ningbo China',
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Control System Lab at UNNC - Research in control systems, robotics, and aerospace engineering.' },
-        { name: 'keywords', content: 'Control System, Robotics, UNNC, University of Nottingham Ningbo China, Aerospace, Drone, UAV' },
-        { property: 'og:title', content: 'Control System Lab - UNNC' },
-        { property: 'og:description', content: 'Research in control systems, robotics, and aerospace engineering.' },
-        { property: 'og:type', content: 'website' }
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/images/favicon.png' },

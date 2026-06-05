@@ -38,7 +38,7 @@ function getLocaleLabel(code: string): string {
   gap: 2px;
   background: var(--color-bg);
   border-radius: var(--radius-full);
-  padding: 2px 2.6px;
+  padding: 2px 3px;
   border: 1px solid var(--color-border);
 }
 
