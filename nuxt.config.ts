@@ -79,7 +79,7 @@ export default defineNuxtConfig({
       // Auto-detect carousel images at build time
       // public folder is inside src/ directory
       const carouselDir = join(process.cwd(), 'src/public/images/carousel')
-      const manifestPath = join(process.cwd(), 'src/assets/carousel-manifest.json')
+      const manifestPath = join(process.cwd(), 'src/content/carousel-manifest.json')
 
       const images: Array<{ src: string; alt: string; caption: string }> = []
 
@@ -143,7 +143,7 @@ export default defineNuxtConfig({
   },
 
   // CSS
-  css: ['~/assets/css/main.css'],
+  css: ['~/content/main.css'],
 
   // Content module configuration
   content: {

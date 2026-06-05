@@ -72,7 +72,7 @@
 <script setup lang="ts">
 import Left from '@icon-park/vue-next/lib/icons/Left'
 import Right from '@icon-park/vue-next/lib/icons/Right'
-import carouselManifest from '~/assets/carousel-manifest.json'
+import carouselManifest from '~/content/carousel-manifest.json'
 
 interface Props {
   badge?: string
