@@ -20,7 +20,7 @@ description: A demonstration news article showcasing all available frontmatter o
 
 # image [Optional]: News cover image path
 # Image location: /public/images/news/
-image: assets/default.jpg
+image: /images/default.jpg
 ---
 
 ## News Content
