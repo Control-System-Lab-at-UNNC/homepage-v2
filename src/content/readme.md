@@ -18,23 +18,45 @@ This directory contains all the content for the Control System Lab website at th
 
 ```bash
 content/
-├── readme.md              # This file - Content management guide
-├── members/               # Team member profiles
-│   ├── readme.md          # Member frontmatter template
-│   ├── staff/             # Faculty and staff
-│   ├── research-students/ # PhD and research students
-│   ├── research-assistants/# Research assistants
-│   └── alumni/            # Former members
-├── news/                  # News and announcements
-│   └── readme.md          # News frontmatter template
-├── publications/          # Research publications
-│   ├── readme.md          # Publication frontmatter template
-│   ├── 2022/              # Publications by year
+├── readme.md                 # This file - Content management guide
+├── main.css                  # Global styles (design system, layout, components)
+├── carousel-manifest.json    # Homepage carousel slide definitions
+├── members/                  # Team member profiles
+│   ├── readme.md             # Member frontmatter template
+│   ├── staff/                # Faculty and staff
+│   │   └── assets/           # Staff photos (WebP/JPG)
+│   ├── research-students/    # PhD and research students
+│   │   └── assets/           # Student photos (JPG/PNG)
+│   ├── research-assistants/  # Research assistants
+│   │   └── assets/           # RA photos (JPG/PNG)
+│   └── alumni/               # Former members
+├── news/                     # News and announcements
+│   └── readme.md             # News frontmatter template
+├── publications/             # Research publications
+│   ├── readme.md             # Publication frontmatter template
+│   ├── 2022/                 # Publications by year
 │   └── 2024/
-├── projects/              # Research projects
-│   └── readme.md          # Project frontmatter template
-└── positions/             # Open positions
-    └── readme.md          # Position frontmatter template
+├── projects/                 # Research projects
+│   ├── readme.md             # Project frontmatter template
+│   └── {project-slug}/       # Each project is a directory
+│       ├── index.md          # Project content
+│       └── assets/           # Project images, SVGs, videos
+└── positions/                # Open positions
+    └── readme.md             # Position frontmatter template
+```
+
+### Asset Co-location
+
+Images and media are stored alongside the content that uses them, currently inside `assets/` subdirectories within each content category. For example:
+
+- Member photos → `members/staff/assets/salman-ijaz.webp`
+- Project media → `projects/2026-omnicopter-control-research/assets/omnicopter_banner.svg`
+
+In Markdown, reference co-located assets with relative paths:
+
+```markdown
+<!-- Inside a project's index.md -->
+![Omnicopter Banner](./assets/omnicopter_banner.svg)
 ```
 
 ## Content Types
@@ -97,10 +119,11 @@ _hidden: true
 
 ## Image Guidelines
 
-- **Members**: 400x400px (square), WebP recommended
-- **Projects**: 800x600px or 1200x800px, WebP recommended
-- **News**: 800x450px (16:9), WebP recommended
-- **Location**: `/public/images/` directory
+- **Members**: 400×400px (square), WebP preferred (JPG/PNG also accepted)
+- **Projects**: 800×600px or 1200×800px, SVG for diagrams, WebP/JPG for photos
+- **News**: 800×450px (16:9), WebP recommended
+- **Location**: Place in the `assets/` folder next to the content file
+- **Naming**: Use lowercase, hyphenated filenames matching the content slug (e.g., `donglei-sun.webp`)
 
 ## Best Practices
 

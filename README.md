@@ -53,10 +53,16 @@ npx serve .output/public
 ```bash
 ├── .github/workflows/     # GitHub Actions deployment
 ├── src/                   # Source directory
-│   ├── assets/            # Global styles
 │   ├── components/        # Vue components
 │   ├── composables/       # Vue composables
-│   ├── content/           # Markdown content (see Content Management)
+│   ├── content/           # Markdown content + co-located assets (see Content Management)
+│   │   ├── main.css       # Global styles & design system
+│   │   ├── carousel-manifest.json  # Homepage carousel config
+│   │   ├── members/       # Team profiles + assets/
+│   │   ├── news/          # News articles
+│   │   ├── publications/  # Papers by year
+│   │   ├── projects/      # Projects with assets/ subdirs
+│   │   └── positions/     # Open positions
 │   ├── layouts/           # Nuxt layouts
 │   ├── pages/             # Route pages
 │   ├── public/            # Static assets
@@ -69,7 +75,7 @@ npx serve .output/public
 
 > **See [`src/content/readme.md`](src/content/readme.md) for detailed content management guide.**
 
-All website content is managed through Markdown files in the `src/content/` directory. Each content type has its own subdirectory with a `readme.md` template file.
+All website content is managed through Markdown files in the `src/content/` directory. Each content type has its own subdirectory with a `readme.md` template file. Images and media are co-located with their content in `assets/` subdirectories.
 
 ### Quick Reference
 
