@@ -58,6 +58,7 @@ npx serve .output/public
 │   ├── content/           # Markdown content + co-located assets (see Content Management)
 │   │   ├── main.css       # Global styles & design system
 │   │   ├── carousel-manifest.json  # Homepage carousel config
+│   │   ├── i18n/          # UI translation dictionaries (en.json, zh-CN.json)
 │   │   ├── members/       # Team profiles + assets/
 │   │   ├── news/          # News articles
 │   │   ├── publications/  # Papers by year

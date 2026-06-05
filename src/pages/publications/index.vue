@@ -3,9 +3,9 @@
     <div class="section">
       <div class="container">
         <SectionTitle
-          overline="Research"
-          title="Publications"
-          description="Our research contributions to the field of control systems, robotics, and aerospace engineering."
+          :overline="t('home.research')"
+          :title="t('nav.publications')"
+          :description="t('publications.description')"
         />
 
         <!-- Publications List Grouped by Year -->
@@ -27,7 +27,7 @@
         </div>
 
         <p v-else class="no-results">
-          No publications found. Check back soon for our latest research contributions.
+          {{ t('publications.noResults') }}
         </p>
       </div>
     </div>
@@ -46,6 +46,8 @@ interface Publication {
   _path?: string
 }
 
+const { t } = useI18n()
+
 // Fetch all publications
 const { data: publications } = await useAsyncData('publications', () =>
   queryContent('/publications')
@@ -56,7 +58,7 @@ const { data: publications } = await useAsyncData('publications', () =>
 const processedPublications = computed(() => {
   return (publications.value || []).map(pub => ({
     ...pub,
-    title: pub.title ?? 'Untitled',
+    title: pub.title ?? t('publications.untitled'),
     authors: pub.authors || [],
     year: pub.year || new Date().getFullYear(),
     keywords: pub.keywords || [],
@@ -84,9 +86,9 @@ const publicationsByYear = computed(() => {
 })
 
 useHead({
-  title: 'Publications - Control System Lab UNNC',
+  title: t('publications.pageTitle'),
   meta: [
-    { name: 'description', content: 'Browse our publications in control systems, robotics, and aerospace engineering.' }
+    { name: 'description', content: t('publications.pageDescription') }
   ]
 })
 </script>

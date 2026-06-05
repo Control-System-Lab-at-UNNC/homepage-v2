@@ -3,9 +3,9 @@
     <div class="section">
       <div class="container">
         <SectionTitle
-          overline="Our Team"
-          title="Lab Members"
-          description="Meet our diverse team of faculty, researchers, and students working together to advance the frontiers of control systems and robotics."
+          :overline="t('home.ourTeam')"
+          :title="t('members.section')"
+          :description="t('home.teamDescription')"
         />
 
         <!-- Category Filter -->
@@ -27,7 +27,7 @@
           :members="filteredMembers"
           :groupBy="false"
         />
-        <p v-else class="no-results">No members found in this category.</p>
+        <p v-else class="no-results">{{ t('members.noResults') }}</p>
       </div>
     </div>
   </div>
@@ -48,6 +48,8 @@ interface Member {
   slug: string
 }
 
+const { t } = useI18n()
+
 // Fetch all members
 const { data: allMembers } = await useAsyncData('members', () =>
   queryContent('/members')
@@ -59,7 +61,7 @@ const processedMembers = computed(() => {
   const members = (allMembers.value || []).map(member => {
     const processed = {
       ...member,
-      name: member.name || member.title || 'Unknown', // Ensure 'name' exists
+      name: member.name || member.title || t('members.unknown'),
       category: member.category ?? undefined, // Ensure 'category' exists
       slug: member._id || member._path || '' // Ensure 'slug' exists
     }
@@ -69,13 +71,13 @@ const processedMembers = computed(() => {
 })
 
 // Category definitions - Staff first, All Members last
-const categories = [
-  { key: 'staff', name: 'Staff' },
-  { key: 'research-students', name: 'Research Students' },
-  { key: 'research-assistants', name: 'Research Assistants' },
-  { key: 'alumni', name: 'Alumni' },
-  { key: 'all', name: 'All Members' }
-]
+const categories = computed(() => [
+  { key: 'staff', name: t('members.staff') },
+  { key: 'research-students', name: t('members.researchStudents') },
+  { key: 'research-assistants', name: t('members.researchAssistants') },
+  { key: 'alumni', name: t('members.alumni') },
+  { key: 'all', name: t('members.allMembers') }
+])
 
 const activeCategory = ref('staff')
 
@@ -87,9 +89,9 @@ const filteredMembers = computed(() => {
 })
 
 useHead({
-  title: 'Members - Control System Lab UNNC',
+  title: t('members.pageTitle'),
   meta: [
-    { name: 'description', content: 'Meet our team of researchers at the Control System Lab, University of Nottingham Ningbo China.' }
+    { name: 'description', content: t('members.pageDescription') }
   ]
 })
 </script>

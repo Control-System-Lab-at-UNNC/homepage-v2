@@ -3,15 +3,15 @@
     <div class="container">
       <div class="hero__grid">
       <div class="hero__content">
-        <span class="hero__badge">{{ badge }}</span>
-        <h1 class="hero__title">{{ title }}</h1>
-        <p class="hero__description">{{ description }}</p>
+        <span class="hero__badge">{{ badge || t('hero.badge') }}</span>
+        <h1 class="hero__title">{{ title || t('hero.title') }}</h1>
+        <p class="hero__description">{{ description || t('hero.description') }}</p>
         <div class="hero__actions">
           <NuxtLink to="/members" class="btn btn-primary">
-            Meet Our Team
+            {{ t('hero.meetTeam') }}
           </NuxtLink>
           <NuxtLink to="/publications" class="btn btn-secondary">
-            View Research
+            {{ t('hero.viewResearch') }}
           </NuxtLink>
         </div>
       </div>
@@ -38,7 +38,7 @@
               class="carousel__dot"
               :class="{ 'carousel__dot--active': currentSlide === index }"
               @click="goToSlide(index)"
-              :aria-label="`Go to slide ${index + 1}`"
+              :aria-label="t('hero.goToSlide', { n: index + 1 })"
             ></button>
           </div>
           <!-- Navigation Arrows -->
@@ -46,7 +46,7 @@
             v-if="carouselImages.length > 1"
             class="carousel__arrow carousel__arrow--prev"
             @click="prevSlide"
-            aria-label="Previous slide"
+            :aria-label="t('hero.prevSlide')"
           >
             <Left class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="3" />
           </button>
@@ -54,7 +54,7 @@
             v-if="carouselImages.length > 1"
             class="carousel__arrow carousel__arrow--next"
             @click="nextSlide"
-            aria-label="Next slide"
+            :aria-label="t('hero.nextSlide')"
           >
             <Right class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="3" />
           </button>
@@ -86,10 +86,12 @@ interface CarouselImage {
   caption: string
 }
 
+const { t } = useI18n()
+
 withDefaults(defineProps<Props>(), {
-  badge: 'Control System Lab',
-  title: 'Advancing Control Systems & Robotics Research',
-  description: 'Welcome to the Control System Lab at the University of Nottingham Ningbo China. We conduct cutting-edge research in control systems, robotics, and aerospace engineering.'
+  badge: '',
+  title: '',
+  description: ''
 })
 
 const config = useRuntimeConfig()
@@ -108,8 +110,8 @@ const carouselImages = computed((): CarouselImage[] => {
   if (manifest.length === 0) {
     return [{
       src: `${base}/images/default.jpg`,
-      alt: 'Add images to /public/images/carousel/',
-      caption: 'Add Images to Carousel'
+      alt: t('hero.placeholderAlt'),
+      caption: t('hero.placeholderCaption')
     }]
   }
 

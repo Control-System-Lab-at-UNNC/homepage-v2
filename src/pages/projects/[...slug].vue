@@ -13,7 +13,7 @@
       <!-- Back button -->
       <NuxtLink to="/projects" class="project__back">
         <ArrowLeft class="icon-inline" theme="outline" :size="16" fill="currentColor" :stroke-width="2" />
-        Back to Projects
+        {{ t('projects.backTo') }}
       </NuxtLink>
 
       <!-- Project Header -->
@@ -36,7 +36,7 @@
         <div v-if="project.body || project.description" class="project-section animate-fade-in-up delay-200">
           <div class="project-section__header">
             <FileStaff class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
-            <h3>About This Project</h3>
+            <h3>{{ t('projects.aboutProject') }}</h3>
           </div>
           <div class="project-section__body project-section__body--content">
             <ContentRenderer :value="project" />
@@ -51,9 +51,9 @@
     <div class="container">
       <div class="not-found">
         <Help class="icon-inline" theme="outline" :size="80" fill="var(--color-accent)" :stroke-width="3" />
-        <h1>Project Not Found</h1>
-        <p>We couldn't find the project you're looking for.</p>
-        <NuxtLink to="/projects" class="btn btn-primary">Browse All Projects</NuxtLink>
+        <h1>{{ t('projects.notFound') }}</h1>
+        <p>{{ t('projects.notFoundDesc') }}</p>
+        <NuxtLink to="/projects" class="btn btn-primary">{{ t('projects.browseAll') }}</NuxtLink>
       </div>
     </div>
   </div>
@@ -64,6 +64,7 @@ import ArrowLeft from '@icon-park/vue-next/lib/icons/ArrowLeft'
 import FileStaff from '@icon-park/vue-next/lib/icons/FileStaff'
 import Help from '@icon-park/vue-next/lib/icons/Help'
 
+const { t } = useI18n()
 const route = useRoute()
 const config = useRuntimeConfig()
 

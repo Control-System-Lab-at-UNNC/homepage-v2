@@ -13,7 +13,7 @@
           v-if="member.email"
           :href="`mailto:${member.email}`"
           class="member-card__action"
-          aria-label="Send email"
+          :aria-label="t('members.sendEmail')"
           @click.stop
         >
           <Mail class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="3.6" />
@@ -24,7 +24,7 @@
           target="_blank"
           rel="noopener"
           class="member-card__action"
-          aria-label="Google Scholar"
+          :aria-label="t('members.googleScholar')"
           @click.stop
         >
           <Google class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="2.5" />
@@ -66,6 +66,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 
 const imageUrl = computed(() => {

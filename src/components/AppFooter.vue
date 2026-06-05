@@ -4,34 +4,34 @@
       <!-- Brand -->
       <div class="footer__brand">
         <div class="footer__logo">
-          <span class="footer__logo-text">Control System Lab</span>
-          <span class="footer__logo-sub">University of Nottingham Ningbo China</span>
+          <span class="footer__logo-text">{{ t('footer.brand') }}</span>
+          <span class="footer__logo-sub">{{ t('footer.university') }}</span>
         </div>
         <p class="footer__tagline">
-          Advancing research in control systems, robotics, and aerospace engineering.
+          {{ t('footer.tagline') }}
         </p>
       </div>
 
       <!-- Quick Links -->
       <div class="footer__links">
-        <h4 class="footer__heading">Quick Links</h4>
+        <h4 class="footer__heading">{{ t('footer.quickLinks') }}</h4>
         <nav class="footer__nav">
-          <NuxtLink to="/members" class="footer__link">Members</NuxtLink>
-          <NuxtLink to="/publications" class="footer__link">Publications</NuxtLink>
-          <NuxtLink to="/projects" class="footer__link">Projects</NuxtLink>
-          <NuxtLink to="/positions" class="footer__link">Positions</NuxtLink>
-          <NuxtLink to="/news" class="footer__link">News</NuxtLink>
+          <NuxtLink to="/members" class="footer__link">{{ t('nav.members') }}</NuxtLink>
+          <NuxtLink to="/publications" class="footer__link">{{ t('nav.publications') }}</NuxtLink>
+          <NuxtLink to="/projects" class="footer__link">{{ t('nav.projects') }}</NuxtLink>
+          <NuxtLink to="/positions" class="footer__link">{{ t('nav.positions') }}</NuxtLink>
+          <NuxtLink to="/news" class="footer__link">{{ t('nav.news') }}</NuxtLink>
         </nav>
       </div>
 
       <!-- Contact -->
       <div class="footer__contact">
-        <h4 class="footer__heading">Contact</h4>
+        <h4 class="footer__heading">{{ t('footer.contact') }}</h4>
         <address class="footer__address">
           <p>
-            <strong>Dr Salman Ijaz</strong><br>
-            Director of Control System Lab<br>
-            Department of Mechanical, Materials and Manufacturing Engineering
+            <strong>{{ t('footer.director') }}</strong><br>
+            {{ t('footer.directorTitle') }}<br>
+            {{ t('footer.department') }}
           </p>
           <p>
             <a href="mailto:salman.ijaz@nottingham.edu.cn" class="footer__email">
@@ -46,11 +46,11 @@
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
         <p class="footer__copyright">
-          &copy; {{ currentYear }} Control System Lab, UNNC. All rights reserved.
+          &copy; {{ currentYear }} {{ t('footer.copyright') }}
         </p>
         <div class="footer__external">
           <a href="https://www.nottingham.edu.cn" target="_blank" rel="noopener" class="footer__external-link">
-            University of Nottingham Ningbo China
+            {{ t('footer.universityLink') }}
             <LinkOut class="icon-inline" theme="outline" :size="12" fill="currentColor" :stroke-width="2" />
           </a>
         </div>
@@ -62,6 +62,7 @@
 <script setup lang="ts">
 import LinkOut from '@icon-park/vue-next/lib/icons/LinkOut'
 
+const { t } = useI18n()
 const currentYear = new Date().getFullYear()
 </script>
 

@@ -34,9 +34,11 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const { locale } = useI18n()
+
 const formattedDate = computed(() => {
   const date = props.news.date ? new Date(props.news.date) : new Date()
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString(locale.value === 'zh-CN' ? 'zh-CN' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric'

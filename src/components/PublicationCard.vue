@@ -34,7 +34,7 @@
         target="_blank"
         rel="noopener"
         class="publication-card__link"
-        aria-label="View publication"
+        :aria-label="t('publications.viewPublication')"
       >
         <LinkOut class="icon-inline" theme="outline" :size="16" fill="currentColor" :stroke-width="2" />
       </a>
@@ -63,16 +63,18 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const { t } = useI18n()
+
 const formattedAuthors = computed(() => {
   const authors = props.publication.authors
-  if (authors.length <= 2) return authors.join(' and ')
-  return authors.slice(0, authors.length - 1).join(', ') + ', and ' + authors[authors.length - 1]
+  if (authors.length <= 2) return authors.join(t('publications.authorSep'))
+  return authors.slice(0, authors.length - 1).join(', ') + ', ' + t('publications.authorSep') + authors[authors.length - 1]
 })
 
 const truncatedAbstract = computed(() => {
   if (!props.publication.abstract) return ''
   const abstract = props.publication.abstract
-  return abstract.length > 200 ? abstract.slice(0, 200) + '...' : abstract
+  return abstract.length > 200 ? abstract.slice(0, 200) + t('publications.truncation') : abstract
 })
 
 const displayedKeywords = computed(() => {
@@ -83,7 +85,7 @@ const displayedKeywords = computed(() => {
 const moreKeywords = computed(() => {
   if (!props.publication.keywords) return 0
   const remaining = props.publication.keywords.length - 3
-  return remaining > 0 ? `+${remaining} more...` : ''
+  return remaining > 0 ? t('publications.moreKeywords', { n: remaining }) : ''
 })
 </script>
 

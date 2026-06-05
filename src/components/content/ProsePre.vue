@@ -10,8 +10,8 @@
         type="button"
         class="code-block__copy"
         :class="{ 'is-copied': copied }"
-        :aria-label="copied ? 'Copied' : 'Copy code'"
-        :title="copied ? 'Copied!' : 'Copy'"
+        :aria-label="copied ? t('code.copied') : t('code.copyCode')"
+        :title="copied ? t('code.copiedExclaim') : t('code.copy')"
         @click="copyCode"
       >
         <Check v-if="copied" theme="outline" :size="16" :stroke-width="3" />
@@ -25,6 +25,8 @@
 <script setup lang="ts">
 import Copy from '@icon-park/vue-next/lib/icons/Copy'
 import Check from '@icon-park/vue-next/lib/icons/Check'
+
+const { t } = useI18n()
 
 const props = defineProps({
   code: { type: String, default: '' },

@@ -3,9 +3,9 @@
     <div class="section">
       <div class="container">
         <SectionTitle
-          overline="Research"
-          title="Projects"
-          description="Explore our ongoing and completed research projects in control systems and robotics."
+          :overline="t('home.research')"
+          :title="t('nav.projects')"
+          :description="t('projects.description')"
         />
 
         <!-- Status Filter -->
@@ -53,8 +53,8 @@
                 <span v-if="project.year" class="project-card__year">{{ project.year }}</span>
                 <span v-if="project.funded" class="project-card__funded">
                   <Funds class="icon-inline" theme="outline" :size="14" fill="currentColor" :stroke-width="3" />
-                  Funded
-                  <span class="tooltip tooltip--badge">This project has external funding support</span>
+                  {{ t('projects.funded') }}
+                  <span class="tooltip tooltip--badge">{{ t('projects.fundedTooltip') }}</span>
                 </span>
               </div>
             </div>
@@ -65,13 +65,13 @@
           <div class="placeholder-icon">
             <Experiment class="icon-inline" theme="outline" :size="64" fill="var(--color-accent)" :stroke-width="2" />
           </div>
-          <h3>Projects Coming Soon</h3>
-          <p>We are currently updating our project portfolio. Please check back later or explore our publications to learn about our research.</p>
-          <NuxtLink to="/publications" class="btn btn-secondary">View Publications</NuxtLink>
+          <h3>{{ t('projects.comingSoon') }}</h3>
+          <p>{{ t('projects.comingSoonDesc') }}</p>
+          <NuxtLink to="/publications" class="btn btn-secondary">{{ t('projects.viewPublications') }}</NuxtLink>
         </div>
 
         <div class="no-results" v-else>
-          <p>No projects found in this category.</p>
+          <p>{{ t('projects.noResults') }}</p>
         </div>
       </div>
     </div>
@@ -87,6 +87,8 @@ import CheckOne from '@icon-park/vue-next/lib/icons/CheckOne'
 import Setting from '@icon-park/vue-next/lib/icons/Setting'
 import Help from '@icon-park/vue-next/lib/icons/Help'
 
+const { t } = useI18n()
+
 interface Project {
   title: string
   description?: string
@@ -101,27 +103,27 @@ interface Project {
 const config = useRuntimeConfig()
 
 // Status definitions with labels and meanings
-const statusLabels: Record<string, string> = {
-  'open': 'Open',
-  'ongoing': 'Ongoing',
-  'completed': 'Completed',
-  'maintained': 'Maintained'
-}
+const statusLabels = computed(() => ({
+  'open': t('projects.statusOpen'),
+  'ongoing': t('projects.statusOngoing'),
+  'completed': t('projects.statusCompleted'),
+  'maintained': t('projects.statusMaintained')
+}))
 
-const statusTooltips: Record<string, string> = {
-  'open': 'Open for recruitment, seeking collaborators',
-  'ongoing': 'Actively running with funding support',
-  'completed': 'Project finished, results available',
-  'maintained': 'Completed but still maintained and updated'
-}
+const statusTooltips = computed(() => ({
+  'open': t('projects.tooltipOpen'),
+  'ongoing': t('projects.tooltipOngoing'),
+  'completed': t('projects.tooltipCompleted'),
+  'maintained': t('projects.tooltipMaintained')
+}))
 
-const statusFilters = [
-  { key: 'all', name: 'All Projects', tooltip: 'Show all projects regardless of status' },
-  { key: 'open', name: 'Open', tooltip: 'Open for recruitment, seeking collaborators' },
-  { key: 'ongoing', name: 'Ongoing', tooltip: 'Actively running with funding support' },
-  { key: 'completed', name: 'Completed', tooltip: 'Project finished, results available' },
-  { key: 'maintained', name: 'Maintained', tooltip: 'Completed but still maintained and updated' }
-]
+const statusFilters = computed(() => [
+  { key: 'all', name: t('projects.filterAll'), tooltip: t('projects.tooltipAll') },
+  { key: 'open', name: t('projects.statusOpen'), tooltip: t('projects.tooltipOpen') },
+  { key: 'ongoing', name: t('projects.statusOngoing'), tooltip: t('projects.tooltipOngoing') },
+  { key: 'completed', name: t('projects.statusCompleted'), tooltip: t('projects.tooltipCompleted') },
+  { key: 'maintained', name: t('projects.statusMaintained'), tooltip: t('projects.tooltipMaintained') }
+])
 
 const activeFilter = ref('all')
 
@@ -163,9 +165,9 @@ const getProjectImage = (imagePath?: string, contentId?: string) => {
 }
 
 useHead({
-  title: 'Projects - Control System Lab UNNC',
+  title: t('projects.pageTitle'),
   meta: [
-    { name: 'description', content: 'Our research projects in control systems and robotics.' }
+    { name: 'description', content: t('projects.pageDescription') }
   ]
 })
 </script>

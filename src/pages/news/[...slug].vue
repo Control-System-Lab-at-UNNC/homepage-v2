@@ -3,7 +3,7 @@
     <!-- Back Button -->
     <div class="container">
       <NuxtLink to="/news" class="back-link">
-        ← Back to News
+        {{ t('news.backTo') }}
       </NuxtLink>
     </div>
 
@@ -32,7 +32,7 @@
     <!-- Related News -->
     <div class="section" v-if="news && relatedNews.length > 0">
       <div class="container">
-        <h3 class="related-news__title">Related News</h3>
+        <h3 class="related-news__title">{{ t('news.related') }}</h3>
         <div class="related-news__grid">
           <NewsCard
             v-for="item in relatedNews"
@@ -48,9 +48,9 @@
       <div class="container">
         <div class="not-found">
           <Help class="icon-inline" theme="outline" :size="80" fill="var(--color-accent)" :stroke-width="3" />
-          <h1>News Post Not Found</h1>
-          <p>We couldn't find the news post you're looking for.</p>
-          <NuxtLink to="/news" class="btn btn-primary">Browse All News</NuxtLink>
+          <h1>{{ t('news.notFound') }}</h1>
+          <p>{{ t('news.notFoundDesc') }}</p>
+          <NuxtLink to="/news" class="btn btn-primary">{{ t('news.browseAll') }}</NuxtLink>
         </div>
       </div>
     </div>
@@ -60,6 +60,7 @@
 <script setup lang="ts">
 import Help from '@icon-park/vue-next/lib/icons/Help'
 
+const { t, locale } = useI18n()
 const route = useRoute()
 
 // Compute slug to support catch-all route [...slug] (array or string)
@@ -102,7 +103,7 @@ const relatedNews = computed(() => {
 const formattedDate = computed(() => {
   if (!news.value?.date) return ''
   const date = new Date(news.value.date)
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString(locale.value === 'zh-CN' ? 'zh-CN' : 'en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'

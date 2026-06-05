@@ -57,8 +57,28 @@ export default defineNuxtConfig({
   // Source directory
   srcDir: 'src/',
 
-  // Nuxt Content module
-  modules: ['@nuxt/content'],
+  // Nuxt Content module + i18n
+  modules: ['@nuxt/content', '@nuxtjs/i18n'],
+
+  // i18n configuration — client-side only, no URL prefix
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'zh-CN', name: '简体中文', file: 'zh-CN.json' }
+    ],
+    defaultLocale: 'en',
+    strategy: 'no_prefix',
+    lazy: true,
+    langDir: '../src/content/i18n',
+    bundle: {
+      optimizeTranslationDirective: false
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_locale',
+      redirectOn: 'root'
+    }
+  },
 
   // Build-time hooks
   hooks: {
@@ -111,9 +131,13 @@ export default defineNuxtConfig({
         mkdirSync(assetsDir, { recursive: true })
       }
 
-      // Write manifest
-      writeFileSync(manifestPath, JSON.stringify(images, null, 2))
-      console.log(`[Carousel] Found ${images.length} images in carousel directory`)
+      // Only write manifest when images are found — avoid overwriting with empty array
+      if (images.length > 0) {
+        writeFileSync(manifestPath, JSON.stringify(images, null, 2))
+        console.log(`[Carousel] Found ${images.length} images in carousel directory`)
+      } else {
+        console.log('[Carousel] No images found in carousel directory, keeping existing manifest')
+      }
     }
   },
 

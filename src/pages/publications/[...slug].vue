@@ -13,7 +13,7 @@
       <!-- Back button -->
       <NuxtLink to="/publications" class="publication__back">
         <ArrowLeft class="icon-inline" theme="outline" :size="16" fill="currentColor" :stroke-width="2" />
-        Back to Publications
+        {{ t('publications.backTo') }}
       </NuxtLink>
 
       <!-- Publication Header -->
@@ -32,7 +32,7 @@
         <div v-if="publication.abstract || publication.body" class="publication-section animate-fade-in-up delay-200">
           <div class="publication-section__header">
             <FileStaff class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
-            <h3>Abstract</h3>
+            <h3>{{ t('publications.abstract') }}</h3>
           </div>
           <div class="publication-section__body publication-section__body--content">
             <ContentRenderer :value="publication" />
@@ -43,7 +43,7 @@
         <div v-if="publication.keywords && publication.keywords.length" class="publication-section animate-fade-in-up delay-300">
           <div class="publication-section__header">
             <Key class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
-            <h3>Keywords</h3>
+            <h3>{{ t('publications.keywords') }}</h3>
           </div>
           <div class="publication-section__body">
             <div class="keyword-tags">
@@ -63,7 +63,7 @@
             class="doi-link"
           >
             <LinkOut class="icon-inline" theme="outline" :size="18" fill="currentColor" :stroke-width="2.8" />
-            View on Publisher Site
+            {{ t('publications.viewOnPublisherSite') }}
           </a>
         </div>
       </div>
@@ -75,9 +75,9 @@
     <div class="container">
       <div class="not-found">
         <Help class="icon-inline" theme="outline" :size="80" fill="var(--color-accent)" :stroke-width="3" />
-        <h1>Publication Not Found</h1>
-        <p>We couldn't find the publication you're looking for.</p>
-        <NuxtLink to="/publications" class="btn btn-primary">Browse All Publications</NuxtLink>
+        <h1>{{ t('publications.notFound') }}</h1>
+        <p>{{ t('publications.notFoundDesc') }}</p>
+        <NuxtLink to="/publications" class="btn btn-primary">{{ t('publications.browseAll') }}</NuxtLink>
       </div>
     </div>
   </div>
@@ -90,6 +90,7 @@ import Key from '@icon-park/vue-next/lib/icons/Key'
 import LinkOut from '@icon-park/vue-next/lib/icons/LinkOut'
 import Help from '@icon-park/vue-next/lib/icons/Help'
 
+const { t } = useI18n()
 const route = useRoute()
 
 // Get publication by file path
@@ -119,8 +120,8 @@ provide('contentId', computed(() => publication.value?._id || ''))
 const formattedAuthors = computed(() => {
   if (!publication.value?.authors) return ''
   const authors = publication.value.authors
-  if (authors.length <= 2) return authors.join(' and ')
-  return authors.slice(0, authors.length - 1).join(', ') + ', and ' + authors[authors.length - 1]
+  if (authors.length <= 2) return authors.join(t('publications.authorSep'))
+  return authors.slice(0, authors.length - 1).join(', ') + ', ' + t('publications.authorSep') + authors[authors.length - 1]
 })
 
 useHead({

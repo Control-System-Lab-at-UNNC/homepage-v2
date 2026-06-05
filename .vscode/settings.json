@@ -66,5 +66,8 @@
     ],
     "markdownlint.config": {
         "no-inline-html": false
-    }
+    },
+    "i18n-ally.localesPaths": [
+        "src/content/i18n"
+    ]
 }

@@ -3,9 +3,9 @@
     <div class="section">
       <div class="container">
         <SectionTitle
-          overline="News & Events"
-          title="Latest Updates"
-          description="Stay informed about our latest research breakthroughs, events, and announcements."
+          :overline="t('news.overline')"
+          :title="t('news.title')"
+          :description="t('news.description')"
         />
 
         <div class="news-list" v-if="safeNewsItems.length > 0">
@@ -18,8 +18,8 @@
 
         <div class="news-empty" v-else>
           <div class="news-empty__icon">📰</div>
-          <h3>No News Yet</h3>
-          <p>Check back soon for the latest updates from our lab.</p>
+          <h3>{{ t('news.noNews') }}</h3>
+          <p>{{ t('news.checkBack') }}</p>
         </div>
       </div>
     </div>
@@ -35,6 +35,8 @@ interface NewsItem {
   _path: string
 }
 
+const { t } = useI18n()
+
 // Fetch all news
 const { data: newsItems } = await useAsyncData('news', () =>
   queryContent('/news')
@@ -48,9 +50,9 @@ const safeNewsItems = computed(() =>
 )
 
 useHead({
-  title: 'News - Control System Lab UNNC',
+  title: t('news.pageTitle'),
   meta: [
-    { name: 'description', content: 'Latest news and updates from the Control System Lab at UNNC.' }
+    { name: 'description', content: t('news.pageDescription') }
   ]
 })
 </script>

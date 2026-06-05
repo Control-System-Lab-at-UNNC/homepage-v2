@@ -39,13 +39,15 @@ const props = withDefaults(defineProps<Props>(), {
   groupBy: true
 })
 
+const { t } = useI18n()
+
 // Category display names
-const categoryNames: Record<string, string> = {
-  staff: 'Staff',
-  'research-students': 'Research Students',
-  'research-assistants': 'Research Assistants',
-  alumni: 'Alumni'
-}
+const categoryNames = computed(() => ({
+  staff: t('members.staff'),
+  'research-students': t('members.researchStudents'),
+  'research-assistants': t('members.researchAssistants'),
+  alumni: t('members.alumni')
+}))
 
 // Category sort order
 const categoryOrder = ['staff', 'research-students', 'research-assistants', 'alumni']
@@ -65,7 +67,7 @@ const sortedMembers = computed(() => {
 const categorizedMembers = computed(() => {
   if (!props.groupBy) {
     return [{
-      name: 'Members',
+      name: t('members.section'),
       members: sortedMembers.value
     }]
   }
@@ -84,7 +86,7 @@ const categorizedMembers = computed(() => {
   return categoryOrder
     .filter(key => categories[key] && categories[key].length > 0)
     .map(key => ({
-      name: categoryNames[key] || key,
+      name: categoryNames.value[key] || key,
       members: categories[key]
     }))
 })

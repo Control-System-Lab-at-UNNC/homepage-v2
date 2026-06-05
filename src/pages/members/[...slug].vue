@@ -13,7 +13,7 @@
       <!-- Back button -->
       <NuxtLink to="/members" class="member-profile__back">
         <ArrowLeft class="icon-inline" theme="outline" :size="16" fill="currentColor" :stroke-width="2" />
-        Back to Members
+        {{ t('members.backTo') }}
       </NuxtLink>
 
       <!-- Profile Header -->
@@ -27,10 +27,9 @@
               class="profile-header__image"
             />
             <div class="profile-header__actions">
-              <a v-if="member.email" :href="`mailto:${member.email}`" class="profile-header__action" aria-label="Email">
-                <Mail class="icon-inline" theme="outline" :size="18" fill="currentColor" :stroke-width="3" />
+              <a v-if="member.email" :href="`mailto:${member.email}`" class="profile-header__action" :aria-label="t('members.email')">                <Mail class="icon-inline" theme="outline" :size="18" fill="currentColor" :stroke-width="3" />
               </a>
-              <a v-if="member.scholar" :href="member.scholar" target="_blank" rel="noopener" class="profile-header__action" aria-label="Google Scholar">
+              <a v-if="member.scholar" :href="member.scholar" target="_blank" rel="noopener" class="profile-header__action" :aria-label="t('members.googleScholar')">
                 <Google class="icon-inline" theme="outline" :size="18" fill="currentColor" :stroke-width="2.5" />
               </a>
             </div>
@@ -38,7 +37,7 @@
         </div>
 
         <div class="profile-header__info">
-          <span class="profile-header__badge">{{ member.category || 'Team Member' }}</span>
+          <span class="profile-header__badge">{{ member.category || t('members.teamMember') }}</span>
           <h1 class="profile-header__name">{{ member.name }}</h1>
           <p class="profile-header__title">{{ member.title || member.role }}</p>
         </div>
@@ -50,7 +49,7 @@
         <div v-if="member.interests && member.interests.length" class="profile-section animate-fade-in-up delay-200">
           <div class="profile-section__header">
             <Search class="icon-inline" theme="outline" :size="22" fill="white" :stroke-width="2.8" />
-            <h3>Research Focus</h3>
+            <h3>{{ t('members.researchFocus') }}</h3>
           </div>
           <div class="profile-section__body">
             <div class="interest-tags">
@@ -65,7 +64,7 @@
         <div v-if="member.body || (member.content && member.content.length > 0)" class="profile-section animate-fade-in-up delay-300">
           <div class="profile-section__header">
             <FileStaff class="icon-inline" theme="outline" :size="22" fill="white" :stroke-width="2.8" />
-            <h3>About</h3>
+            <h3>{{ t('members.about') }}</h3>
           </div>
           <div class="profile-section__body profile-section__body--content">
             <ContentRenderer :value="member" />
@@ -80,9 +79,9 @@
     <div class="container">
       <div class="not-found">
         <Help class="icon-inline" theme="outline" :size="80" fill="var(--color-accent)" :stroke-width="3" />
-        <h1>Member Not Found</h1>
-        <p>We couldn't find the member you're looking for.</p>
-        <NuxtLink to="/members" class="btn btn-primary">Browse All Members</NuxtLink>
+        <h1>{{ t('members.notFound') }}</h1>
+        <p>{{ t('members.notFoundDesc') }}</p>
+        <NuxtLink to="/members" class="btn btn-primary">{{ t('members.browseAll') }}</NuxtLink>
       </div>
     </div>
   </div>
@@ -96,6 +95,7 @@ import Search from '@icon-park/vue-next/lib/icons/Search'
 import FileStaff from '@icon-park/vue-next/lib/icons/FileStaff'
 import Help from '@icon-park/vue-next/lib/icons/Help'
 
+const { t } = useI18n()
 const route = useRoute()
 const config = useRuntimeConfig()
 

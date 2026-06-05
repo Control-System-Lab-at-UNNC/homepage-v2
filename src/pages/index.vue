@@ -6,8 +6,8 @@
     <section class="section" v-if="latestNews.length > 0">
       <div class="container">
         <SectionTitle
-          title="Latest News"
-          description="Stay updated with our latest announcements, events, and research updates."
+          :title="t('home.latestNews')"
+          :description="t('home.newsDescription')"
           align="center"
         />
         <div class="news-grid">
@@ -19,7 +19,7 @@
         </div>
         <div class="section__actions" v-if="hasMoreNews">
           <NuxtLink to="/news" class="btn btn-secondary">
-            View All News
+            {{ t('home.viewAllNews') }}
           </NuxtLink>
         </div>
       </div>
@@ -66,15 +66,15 @@
     <section class="section" v-if="featuredMembers.length > 0">
       <div class="container">
         <SectionTitle
-          overline="Our Team"
-          title="Meet Our Lab Members"
-          description="A diverse team of researchers working together to advance the frontiers of control systems and robotics."
+          :overline="t('home.ourTeam')"
+          :title="t('home.meetMembers')"
+          :description="t('home.teamDescription')"
           align="center"
         />
         <MembersGrid :members="featuredMembers" :groupBy="false" />
         <div class="section__actions">
           <NuxtLink to="/members" class="btn btn-primary">
-            View All Members
+            {{ t('home.viewAllMembers') }}
           </NuxtLink>
         </div>
       </div>
@@ -84,8 +84,8 @@
     <section class="section section--alt">
       <div class="container">
         <SectionTitle
-          overline="Research"
-          title="Our Research Areas"
+          :overline="t('home.research')"
+          :title="t('home.researchAreas')"
           align="center"
         />
         <div class="research-areas">
@@ -106,6 +106,8 @@ import Search from '@icon-park/vue-next/lib/icons/Search'
 import Robot from '@icon-park/vue-next/lib/icons/Robot'
 import Neural from '@icon-park/vue-next/lib/icons/Neural'
 import AssemblyLine from '@icon-park/vue-next/lib/icons/AssemblyLine'
+
+const { t } = useI18n()
 
 // Fetch latest news
 const { data: allNews } = await useAsyncData('home-news', () =>
@@ -136,28 +138,28 @@ const featuredMembers = computed(() => {
 })
 
 // Research areas data
-const researchAreas = [
+const researchAreas = computed(() => [
   {
     icon: 'research',
-    title: 'Aerospace Control',
-    description: 'Fault tolerant control systems, unmanned aerial vehicles, and aircraft dynamics'
+    title: t('research.aerospace'),
+    description: t('research.aerospaceDesc')
   },
   {
     icon: 'robotics',
-    title: 'Robotics',
-    description: 'Field robots, walking robots, aerial manipulation, and human-robot interaction'
+    title: t('research.robotics'),
+    description: t('research.roboticsDesc')
   },
   {
     icon: 'intelligent',
-    title: 'Intelligent Control',
-    description: 'Adaptive control, sliding mode control, and robust control systems'
+    title: t('research.intelligent'),
+    description: t('research.intelligentDesc')
   },
   {
     icon: 'manufacturing',
-    title: 'Advanced Manufacturing',
-    description: 'Mechatronics, additive manufacturing, and intelligent machining systems'
+    title: t('research.manufacturing'),
+    description: t('research.manufacturingDesc')
   }
-]
+])
 
 const areaIconMap: Record<string, any> = {
   research: Search,
@@ -167,7 +169,7 @@ const areaIconMap: Record<string, any> = {
 }
 
 useHead({
-  title: 'Home - Control System Lab UNNC'
+  title: t('home.pageTitle')
 })
 </script>
 

@@ -3,10 +3,10 @@
     <div class="container header__inner">
       <!-- Logo -->
       <NuxtLink to="/" class="header__logo">
-        <img :src="logoSrc" alt="University of Nottingham" class="header__logo-img">
+        <img :src="logoSrc" :alt="t('nav.universityAlt')" class="header__logo-img">
         <div class="header__logo-text">
-          <span class="header__logo-main">Control System Lab</span>
-          <span class="header__logo-sub">University of Nottingham Ningbo China</span>
+          <span class="header__logo-main">{{ t('nav.brand') }}</span>
+          <span class="header__logo-sub">{{ t('nav.university') }}</span>
         </div>
       </NuxtLink>
 
@@ -21,13 +21,14 @@
         >
           {{ item.label }}
         </NuxtLink>
+        <LanguageSwitcher />
       </nav>
 
       <!-- Mobile Menu Button -->
       <button
         class="header__toggle"
         @click="toggleMobileMenu"
-        aria-label="Toggle menu"
+        :aria-label="t('nav.toggleMenu')"
         :aria-expanded="mobileMenuOpen"
       >
         <span class="header__hamburger" :class="{ 'header__hamburger--open': mobileMenuOpen }">
@@ -50,6 +51,7 @@
         >
           {{ item.label }}
         </NuxtLink>
+        <LanguageSwitcher />
       </nav>
     </Transition>
   </header>
@@ -68,14 +70,16 @@ const logoSrc = computed(() => {
   return base + 'images/uon-logo.png'
 })
 
-const navigation = [
-  { to: '/', label: 'Home' },
-  { to: '/members', label: 'Members' },
-  { to: '/publications', label: 'Publications' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/positions', label: 'Positions' },
-  { to: '/news', label: 'News' }
-]
+const { t } = useI18n()
+
+const navigation = computed(() => [
+  { to: '/', label: t('nav.home') },
+  { to: '/members', label: t('nav.members') },
+  { to: '/publications', label: t('nav.publications') },
+  { to: '/projects', label: t('nav.projects') },
+  { to: '/positions', label: t('nav.positions') },
+  { to: '/news', label: t('nav.news') }
+])
 
 const scrolled = ref(false)
 const mobileMenuOpen = ref(false)

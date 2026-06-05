@@ -3,14 +3,14 @@
     <div class="section">
       <div class="container">
         <SectionTitle
-          overline="Join Us"
-          title="Open Positions"
-          description="We are always looking for talented individuals to join our research team."
+          :overline="t('positions.overline')"
+          :title="t('positions.title')"
+          :description="t('positions.description')"
         />
 
         <div class="positions-intro">
           <p>
-            The Control System Lab offers various opportunities for students and researchers to engage in cutting-edge research. We welcome applications from motivated individuals interested in control systems, robotics, and related fields.
+            {{ t('positions.intro') }}
           </p>
         </div>
 
@@ -30,7 +30,7 @@
               {{ position.description }}
             </p>
             <div class="position-card__footer">
-              <span class="position-card__cta">View Details →</span>
+              <span class="position-card__cta">{{ t('positions.viewDetails') }}</span>
             </div>
           </NuxtLink>
         </div>
@@ -39,18 +39,18 @@
           <div class="placeholder-icon">
             <Briefcase class="icon-inline" theme="outline" :size="64" fill="var(--color-accent)" :stroke-width="2" />
           </div>
-          <h3>No Positions Currently Available</h3>
-          <p>Check back soon for new opportunities to join our team!</p>
+          <h3>{{ t('positions.noPositions') }}</h3>
+          <p>{{ t('positions.checkBack') }}</p>
         </div>
 
         <!-- General Inquiry -->
         <div class="positions-contact">
-          <h3>Interested in Joining Our Lab?</h3>
+          <h3>{{ t('positions.interested') }}</h3>
           <p>
-            If you are interested in pursuing research opportunities with us, please contact our lab director with your CV and a brief statement of your research interests.
+            {{ t('positions.contactText') }}
           </p>
           <a href="mailto:salman.ijaz@nottingham.edu.cn" class="btn btn-primary">
-            Contact Dr Salman Ijaz
+            {{ t('positions.contactDirector') }}
           </a>
         </div>
       </div>
@@ -60,6 +60,8 @@
 
 <script setup lang="ts">
 import Briefcase from '@icon-park/vue-next/lib/icons/Briefcase'
+
+const { t } = useI18n()
 
 interface Position {
   title: string
@@ -78,9 +80,9 @@ const { data: positions } = await useAsyncData('positions', () =>
 const positionsList = computed(() => positions.value || [])
 
 useHead({
-  title: 'Open Positions - Control System Lab UNNC',
+  title: t('positions.pageTitle'),
   meta: [
-    { name: 'description', content: 'Join our team - open positions for students and researchers at Control System Lab.' }
+    { name: 'description', content: t('positions.pageDescription') }
   ]
 })
 </script>

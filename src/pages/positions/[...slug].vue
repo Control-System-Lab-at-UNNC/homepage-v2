@@ -13,7 +13,7 @@
       <!-- Back button -->
       <NuxtLink to="/positions" class="position__back">
         <ArrowLeft class="icon-inline" theme="outline" :size="16" fill="currentColor" :stroke-width="2" />
-        Back to Positions
+        {{ t('positions.backTo') }}
       </NuxtLink>
 
       <!-- Position Header -->
@@ -32,7 +32,7 @@
         <div v-if="position.body || position.description" class="position-section animate-fade-in-up delay-200">
           <div class="position-section__header">
             <FileStaff class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
-            <h3>About This Position</h3>
+            <h3>{{ t('positions.aboutPosition') }}</h3>
           </div>
           <div class="position-section__body position-section__body--content">
             <ContentRenderer :value="position" />
@@ -43,7 +43,7 @@
         <div v-if="position.requirements" class="position-section animate-fade-in-up delay-300">
           <div class="position-section__header">
             <CheckCorrect class="icon-inline" theme="outline" :size="20" fill="white" :stroke-width="2.8" />
-            <h3>Requirements</h3>
+            <h3>{{ t('positions.requirements') }}</h3>
           </div>
           <div class="position-section__body">
             <ul class="requirements-list">
@@ -59,7 +59,7 @@
             class="apply-link"
           >
             <Mail class="icon-inline" theme="outline" :size="20" fill="currentColor" :stroke-width="3" />
-            Apply for This Position
+            {{ t('positions.apply') }}
           </a>
         </div>
       </div>
@@ -71,9 +71,9 @@
     <div class="container">
       <div class="not-found">
         <Help class="icon-inline" theme="outline" :size="80" fill="var(--color-accent)" :stroke-width="3" />
-        <h1>Position Not Found</h1>
-        <p>We couldn't find the position you're looking for.</p>
-        <NuxtLink to="/positions" class="btn btn-primary">Browse All Positions</NuxtLink>
+        <h1>{{ t('positions.notFound') }}</h1>
+        <p>{{ t('positions.notFoundDesc') }}</p>
+        <NuxtLink to="/positions" class="btn btn-primary">{{ t('positions.browseAll') }}</NuxtLink>
       </div>
     </div>
   </div>
@@ -86,6 +86,7 @@ import CheckCorrect from '@icon-park/vue-next/lib/icons/CheckCorrect'
 import Mail from '@icon-park/vue-next/lib/icons/Mail'
 import Help from '@icon-park/vue-next/lib/icons/Help'
 
+const { t } = useI18n()
 const route = useRoute()
 
 // Get position by file path
