@@ -1,11 +1,11 @@
 [
   {
-    "src": "/images/default.jpg",
+    "src": "/_content/assets/default.jpg",
     "alt": "Default Image 1",
     "caption": "Control Systems Lab at UNNC"
   },
   {
-    "src": "/images/default.jpg",
+    "src": "/_content/assets/default.jpg",
     "alt": "Default Image 2",
     "caption": "Welcome ;)"
   }
