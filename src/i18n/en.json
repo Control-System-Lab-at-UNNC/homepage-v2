@@ -4,6 +4,7 @@
   "site.keywords": "Control System, Robotics, UNNC, University of Nottingham Ningbo China, Aerospace, Drone, UAV",
   "site.ogTitle": "Control System Lab - UNNC",
   "site.ogDescription": "Research in control systems, robotics, and aerospace engineering.",
+  "site.shortName": "Control System Lab",
 
   "nav.home": "Home",
   "nav.members": "Members",
@@ -157,5 +158,9 @@
   "code.copied": "Copied",
   "code.copyCode": "Copy code",
   "code.copiedExclaim": "Copied!",
-  "code.copy": "Copy"
+  "code.copy": "Copy",
+
+  "error.notFound": "Page Not Found",
+  "error.notFoundDesc": "The page you are looking for doesn't exist or has been moved.",
+  "error.backHome": "Back to Home"
 }
