@@ -2,12 +2,12 @@
 
 The official website for Control System Lab at the University of Nottingham Ningbo China.
 
-Built with [Nuxt 3](https://nuxt.com/) and [@hnrobert/markuxt](https://github.com/hnrobert/markuxt), a Markdown-first academic portal framework.
+Built with [Nuxt 3](https://nuxt.com/) and [@markuxt/markuxt](https://github.com/markuxt/markuxt), a Markdown-first academic portal framework.
 
 ## Tech Stack
 
 - **Framework**: [Nuxt 3](https://nuxt.com/) with TypeScript
-- **Theme**: [Markuxt](https://github.com/hnrobert/markuxt) — provides layouts, pages, components, and content transformers
+- **Theme**: [Markuxt](https://github.com/markuxt/markuxt) — provides layouts, pages, components, and content transformers
 - **Content**: [Nuxt Content](https://content.nuxt.com/) v2 for Markdown-based content management
 - **i18n**: [@@nuxtjs/i18n](https://i18n.nuxtjs.org/) for English and Simplified Chinese
 - **Icons**: [@icon-park/vue-next](https://github.com/bytedance/IconPark) for UI icons

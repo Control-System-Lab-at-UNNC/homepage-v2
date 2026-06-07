@@ -5,7 +5,10 @@ import { resolve } from 'path'
 process.env.MARKUXT_ROOT_DIR = process.env.MARKUXT_ROOT_DIR || 'src/'
 
 export default defineNuxtConfig({
-  extends: ['@hnrobert/markuxt'],
+  extends: ['@markuxt/markuxt'],
+
+  // Load styles — edit styles/main.css or individual partials to customize
+  css: ['~~/styles/main.css'],
 
   // Register global icon components (outside src/ to avoid Content scanning)
   plugins: [
