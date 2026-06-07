@@ -102,10 +102,14 @@ Open positions for recruitment.
 
 ### Single-file vs. Folder Content
 
-| Pattern               | When to use                                 | Examples                    |
-|-----------------------|---------------------------------------------|-----------------------------|
-| Single `.md` file     | Text-only content, shared category assets   | Members, Publications, News |
-| Folder + `index.md`   | Content with its own images/videos/diagrams | Projects                    |
+Both patterns are available for **all content types** (members, news, publications, projects, positions):
+
+| Pattern             | When to use                                 | Example                                    |
+|---------------------|---------------------------------------------|--------------------------------------------|
+| Single `.md` file   | Simple content, no dedicated assets         | `news/my-article.md`                       |
+| Folder + `index.md` | Content with its own images/videos/diagrams | `projects/my-project/index.md` + `assets/` |
+
+Use the folder pattern whenever you need assets scoped to a single piece of content (avoiding naming collisions with other files in the same directory).
 
 ## Hiding Content
 
