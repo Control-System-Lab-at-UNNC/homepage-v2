@@ -7,6 +7,11 @@ process.env.MARKUXT_ROOT_DIR = process.env.MARKUXT_ROOT_DIR || 'src/'
 export default defineNuxtConfig({
   extends: ['@hnrobert/markuxt'],
 
+  // Register global icon components (outside src/ to avoid Content scanning)
+  plugins: [
+    '~~/plugins/icons.ts'
+  ],
+
   // i18n — site-specific locales and translations
   i18n: {
     locales: [
@@ -69,6 +74,13 @@ export default defineNuxtConfig({
           },
         ],
       },
+      // See ./plugins/icons.ts
+      researchAreas: [
+        { icon: 'IconSearch', titleKey: 'research.aerospace', descKey: 'research.aerospaceDesc' },
+        { icon: 'IconRobot', titleKey: 'research.robotics', descKey: 'research.roboticsDesc' },
+        { icon: 'IconNeural', titleKey: 'research.intelligent', descKey: 'research.intelligentDesc' },
+        { icon: 'IconAssemblyLine', titleKey: 'research.manufacturing', descKey: 'research.manufacturingDesc' },
+      ],
     },
   },
 })

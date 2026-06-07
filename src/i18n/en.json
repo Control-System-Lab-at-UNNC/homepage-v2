@@ -158,5 +158,9 @@
   "code.copied": "Copied",
   "code.copyCode": "Copy code",
   "code.copiedExclaim": "Copied!",
-  "code.copy": "Copy"
+  "code.copy": "Copy",
+
+  "error.notFound": "Page Not Found",
+  "error.notFoundDesc": "The page you are looking for doesn't exist or has been moved.",
+  "error.backHome": "Back to Home"
 }

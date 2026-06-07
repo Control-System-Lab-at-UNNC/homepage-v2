@@ -11,7 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@hnrobert/markuxt": "^0.1.2",
+    "@hnrobert/markuxt": "^0.1.3",
     "@icon-park/vue-next": "^1.4.2",
     "@nuxt/content": "^2.13.4",
     "@nuxtjs/i18n": "^10.4.0",
