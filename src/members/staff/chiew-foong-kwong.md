@@ -9,6 +9,7 @@ scholar: https://scholar.google.com/citations?user=DiX0phAAAAAJ&hl=zh-CN&oi=ao
 image: assets/cf.jpg
 category: staff
 order: 3
+# orcid: 0000-0001-2345-6789
 ---
 
 Dr. Chiew Foong Kwong received the B.Eng. degree (Hons.) in electrical and electronic engineering from the University of Hertfordshire, Hatfield, U.K., in 2001, the M.Sc. degree in personal, mobile and satellite communications from the University of Bradford, Bradford, U.K., in 2004, and the Ph.D. degree in wireless communications from Multimedia University, Cyberjaya, Malaysia, in 2015.

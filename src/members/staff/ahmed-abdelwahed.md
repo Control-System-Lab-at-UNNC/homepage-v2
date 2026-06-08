@@ -9,6 +9,7 @@ scholar: https://scholar.google.com/citations?hl=zh-CN&user=9cCVF5cAAAAJ
 image: assets/ahmed.webp
 category: staff
 order: 6
+# orcid: 0000-0001-2345-6789
 ---
 
 ## Research Interests

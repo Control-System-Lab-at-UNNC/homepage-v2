@@ -9,6 +9,7 @@ scholar: https://scholar.google.com/citations?hl=zh-CN&user=C4EmdWMAAAAJ
 image: assets/donglei-sun.webp
 category: staff
 order: 5
+# orcid: 0000-0001-2345-6789
 ---
 
 ## Research Interests

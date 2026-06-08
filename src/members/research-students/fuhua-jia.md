@@ -9,6 +9,7 @@ scholar: https://scholar.google.com/citations?user=Zz2ccJ4AAAAJ&hl
 image: assets/jiafuhua.png
 category: research-students
 order: 3
+orcid: 0009-0002-6693-9371
 ---
 
 He received the B.Eng. degree from Qinghai University, Xi'ning, China, in 2020, and the M.Res. degree from the University of Nottingham Ningbo China, China, in 2023. He is currently working toward the Ph.D. degree in mechanical engineering with the University Nottingham Ningbo China.

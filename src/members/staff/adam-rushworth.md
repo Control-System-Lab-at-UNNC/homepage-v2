@@ -9,6 +9,7 @@ scholar: https://scholar.google.com/citations?user=XvRnzQYAAAAJ&hl
 image: assets/adam-rushworth.webp
 category: staff
 order: 2
+# orcid: 0000-0001-2345-6789
 ---
 
 Dr Adam Rushworth obtained his MEng in Mechanical Engineering and Mathematics in 2011 from the University of Nottingham (UK), where he subsequently completed his PhD in Mechanical Engineering in 2015. He conducted research as a Research Fellow as part of the Rolls-Royce University Technology Centre in On-platform Repair and Manufacturing Technology, focusing on topics such as robotics for in-situ inspection, manufacture and repair, mechatronics and machining.
