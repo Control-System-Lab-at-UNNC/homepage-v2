@@ -14,11 +14,19 @@ authors:
   - Doe, John
   - Smith, Jane
 
+authors_orcid:
+  - 0000-0001-2345-6789
+  - 0000-0002-9876-5432
+
 # year [Required]: Publication year
 year: 2024
 
 # doi [Optional]: DOI link to the publication
 doi: https://doi.org/10.1000/example
+
+# openalex_id [Optional]: OpenAlex ID for the publication
+openalex_id: W123456789
+
 
 # venue [Optional]: Conference or journal name
 venue: Example Conference 2024

@@ -46,6 +46,9 @@ export default defineNuxtConfig({
   // Runtime app config (markuxt theme options)
   appConfig: {
     markuxt: {
+      openalex: {
+        rorId: 'https://ror.org/03y4dt428',
+      },
       logo: {
         src: '/images/uon-logo.png',
       },
