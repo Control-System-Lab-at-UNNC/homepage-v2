@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'src/**'              # Source files
+      - 'scripts/**'          # Sync scripts
       - 'nuxt.config.ts'     # Nuxt configuration
       - 'package.json'        # Package configuration
       - 'pnpm-lock.yaml'      # Lock file
@@ -48,6 +49,13 @@ jobs:
         run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync publications from OpenAlex
+        uses: markuxt/sync-publications@main
+        with:
+          ror_id: 'https://ror.org/03y4dt428'
+          contact_email: 'salman.ijaz@nottingham.edu.cn'
+          content_dir: 'src'
 
       - name: Generate static site
         run: pnpm run generate

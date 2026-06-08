@@ -37,6 +37,9 @@ category: research-students
 # order [Optional]: Sort order within category (lower = earlier)
 order: 999
 
+# orcid [Optional]: ORCID identifier
+orcid: 0000-0001-2345-6789
+
 # interests [Optional]: Research interests
 interests:
   - Control Systems
