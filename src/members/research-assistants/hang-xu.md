@@ -7,6 +7,7 @@ email: hang.xu@nottingham.edu.cn
 image: assets/hangxu.jpg
 category: research-assistants
 order: 1
+# orcid: 0000-0001-2345-6789
 ---
 
 B.Sc student in Computer Science

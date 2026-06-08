@@ -6,6 +6,7 @@ email: ""
 image: /images/default.jpg
 category: alumni
 order: 2
+# orcid: 0000-0001-2345-6789
 ---
 
 He received the B.Sc degree from the University Nottingham Ningbo China, Ningbo, China, in 2024.

@@ -7,6 +7,7 @@ email: xing.hou@nottingham.edu.cn
 image: assets/xinghou.png
 category: research-assistants
 order: 2
+# orcid: 0000-0001-2345-6789
 ---
 
 He received the B.sc. degree from Qinghai University, Xi'ning, China, in 2023.

@@ -7,6 +7,7 @@ email: xiuqi.wang@nottingham.edu.cn
 image: /images/default.jpg
 category: research-assistants
 order: 3
+# orcid: 0000-0001-2345-6789
 ---
 
 ## Research Interests

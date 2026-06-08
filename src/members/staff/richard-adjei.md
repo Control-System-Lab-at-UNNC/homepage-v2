@@ -9,6 +9,7 @@ scholar: https://scholar.google.com/citations?user=TshunUEAAAAJ&hl=zh-CN&oi=ao
 image: assets/richard.webp
 category: staff
 order: 4
+# orcid: 0000-0001-2345-6789
 ---
 
 Richard A. Adjei is an Assistant Professor at the School of Aerospace, University of Nottingham Ningbo China. Prior to his appointment in 2022, he was a postdoctoral researcher at the Turbomachinery Laboratory, Tsinghua University. He received his PhD in Power Engineering and Engineering Thermophysics at Shanghai Jiaotong University in 2020. His research involves aerodynamic design and optimization with focus on the development of intelligent systems and models for aircraft and gas turbine design. He is a member of the American Society of Mechanical Engineers (ASME), American Institute of Aeronautics and Astronautics (AIAA) and associate member of the International Society of Structural and Multidisciplinary Optimization (ISSMO).

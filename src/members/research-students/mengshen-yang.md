@@ -8,6 +8,7 @@ email: Mengshen.Yang@nottingham.edu.cn
 image: assets/yangmengshen.png
 category: research-students
 order: 1
+# orcid: 0000-0001-2345-6789
 ---
 
 He received the B.E. degree from Central South University, Changsha, China, in 2018, and the M.E. degree from the University of Manchester, UK, in 2019. He is currently working toward the Ph.D. degree in mechanical engineering with the University Nottingham Ningbo China. He is also with the Ningbo Institute of Materials Technology and Engineering, Chinese Academy of Sciences, Ningbo, China.
