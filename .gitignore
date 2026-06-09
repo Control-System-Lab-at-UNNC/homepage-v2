@@ -146,3 +146,7 @@ CLAUDE.md
 # Images/videos live alongside their markdown in content/ and are
 # copied here at build time. Do not add files manually.
 _markuxt/
+
+
+.DS_Store
+Thumbs.db
