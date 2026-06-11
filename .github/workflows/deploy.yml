@@ -56,10 +56,20 @@ jobs:
           ror_id: 'https://ror.org/03y4dt428'
           contact_email: 'salman.ijaz@nottingham.edu.cn'
 
+      - name: Compute base URL from repository name
+        id: base_url
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          if [[ "$REPO" == *.github.io ]]; then
+            echo "url=/" >> "$GITHUB_OUTPUT"
+          else
+            echo "url=/${REPO}/" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Generate static site
         run: pnpm run generate
         env:
-          NUXT_PUBLIC_BASE_URL: /
+          NUXT_PUBLIC_BASE_URL: ${{ steps.base_url.outputs.url }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

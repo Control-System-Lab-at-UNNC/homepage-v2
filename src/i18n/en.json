@@ -13,6 +13,8 @@
   "nav.positions": "Positions",
   "nav.news": "News",
   "nav.toggleMenu": "Toggle menu",
+  "nav.switchToLight": "Switch to light mode",
+  "nav.switchToDark": "Switch to dark mode",
   "nav.brand": "Control System Lab",
   "nav.university": "University of Nottingham Ningbo China",
   "nav.universityAlt": "University of Nottingham",
