@@ -6,7 +6,7 @@ department: Department of Electrical and Electronic Engineering
 email: xiuqi.wang@nottingham.edu.cn
 image: /images/default.jpg
 category: research-assistants
-order: 3
+order: "16"
 # orcid: 0000-0001-2345-6789
 ---
 

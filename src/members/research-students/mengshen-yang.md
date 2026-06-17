@@ -7,7 +7,7 @@ group: DTP with Ningbo Institute of Materials Technology and Engineering, Chines
 email: Mengshen.Yang@nottingham.edu.cn
 image: assets/yangmengshen.png
 category: research-students
-order: 1
+order: "07"
 # orcid: 0000-0001-2345-6789
 ---
 

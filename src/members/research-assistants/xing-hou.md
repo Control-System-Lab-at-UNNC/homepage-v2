@@ -6,7 +6,7 @@ department: Control System Lab
 email: xing.hou@nottingham.edu.cn
 image: assets/xinghou.png
 category: research-assistants
-order: 2
+order: "15"
 # orcid: 0000-0001-2345-6789
 ---
 

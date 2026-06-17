@@ -7,7 +7,7 @@ group: DTP with Shenzhen University of Advanced Technology
 email: Liming.Li@nottingham.edu.cn
 image: assets/liming-li.jpg
 category: research-students
-order: 5
+order: "11"
 # orcid: 0000-0001-2345-6789
 ---
 

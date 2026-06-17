@@ -5,7 +5,7 @@ title: Research Assistant from Oct.,2023 to June.,2024
 email: ""
 image: /images/default.jpg
 category: alumni
-order: 1
+order: "17"
 # orcid: 0000-0001-2345-6789
 ---
 

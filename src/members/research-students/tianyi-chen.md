@@ -6,7 +6,7 @@ department: Department of Mechanical, Materials and Manufacturing Engineering
 email: Tianyi.Chen@nottingham.edu.cn
 image: assets/chentianyi.png
 category: research-students
-order: 2
+order: "08"
 # orcid: 0000-0001-2345-6789
 ---
 

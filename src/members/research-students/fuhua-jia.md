@@ -8,7 +8,7 @@ email: Fuhua.JIA@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=Zz2ccJ4AAAAJ&hl
 image: assets/jiafuhua.png
 category: research-students
-order: 3
+order: "09"
 orcid: 0009-0002-6693-9371
 ---
 

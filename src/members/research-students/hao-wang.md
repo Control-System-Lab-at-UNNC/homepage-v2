@@ -6,7 +6,7 @@ department: Department of Mechanical, Materials and Manufacturing Engineering
 email: hao.wang@nottingham.edu.cn
 image: assets/wanghao.png
 category: research-students
-order: 6
+order: "12"
 # orcid: 0000-0001-2345-6789
 ---
 

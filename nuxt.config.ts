@@ -80,6 +80,17 @@ export default defineNuxtConfig({
           },
         ],
       },
+      // Member categories — `key` matches the `category:` field in each
+      // member's frontmatter; `labelKey` is an i18n key resolved in every
+      // locale. Array order is the canonical display / filter / sort order.
+      members: {
+        categories: [
+          { key: 'staff', labelKey: 'members.staff' },
+          { key: 'research-students', labelKey: 'members.researchStudents' },
+          { key: 'research-assistants', labelKey: 'members.researchAssistants' },
+          { key: 'alumni', labelKey: 'members.alumni' },
+        ],
+      },
       // See ./plugins/icons.ts
       researchAreas: [
         { icon: 'IconSearch', titleKey: 'research.aerospace', descKey: 'research.aerospaceDesc' },

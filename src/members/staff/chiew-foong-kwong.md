@@ -8,7 +8,7 @@ email: Chiew-Foong.Kwong@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=DiX0phAAAAAJ&hl=zh-CN&oi=ao
 image: assets/cf.jpg
 category: staff
-order: 3
+order: "03"
 # orcid: 0000-0001-2345-6789
 ---
 

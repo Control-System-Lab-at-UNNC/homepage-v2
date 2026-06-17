@@ -19,7 +19,7 @@ interests:
     - Aircraft dynamics and control
     - Unmanned aerial vehicle system
     - More Electric Aircrafts
-order: 1
+order: "01"
 # orcid: 0000-0001-2345-6789
 ---
 

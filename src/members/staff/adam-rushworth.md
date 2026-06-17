@@ -8,7 +8,7 @@ email: Adam.Rushworth@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=XvRnzQYAAAAJ&hl
 image: assets/adam-rushworth.webp
 category: staff
-order: 2
+order: "02"
 # orcid: 0000-0001-2345-6789
 ---
 

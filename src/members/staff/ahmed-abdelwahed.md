@@ -8,7 +8,7 @@ email: Ahmed.Abdelwahed@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?hl=zh-CN&user=9cCVF5cAAAAJ
 image: assets/ahmed.webp
 category: staff
-order: 6
+order: "06"
 # orcid: 0000-0001-2345-6789
 ---
 

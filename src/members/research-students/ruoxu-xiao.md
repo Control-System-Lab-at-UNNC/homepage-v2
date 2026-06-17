@@ -6,7 +6,7 @@ department: Department of Mechanical, Materials and Manufacturing Engineering
 email: ruoxu.Xiao@nottingham.edu.cn
 image: assets/ruoxuxiao.jpg
 category: research-students
-order: 7
+order: "13"
 # orcid: 0000-0001-2345-6789
 ---
 

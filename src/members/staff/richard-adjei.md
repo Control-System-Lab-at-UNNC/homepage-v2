@@ -8,7 +8,7 @@ email: Richard-Amankwa.Adjei@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=TshunUEAAAAJ&hl=zh-CN&oi=ao
 image: assets/richard.webp
 category: staff
-order: 4
+order: "04"
 # orcid: 0000-0001-2345-6789
 ---
 
