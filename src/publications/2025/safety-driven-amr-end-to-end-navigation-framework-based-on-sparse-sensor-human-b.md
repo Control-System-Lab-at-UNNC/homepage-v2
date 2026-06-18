@@ -23,8 +23,6 @@ year: 2025
 doi: https://doi.org/10.1109/cies64955.2025.11007636
 openalex_id: W4410639798
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - End-to-end principle

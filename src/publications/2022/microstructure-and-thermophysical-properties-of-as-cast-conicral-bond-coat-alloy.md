@@ -21,8 +21,6 @@ year: 2022
 doi: https://doi.org/10.1016/j.jallcom.2022.165575
 openalex_id: W4281482393
 venue: Journal of Alloys and Compounds
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Microstructure

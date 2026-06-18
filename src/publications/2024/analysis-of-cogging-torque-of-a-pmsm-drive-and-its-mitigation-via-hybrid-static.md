@@ -15,8 +15,6 @@ year: 2024
 doi: https://doi.org/10.1109/icem60801.2024.10700067
 openalex_id: W4403278360
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Cogging torque

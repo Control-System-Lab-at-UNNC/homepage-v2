@@ -19,8 +19,6 @@ year: 2021
 doi: https://doi.org/10.1109/access.2021.3137388
 openalex_id: W4206620940
 venue: IEEE Access
-pdf_url: https://ieeexplore.ieee.org/ielx7/6287639/9668973/09658537.pdf
-abstract_page: 1
 abstract_screenshot: a-robust-sensor-and-actuator-fault-tolerant-control-scheme-for-nonlinear-system.png
 keywords:
   - Control theory (sociology)

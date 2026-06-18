@@ -19,8 +19,6 @@ year: 2022
 doi: https://doi.org/10.1016/j.jmapro.2022.09.008
 openalex_id: W4296772690
 venue: Journal of Manufacturing Processes
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Materials science

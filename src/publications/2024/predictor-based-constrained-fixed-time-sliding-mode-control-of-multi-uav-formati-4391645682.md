@@ -15,8 +15,6 @@ year: 2024
 doi: https://doi.org/10.2139/ssrn.4720848
 openalex_id: W4391645682
 venue: SSRN Electronic Journal
-pdf_url: https://doi.org/10.2139/ssrn.4720848
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

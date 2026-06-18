@@ -17,8 +17,6 @@ year: 2023
 doi: https://doi.org/10.1016/j.asr.2023.03.007
 openalex_id: W4328053913
 venue: Advances in Space Research
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

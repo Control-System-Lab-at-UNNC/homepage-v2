@@ -17,8 +17,6 @@ year: 2025
 doi: https://doi.org/10.1109/maeie68099.2025.11406069
 openalex_id: W7131882980
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Adaptability

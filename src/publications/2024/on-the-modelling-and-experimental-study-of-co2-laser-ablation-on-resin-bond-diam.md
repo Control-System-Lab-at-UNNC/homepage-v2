@@ -15,8 +15,6 @@ year: 2024
 doi: https://doi.org/10.1016/j.jmapro.2024.07.007
 openalex_id: W4400603313
 venue: Journal of Manufacturing Processes
-pdf_url: https://doi.org/10.1016/j.jmapro.2024.07.007
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Materials science

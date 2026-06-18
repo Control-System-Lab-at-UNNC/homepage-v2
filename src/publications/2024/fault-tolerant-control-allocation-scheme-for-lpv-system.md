@@ -13,8 +13,6 @@ year: 2024
 doi: https://doi.org/10.1109/anzcc59813.2024.10432791
 openalex_id: W4391952997
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Scheme (mathematics)

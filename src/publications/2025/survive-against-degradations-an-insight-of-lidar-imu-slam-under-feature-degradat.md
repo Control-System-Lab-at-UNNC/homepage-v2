@@ -19,8 +19,6 @@ year: 2025
 doi: https://doi.org/10.1109/cvidl65390.2025.11085801
 openalex_id: W4412623905
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Inertial measurement unit

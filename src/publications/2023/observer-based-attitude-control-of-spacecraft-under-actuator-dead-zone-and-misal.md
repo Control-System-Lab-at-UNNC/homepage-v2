@@ -17,8 +17,6 @@ year: 2023
 doi: https://doi.org/10.1016/j.amc.2023.128406
 openalex_id: W4388000235
 venue: Applied Mathematics and Computation
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

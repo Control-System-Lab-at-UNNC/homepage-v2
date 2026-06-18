@@ -27,8 +27,6 @@ year: 2026
 doi: https://doi.org/10.1049/rsn2.70122
 openalex_id: W7128489891
 venue: IET Radar Sonar & Navigation
-pdf_url: https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/rsn2.70122
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Sonar

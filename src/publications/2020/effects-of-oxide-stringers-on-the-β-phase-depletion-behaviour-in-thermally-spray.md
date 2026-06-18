@@ -11,8 +11,6 @@ year: 2020
 doi: https://doi.org/10.1016/j.jmst.2019.11.018
 openalex_id: W2999948301
 venue: Journal of Material Science and Technology
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Materials science

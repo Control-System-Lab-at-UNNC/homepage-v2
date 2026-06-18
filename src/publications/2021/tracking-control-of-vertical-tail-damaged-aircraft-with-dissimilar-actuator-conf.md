@@ -15,8 +15,6 @@ year: 2021
 doi: https://doi.org/10.1109/iemtronics52119.2021.9422581
 openalex_id: W3162488040
 venue: 2021 IEEE International IOT, Electronics and Mechatronics Conference (IEMTRONICS)
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Actuator

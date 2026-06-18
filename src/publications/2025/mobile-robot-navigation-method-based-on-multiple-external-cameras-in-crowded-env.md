@@ -17,8 +17,6 @@ year: 2025
 doi: https://doi.org/10.1109/ivcnz67716.2025.11281860
 openalex_id: W4417249175
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Mobile robot navigation

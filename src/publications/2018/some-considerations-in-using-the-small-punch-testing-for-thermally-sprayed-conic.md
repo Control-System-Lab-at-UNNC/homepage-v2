@@ -17,8 +17,6 @@ year: 2018
 doi: https://doi.org/10.1016/j.surfcoat.2018.10.080
 openalex_id: W2898271809
 venue: Surface and Coatings Technology
-pdf_url: https://nottingham-repository.worktribe.com/output/1220823
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Materials science

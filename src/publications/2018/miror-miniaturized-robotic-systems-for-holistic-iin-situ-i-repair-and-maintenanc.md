@@ -33,8 +33,6 @@ year: 2018
 doi: https://doi.org/10.1109/tmech.2018.2800285
 openalex_id: W2790154185
 venue: IEEE/ASME Transactions on Mechatronics
-pdf_url: https://nottingham-repository.worktribe.com/output/1388261
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Hexapod

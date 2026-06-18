@@ -19,8 +19,6 @@ year: 2022
 doi: https://doi.org/10.1109/ceepe55110.2022.9783432
 openalex_id: W4281757049
 venue: 2022 5th International Conference on Energy, Electrical and Power Engineering (CEEPE)
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

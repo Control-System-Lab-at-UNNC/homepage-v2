@@ -19,8 +19,6 @@ year: 2024
 doi: https://doi.org/10.1109/smc54092.2024.10831925
 openalex_id: W4406612824
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Backstepping

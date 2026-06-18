@@ -15,8 +15,6 @@ year: 2020
 doi: https://doi.org/10.1007/978-3-030-54334-1_32
 openalex_id: W3082582449
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Antique

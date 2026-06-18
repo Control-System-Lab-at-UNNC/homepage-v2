@@ -15,8 +15,6 @@ year: 2022
 doi: https://doi.org/10.1177/10775463221097763
 openalex_id: W4281681125
 venue: Journal of Vibration and Control
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

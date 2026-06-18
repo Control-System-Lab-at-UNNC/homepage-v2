@@ -19,8 +19,6 @@ year: 2023
 doi: https://doi.org/10.1016/j.matchar.2023.113183
 openalex_id: W4384343570
 venue: Materials Characterization
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Materials science

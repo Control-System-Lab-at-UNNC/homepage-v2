@@ -17,8 +17,6 @@ year: 2023
 doi: https://doi.org/10.1177/10775463231171386
 openalex_id: W4385754382
 venue: Journal of Vibration and Control
-pdf_url: https://journals.sagepub.com/doi/pdf/10.1177/10775463231171386?download=true
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

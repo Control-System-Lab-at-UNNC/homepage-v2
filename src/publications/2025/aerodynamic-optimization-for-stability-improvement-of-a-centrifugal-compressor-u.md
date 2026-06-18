@@ -15,8 +15,6 @@ year: 2025
 doi: https://doi.org/10.1016/j.csite.2025.106654
 openalex_id: W4412439889
 venue: Case Studies in Thermal Engineering
-pdf_url: https://doi.org/10.1016/j.csite.2025.106654
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Volute

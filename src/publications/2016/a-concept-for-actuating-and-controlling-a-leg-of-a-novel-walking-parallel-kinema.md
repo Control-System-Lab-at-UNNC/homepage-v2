@@ -15,8 +15,6 @@ year: 2016
 doi: https://doi.org/10.1016/j.mechatronics.2016.10.010
 openalex_id: W2560059627
 venue: Mechatronics
-pdf_url: http://eprints.nottingham.ac.uk/40440/
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Kinematics

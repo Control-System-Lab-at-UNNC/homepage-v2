@@ -15,8 +15,6 @@ year: 2021
 doi: https://doi.org/10.1016/j.amc.2021.126053
 openalex_id: W3137382667
 venue: Applied Mathematics and Computation
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

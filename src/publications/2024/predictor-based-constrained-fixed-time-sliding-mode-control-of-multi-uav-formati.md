@@ -15,8 +15,6 @@ year: 2024
 doi: https://doi.org/10.1016/j.ast.2024.109113
 openalex_id: W4394566880
 venue: Aerospace Science and Technology
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

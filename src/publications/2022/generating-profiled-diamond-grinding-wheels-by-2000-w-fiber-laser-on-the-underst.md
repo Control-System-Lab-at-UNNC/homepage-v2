@@ -19,8 +19,6 @@ year: 2022
 doi: https://doi.org/10.1007/s00170-022-08934-6
 openalex_id: W4214708464
 venue: The International Journal of Advanced Manufacturing Technology
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Duty cycle

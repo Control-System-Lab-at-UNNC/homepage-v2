@@ -17,8 +17,6 @@ year: 2024
 doi: https://doi.org/10.1016/j.ast.2024.109676
 openalex_id: W4403600873
 venue: Aerospace Science and Technology
-pdf_url: https://doi.org/10.1016/j.ast.2024.109676
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Stability (learning theory)

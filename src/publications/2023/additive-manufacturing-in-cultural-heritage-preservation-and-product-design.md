@@ -15,8 +15,6 @@ year: 2023
 doi: https://doi.org/10.1007/978-3-031-20752-5_55
 openalex_id: W4387917018
 venue: Springer handbooks
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Replica

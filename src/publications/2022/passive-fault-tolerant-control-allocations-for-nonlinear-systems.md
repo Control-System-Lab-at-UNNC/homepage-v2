@@ -15,8 +15,6 @@ year: 2022
 doi: https://doi.org/10.1109/ccdc55256.2022.10034263
 openalex_id: W4320802399
 venue: 2022 34th Chinese Control and Decision Conference (CCDC)
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Multirotor

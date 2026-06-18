@@ -15,8 +15,6 @@ year: 2024
 doi: https://doi.org/10.1002/rnc.7604
 openalex_id: W4401968169
 venue: International Journal of Robust and Nonlinear Control
-pdf_url: https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/rnc.7604
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

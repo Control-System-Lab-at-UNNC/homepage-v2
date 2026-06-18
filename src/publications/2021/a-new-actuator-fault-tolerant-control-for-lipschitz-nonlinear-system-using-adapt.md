@@ -13,8 +13,6 @@ year: 2021
 doi: https://doi.org/10.1002/rnc.5394
 openalex_id: W3122536874
 venue: International Journal of Robust and Nonlinear Control
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

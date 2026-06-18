@@ -19,8 +19,6 @@ year: 2025
 doi: https://doi.org/10.1117/12.3088022
 openalex_id: W4414108190
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Testbed

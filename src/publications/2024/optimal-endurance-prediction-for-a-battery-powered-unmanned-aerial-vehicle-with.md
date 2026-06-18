@@ -17,8 +17,6 @@ year: 2024
 doi: https://doi.org/10.1109/meae62008.2024.11026518
 openalex_id: W4411409872
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Aerospace engineering

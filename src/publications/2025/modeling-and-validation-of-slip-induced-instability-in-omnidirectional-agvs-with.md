@@ -19,8 +19,6 @@ year: 2025
 doi: https://doi.org/10.1109/icma65362.2025.11120733
 openalex_id: W4413442821
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Diagonal

@@ -15,8 +15,6 @@ year: 2022
 doi: https://doi.org/10.1177/09544100211055318
 openalex_id: W4214907942
 venue: Proceedings of the Institution of Mechanical Engineers Part G Journal of Aerospace Engineering
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Control theory (sociology)

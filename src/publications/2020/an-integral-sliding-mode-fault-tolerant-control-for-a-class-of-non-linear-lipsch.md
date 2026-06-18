@@ -15,8 +15,6 @@ year: 2020
 doi: https://doi.org/10.1049/cth2.12050
 openalex_id: W3116595210
 venue: IET Control Theory and Applications
-pdf_url: https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/cth2.12050
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Lipschitz continuity

@@ -13,8 +13,6 @@ year: 2024
 doi: https://doi.org/10.22541/au.172114708.84737227/v1
 openalex_id: W4400682240
 venue: 
-pdf_url: https://www.authorea.com/doi/pdf/10.22541/au.172114708.84737227
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Key (lock)

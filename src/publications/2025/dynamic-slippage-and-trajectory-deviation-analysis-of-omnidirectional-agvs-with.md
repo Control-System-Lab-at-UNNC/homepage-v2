@@ -21,8 +21,6 @@ year: 2025
 doi: https://doi.org/10.1109/iciea65512.2025.11148886
 openalex_id: W4414141056
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Kinematics

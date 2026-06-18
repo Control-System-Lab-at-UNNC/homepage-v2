@@ -19,8 +19,6 @@ year: 2020
 doi: https://doi.org/10.1016/j.addma.2020.101588
 openalex_id: W3087748900
 venue: Additive manufacturing
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Fractal

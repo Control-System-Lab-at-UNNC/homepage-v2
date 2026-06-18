@@ -21,8 +21,6 @@ year: 2024
 doi: https://doi.org/10.1016/j.jmatprotec.2024.118525
 openalex_id: W4400850280
 venue: Journal of Materials Processing Technology
-pdf_url: https://doi.org/10.1016/j.jmatprotec.2024.118525
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Materials science

@@ -15,8 +15,6 @@ year: 2025
 doi: https://doi.org/10.1109/maeie68099.2025.11405877
 openalex_id: W7131898583
 venue: 
-pdf_url: 
-abstract_page: 
 abstract_screenshot: 
 keywords:
   - Supercapacitor
