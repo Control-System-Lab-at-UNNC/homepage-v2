@@ -6,6 +6,7 @@ department: Department of Mechanical, Materials and Manufacturing Engineering
 group: Power Electronics, Machines and Control Research Group
 email: salman.ijaz@nottingham.edu.cn
 scholar: https://scholar.google.com/citations?user=77HGe2UAAAAJ&hl
+orcid: 0000-0003-1483-4754
 image: assets/salman-ijaz.webp
 category: staff
 interests: 

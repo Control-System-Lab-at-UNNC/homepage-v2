@@ -23,6 +23,7 @@
         "Ijaz",
         "infty",
         "Insitutde",
+        "IROS",
         "jiafuhua",
         "junlin",
         "katex",
@@ -52,6 +53,7 @@
         "ruoxuxiao",
         "rushworth",
         "scikit",
+        "SFAR",
         "Shiki",
         "testbed",
         "Tianyi",
@@ -66,7 +68,8 @@
         "xinghou",
         "Xiuqi",
         "yangmengshen",
-        "Yuhao"
+        "Yuhao",
+        "Zihao"
     ],
     "markdownlint.config": {
         "no-inline-html": false

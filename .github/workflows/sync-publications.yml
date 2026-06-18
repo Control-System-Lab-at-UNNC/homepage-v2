@@ -1,0 +1,48 @@
+name: Sync Publications
+
+# Fetches publications from OpenAlex for every member with an ORCID, filtered
+# to this institution (ROR), and commits new + backfilled publication markdown
+# (and abstract-page screenshots) to src/publications. A push here triggers the
+# Deploy workflow (src/** is one of its path filters).
+#
+# Prerequisite: member files under src/members must declare an `orcid:` field —
+# the sync is ORCID-driven and skips members without one.
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '7 0 * * 0'  # weekly, Sundays ~00:07 UTC
+
+permissions:
+  contents: write   # commit + push the synced publications
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v5
+
+      - name: Sync publications from OpenAlex
+        id: sync
+        uses: markuxt/sync-publications@v0.0.1
+        with:
+          ror_id: 'https://ror.org/03y4dt428'           # UNNC
+          contact_email: 'hvysh2@nottingham.edu.cn' # OpenAlex polite-pool
+          members_dir: 'src/members'
+          publications_dir: 'src/publications'
+
+      - name: Commit new / updated publications
+        env:
+          NEW_COUNT: ${{ steps.sync.outputs.new_publications_count }}
+          BACKFILL_COUNT: ${{ steps.sync.outputs.backfilled_publications_count }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/publications/
+          if git diff --cached --quiet; then
+            echo "No publication changes this run."
+            exit 0
+          fi
+          git commit -m "chore(sync): +${NEW_COUNT} new, ${BACKFILL_COUNT} backfilled from OpenAlex"
+          git push

@@ -24,6 +24,18 @@ keywords:
   - sensor fusion
   - state estimation
 venue: Polymers
+openalex_id: W4280563597
+authors_orcid:
+  - 0000-0002-8355-2227
+  - 0000-0002-2340-7095
+  - null
+  - 0000-0003-3803-7549
+  - 0000-0001-9337-9379
+  - 0000-0001-5599-6261
+  - 0000-0003-4025-039X
+  - 0000-0001-6144-3401
+  - 0000-0001-6438-5040
+
 ---
 
 Although Global Navigation Satellite Systems (GNSSs) generally provide adequate accuracy for outdoor localization, this is not the case for indoor environments, due to signal obstruction. Therefore, a self-contained localization scheme is beneficial under such circumstances. Modern sensors and algorithms endow moving robots with the capability to perceive their environment, and enable the deployment of novel localization schemes, such as odometry, or Simultaneous Localization and Mapping (SLAM). The former focuses on incremental localization, while the latter stores an interpretable map of the environment concurrently. In this context, this paper conducts a comprehensive review of sensor modalities, including Inertial Measurement Units (IMUs), Light Detection and Ranging (LiDAR), radio detection and ranging (radar), and cameras, as well as applications of polymers in these sensors, for indoor odometry. Furthermore, analysis and discussion of the algorithms and the fusion frameworks for pose estimation and odometry with these sensors are performed. Therefore, this paper straightens the pathway of indoor odometry from principle to application. Finally, some future prospects are discussed.
