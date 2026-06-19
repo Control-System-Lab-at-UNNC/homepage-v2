@@ -25,7 +25,7 @@ jobs:
 
       - name: Sync publications from OpenAlex
         id: sync
-        uses: markuxt/sync-publications@v0.0.1
+        uses: markuxt/sync-publications@v0.0.2
         with:
           ror_id: 'https://ror.org/03y4dt428'           # UNNC
           contact_email: 'hvysh2@nottingham.edu.cn' # OpenAlex polite-pool
@@ -37,7 +37,7 @@ jobs:
           NEW_COUNT: ${{ steps.sync.outputs.new_publications_count }}
           BACKFILL_COUNT: ${{ steps.sync.outputs.backfilled_publications_count }}
         run: |
-          git config --local user.email "action@github.com"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add src/publications/
           if git diff --cached --quiet; then
