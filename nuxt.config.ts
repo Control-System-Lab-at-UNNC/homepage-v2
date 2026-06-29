@@ -15,13 +15,10 @@ export default defineNuxtConfig({
     '~~/plugins/icons.ts'
   ],
 
-  // i18n — site-specific locales and translations
+  // i18n — locales are auto-detected and registered by the markuxt layer
+  // (from src/i18n/*.json); the consumer only needs defaultLocale here.
   i18n: {
-    locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'zh-CN', name: '简体中文', file: 'zh-CN.json' }
-    ],
-    langDir: '../src/i18n',
+    defaultLocale: 'en',
   },
 
   // Site-specific head (favicon)
