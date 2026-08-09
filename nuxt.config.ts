@@ -30,14 +30,17 @@ export default defineNuxtConfig({
     }
   },
 
-  // Content directory — content lives directly in src/ (not src/content/)
+  // Content directory — content lives directly in src/ (not src/content/).
+  // Binary assets (images/videos/PDFs) are excluded from the content database
+  // by the @markuxt/markuxt layer (content.ignores) so their base64 bytes don't
+  // bloat api/_content/cache.*.json past GitHub Pages' 25MiB single-file limit.
   content: {
     sources: {
       content: {
         driver: 'fs',
         base: resolve(process.cwd(), 'src')
       }
-    }
+    },
   },
 
   // Runtime app config (markuxt theme options)
